@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+</head>
+<body>
+
+    <h1>This is the landing page</h1>
+
+    <form th:action="@{/register}" method="post" th:object="${user}">
+        <label for="username">Username</label>
+        <input id="username" th:field="*{username}">
+
+        <label for="email">Email</label>
+        <input id="email" th:field="*{email}">
+
+        <label for="password">Password</label>
+        <input id="password" th:field="*{password}">
+
+        <label for="height">height</label>
+        <input id="height" th:field="*{height}">
+
+        <label for="age">age</label>
+        <input id="age" th:field="*{age}">
+
+        <label for="gender">gender</label>
+        <input id="gender" th:field="*{gender}">
+
+        <label for="maintenance-calories">maintenance calories</label>
+        <input id="maintenance-calories" th:field="*{maintenance_calories}">
+
+        <label for="starting-weight">starting weight</label>
+        <input id="starting-weight" th:field="*{starting_weight}">
+
+        <label for="target-weight">target weight</label>
+        <input id="target-weight" th:field="*{target_weight}">
+
+        <label for="profile-visibility">profile visibility</label>
+        <input id="profile-visibility" th:field="*{profile_visibility}">
+
+        <label for="progress">progress</label>
+        <input id="progress" th:field="*{progress}">
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
