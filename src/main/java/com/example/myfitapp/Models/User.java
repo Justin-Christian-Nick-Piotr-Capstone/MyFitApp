@@ -27,7 +27,7 @@ public class User {
     @Column
     private int starting_weight;
     @Column
-    private int targetWeight;
+    private int target_weight;
     @Column
     private String profile_visibility;
     @Column
@@ -88,11 +88,11 @@ public class User {
     public void setStarting_weight(int starting_weight) {
         this.starting_weight = starting_weight;
     }
-    public int getTargetWeight() {
-        return targetWeight;
+    public int getTarget_weight() {
+        return target_weight;
     }
-    public void setTargetWeight(int targetWeight) {
-        this.targetWeight = targetWeight;
+    public void setTarget_weight(int targetWeight) {
+        this.target_weight = targetWeight;
     }
     public String getProfile_visibility() {
         return profile_visibility;
