@@ -58,4 +58,13 @@ public class UserController {
         userRepo.save(updatedUser);
         return "redirect:/";
     }
+
+    // Delete functionality for users.
+    @PostMapping("/delete-user/{id}")
+    public String deleteUser(@PathVariable long id, Model model) {
+        User userToDelete = userRepo.getReferenceById(id);
+        model.addAttribute("userID", userToDelete.getId());
+        userRepo.delete(userToDelete);
+        return "redirect:/show-all-users";
+    }
 }
