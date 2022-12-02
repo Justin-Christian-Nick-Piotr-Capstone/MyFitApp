@@ -2,6 +2,8 @@ package com.example.myfitapp.Models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -32,6 +34,16 @@ public class User {
     private String profile_visibility;
     @Column
     private int progress;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<DailyLog> dailyLogs;
+
+    public List<DailyLog> getDailyLogs() {
+        return dailyLogs;
+    }
+
+    public void setDailyLogs(List<DailyLog> dailyLogs) {
+        this.dailyLogs = dailyLogs;
+    }
 
     // Everything from here down are the getters and setters for the properties above.
     public long getId() {

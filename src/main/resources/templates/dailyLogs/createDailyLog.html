@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+</head>
+<body>
+
+<h1>This is the landing page</h1>
+
+<form th:action="@{/create-daily-log}" method="post" th:object="${daily_log}">
+    <label for="username">Date: </label>
+    <input type="date" id="username" th:field="*{date}">
+
+    <label for="email">Exercise Query: </label>
+    <input id="email" th:field="*{exercise_query}">
+
+    <label for="password">Meals Query: </label>
+    <input id="password" th:field="*{meals_query}">
+
+    <label for="height">Target Calories: </label>
+    <input id="height" th:field="*{target_calories}">
+
+    <label for="age">Current Calories</label>
+    <input id="age" th:field="*{current_calories}">
+
+    <label for="gender">User</label>
+    <input id="gender" th:field="*{user}" readonly>
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
