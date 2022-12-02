@@ -2,6 +2,8 @@ package com.example.myfitapp.Models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -27,11 +29,21 @@ public class User {
     @Column
     private int starting_weight;
     @Column
-    private int targetWeight;
+    private int target_weight;
     @Column
     private String profile_visibility;
     @Column
     private int progress;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<DailyLog> dailyLogs;
+
+    public List<DailyLog> getDailyLogs() {
+        return dailyLogs;
+    }
+
+    public void setDailyLogs(List<DailyLog> dailyLogs) {
+        this.dailyLogs = dailyLogs;
+    }
 
     // Everything from here down are the getters and setters for the properties above.
     public long getId() {
@@ -88,11 +100,11 @@ public class User {
     public void setStarting_weight(int starting_weight) {
         this.starting_weight = starting_weight;
     }
-    public int getTargetWeight() {
-        return targetWeight;
+    public int getTarget_weight() {
+        return target_weight;
     }
-    public void setTargetWeight(int targetWeight) {
-        this.targetWeight = targetWeight;
+    public void setTarget_weight(int targetWeight) {
+        this.target_weight = targetWeight;
     }
     public String getProfile_visibility() {
         return profile_visibility;
