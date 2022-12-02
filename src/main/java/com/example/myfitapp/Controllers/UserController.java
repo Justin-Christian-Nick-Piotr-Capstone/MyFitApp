@@ -3,6 +3,7 @@ package com.example.myfitapp.Controllers;
 
 import com.example.myfitapp.Models.User;
 import com.example.myfitapp.Repos.UserRepo;
+import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +23,7 @@ public class UserController {
         return "/homepage";
     }
 
-    // Read functionality for users
+    // Read functionality for users.
     @GetMapping("/show-all-users")
     public String showAllUsers(Model model) {
         List<User> userList = new ArrayList<>();
@@ -31,8 +32,7 @@ public class UserController {
         return "/users/viewAllUsers";
     }
 
-
-    // Create functionality for users
+    // Create functionality for users.
     @GetMapping("/register")
     public String registerForm(Model model) {
         model.addAttribute("user", new User());
@@ -42,6 +42,20 @@ public class UserController {
     @PostMapping("/register")
     public String register(@ModelAttribute User user) {
         userRepo.save(user);
-        return "redirect:/homepage";
+        return "redirect:/";
+    }
+
+    // Update functionality for users.
+    @GetMapping("/update-user/{id}")
+    public String showUpdateForm(@PathVariable long id, Model model) {
+        User userToUpdate = userRepo.getReferenceById(id);
+        model.addAttribute("user", userToUpdate);
+        return "/users/updateUser";
+    }
+
+    @PostMapping("/update-user")
+    public String updateUser(@ModelAttribute User updatedUser) {
+        userRepo.save(updatedUser);
+        return "redirect:/";
     }
 }
