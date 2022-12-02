@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class UserController {
 
@@ -19,10 +22,21 @@ public class UserController {
         return "/homepage";
     }
 
+    // Read functionality for users
+    @GetMapping("/show-all-users")
+    public String showAllUsers(Model model) {
+        List<User> userList = new ArrayList<>();
+        model.addAttribute("users", userRepo.findAll());
+        System.out.println(userRepo.findAll());
+        return "/users/viewAllUsers";
+    }
+
+
+    // Create functionality for users
     @GetMapping("/register")
     public String registerForm(Model model) {
         model.addAttribute("user", new User());
-        return "/users/test";
+        return "/users/register";
     }
 
     @PostMapping("/register")
