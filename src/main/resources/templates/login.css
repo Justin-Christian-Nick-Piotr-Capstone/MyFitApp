@@ -74,13 +74,13 @@
         width: 100%;
         padding: 15px 0;
         font-size: 18px;
-        color: #fff;
+        color: black;
     }
 
     .form-control input:focus,
     .form-control input:valid {
         outline: 0;
-        border-bottom-color: #708090;
+        /*border-bottom-color: black;*/
     }
 
     .form-control label {
@@ -98,7 +98,7 @@
 
     .form-control input:focus + label span,
     .form-control input:valid + label span {
-        color: lightblue;
+        color: black;
         transform: translateY(-30px);
     }
 }
