@@ -9,12 +9,16 @@
 </head>
 <body>
 
-<h1>All Daily Logs</h1>
+<h1>This is the landing page</h1>
 
-<div th:each="item: ${daily_logs}">
-    <p th:text="${item.getId()}">ID: </p>
-    <p th:text="${item.getExercise_query()}">Exercises: </p>
-    <p th:text="${item.getMeals_query()}">Meals: </p>
-</div>
+<form th:action="@{/login}" method="post">
+    <label for="username">Username</label>
+    <input id="username" name="username">
+
+    <label for="password">Password</label>
+    <input id="password" name="password">
+    <button type="submit">Login</button>
+</form>
+
 </body>
 </html>
