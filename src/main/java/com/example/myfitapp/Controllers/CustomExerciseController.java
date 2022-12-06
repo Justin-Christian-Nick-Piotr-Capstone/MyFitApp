@@ -28,7 +28,7 @@ public class CustomExerciseController {
     @GetMapping("/exercise/create")
     public String createCustomExercise(Model model) {
 
-            model.addAttribute("exercise");
+            model.addAttribute("custom-exercise");
         return "exercise/create";
     }
 
