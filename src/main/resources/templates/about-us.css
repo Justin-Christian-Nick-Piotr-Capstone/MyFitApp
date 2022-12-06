@@ -29,12 +29,15 @@
     h1.second-text {
         /*width: 500px;*/
         color: #eeeeee;
+        padding-bottom: 1px;
+
     }
 
     h1.third-text {
         /*width: 500px;*/
         color: #eeeeee;
         margin-top: 80px;
+        padding-bottom: 30px;
     }
 
     div.column {
@@ -49,9 +52,10 @@
 
     div.card {
         background-color: #eeeeee;
+
     }
     .avatar {
-        width: 300px;
+        width: 170px;
         /*height: 500px;*/
     }
 
