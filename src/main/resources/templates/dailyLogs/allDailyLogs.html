@@ -9,12 +9,15 @@
 </head>
 <body>
 
-<h1>This is the landing page</h1>
+<h1>All Daily Logs</h1>
 
 <div th:each="item: ${daily_logs}">
     <p th:text="${item.getId()}">ID: </p>
     <p th:text="${item.getExercise_query()}">Exercises: </p>
     <p th:text="${item.getMeals_query()}">Meals: </p>
+    <form th:action="@{/delete-daily-log/${item.getId()}}" method="post">
+        <button type="submit">Delete</button>
+    </form>
 </div>
 </body>
 </html>

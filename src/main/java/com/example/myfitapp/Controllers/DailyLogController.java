@@ -75,4 +75,11 @@ public class DailyLogController {
         return "redirect:/view-all-daily-logs";
     }
 
+    @PostMapping("/delete-daily-log/{id}")
+    public String deleteDailyLog(@PathVariable long id) {
+        DailyLog logToDelete = dailyLogRepo.getReferenceById(id);
+        dailyLogRepo.delete(logToDelete);
+        return "redirect:/view-all-daily-logs";
+    }
+
 }
