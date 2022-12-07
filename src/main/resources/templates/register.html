@@ -1,109 +1,272 @@
 <!DOCTYPE html>
-    <html>
-    <head>
-        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-                crossorigin="anonymous"></script>
-        <!-- JavaScript Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-                crossorigin="anonymous"
-        ></script>
-        <!-- CSS only -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-              rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-              crossorigin="anonymous">
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"
+    ></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+          crossorigin="anonymous">
 
-        <script>
-            $(function(){
-                $("#navbar").load("partials/navbar.html");
+    <script>
+        $(function(){
+            $("#navbar").load("partials/navbar.html");
+        });
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Slab:wght@400;700&display=swap');
+
+        html {
+            height: 100%;
+            min-height:800px;
+        }
+        body {
+
+            background-size:cover;
+            background-repeat:no-repeat;
+            text-align: center;
+            font-family: 'Noto Sans', sans-serif;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        h1{
+            font-weight:400;
+            padding-top:0;
+            margin-top:0;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        #svg_form_time {
+            height: 15px;
+            max-width: 80%;
+            margin: 40px auto 20px;
+            display: block;
+        }
+
+        #svg_form_time circle,
+        #svg_form_time rect {
+            fill: white;
+        }
+
+        .button {
+            background: rgb(237, 40, 70);
+            border-radius: 5px;
+            padding: 15px 25px;
+            display: inline-block;
+            margin: 10px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            box-shadow:0px 2px 5px rgb(0,0,0,0.5);
+        }
+
+        .disabled {
+            display:none;
+        }
+
+        section {
+            padding: 50px ;
+            max-width: 300px;
+            margin: 30px auto;
+            background:white;
+            background:rgba(255,255,255,0.9);
+            backdrop-filter:blur(10px);
+            box-shadow:0px 2px 10px rgba(0,0,0,0.3);
+            border-radius:5px;
+            transition:transform 0.2s ease-in-out;
+        }
+
+
+        input {
+            width: 100%;
+            margin: 7px 0px;
+            display: inline-block;
+            padding: 12px 25px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid lightgrey;
+            font-size: 1em;
+            font-family:inherit;
+            background:white;
+        }
+
+        p{
+            text-align:justify;
+            margin-top:0;
+        }
+    </style>
+</head>
+<body>
+<div id="navbar"></div>
+
+
+
+<div id="svg_wrap"></div>
+
+<h1 class="text-center">Registration</h1>
+<section>
+    <p>Create Your Account</p>
+    <input type="text" placeholder="full name" />
+    <input type="text" placeholder="email" />
+    <input type="text" placeholder="password" />
+    <input type="text" placeholder="confirm password" />
+</section>
+
+<section>
+    <p>What is your weight goal?</p>
+    <div class="wrapper-2">
+        <div class="container list">
+
+            <div class="list-item text-center">Lose Weight</div>
+            <input type="radio" name="list-radio" id="radio-two" class="radio"  checked/>
+            <label for="radio-two"></label>
+            <div class="list-item text-center">Maintain Weight</div>
+            <input type="radio" name="list-radio" id="radio-three" class="radio"/>
+            <label for="radio-three"></label>
+            <div class="list-item text-center">Gain Weight</div>
+            <input type="radio" name="list-radio" id="radio-four" class="radio"/>
+            <label for="radio-four"></label>
+            <div class="slider slider-list"></div>
+        </div>
+    </div><!--end .wrapper-2-->
+</section>
+
+<section>
+    <p class="text-center">Personalization</p>
+    <input type="text" placeholder="Gender" />
+    <input type="text" placeholder="Age" />
+    <input type="text" placeholder="Current Weight lbs." />
+    <input type="text" placeholder="Current Height in." />
+
+</section>
+
+<section>
+    <p>Enter Your Goal Date</p>
+    <input type="text" placeholder="Preferred entrance date"/>
+</section>
+
+
+<div class="d-flex justify-content-center">
+    <div class="button" id="prev" style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);">&larr; Previous</div>
+    <div class="button text-center" id="next" style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);">Next &rarr;</div>
+    <div class="button text-center" id="submit" style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);">Submit</div>
+</div>
+
+
+
+
+
+
+<script>
+    $( document ).ready(function() {
+        var base_color = "rgb(230,230,230)";
+        var active_color = "rgb(237, 40, 70)";
+
+
+
+        var child = 1;
+        var length = $("section").length - 1;
+        $("#prev").addClass("disabled");
+        $("#submit").addClass("disabled");
+
+        $("section").not("section:nth-of-type(1)").hide();
+        $("section").not("section:nth-of-type(1)").css('transform','translateX(100px)');
+
+        var svgWidth = length * 200 + 24;
+        $("#svg_wrap").html(
+            '<svg version="1.1" id="svg_form_time" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 ' +
+            svgWidth +
+            ' 24" xml:space="preserve"></svg>'
+        );
+
+        function makeSVG(tag, attrs) {
+            var el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+            for (var k in attrs) el.setAttribute(k, attrs[k]);
+            return el;
+        }
+
+        for (i = 0; i < length; i++) {
+            var positionX = 12 + i * 200;
+            var rect = makeSVG("rect", { x: positionX, y: 9, width: 200, height: 6 });
+            document.getElementById("svg_form_time").appendChild(rect);
+            // <g><rect x="12" y="9" width="200" height="6"></rect></g>'
+            var circle = makeSVG("circle", {
+                cx: positionX,
+                cy: 12,
+                r: 12,
+                width: positionX,
+                height: 6
             });
-        </script>
+            document.getElementById("svg_form_time").appendChild(circle);
+        }
 
-    </head>
-    <body>
-        <div id="navbar"></div>
+        var circle = makeSVG("circle", {
+            cx: positionX + 200,
+            cy: 12,
+            r: 12,
+            width: positionX,
+            height: 6
+        });
+        document.getElementById("svg_form_time").appendChild(circle);
 
-
-        <section class="vh-100 registration-form" style="background-color: #eee;">
-            <div class="container h-100">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                    <div class="col-lg-12 col-xl-11">
-                        <div class="card text-black" style="border-radius: 25px;">
-                            <div class="card-body p-md-5">
-                                <div class="row justify-content-center">
-                                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-
-                                        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign Up</p>
-
-                                        <form class="mx-1 mx-md-4">
-
-                                            <div class="d-flex flex-row align-items-center mb-4">
-                                                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                                <div class="form-outline flex-fill mb-0">
-                                                    <input type="text" id="form3Example1c" class="form-control" />
-                                                    <label class="form-label" for="form3Example1c">Your Name</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="d-flex flex-row align-items-center mb-4">
-                                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                                <div class="form-outline flex-fill mb-0">
-                                                    <input type="email" id="form3Example3c" class="form-control" />
-                                                    <label class="form-label" for="form3Example3c">Your Email</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="d-flex flex-row align-items-center mb-4">
-                                                <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                                <div class="form-outline flex-fill mb-0">
-                                                    <input type="password" id="form3Example4c" class="form-control" />
-                                                    <label class="form-label" for="form3Example4c">Password</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="d-flex flex-row align-items-center mb-4">
-                                                <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                                                <div class="form-outline flex-fill mb-0">
-                                                    <input type="password" id="form3Example4cd" class="form-control" />
-                                                    <label class="form-label" for="form3Example4cd">Repeat your password</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-check d-flex justify-content-center mb-5">
-                                                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
-                                                <label class="form-check-label" for="form2Example3">
-                                                    I agree all statements in <a href="#!">Terms of service</a>
-                                                </label>
-                                            </div>
-
-                                            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                                <button type="button" class="btn btn-primary btn-lg">Register</button>
-                                            </div>
-
-                                        </form>
-
-                                    </div>
-                                    <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-
-                                        <img src="images/default.png"
-                                             class="img-fluid" alt="Sample image">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        $('#svg_form_time rect').css('fill',base_color);
+        $('#svg_form_time circle').css('fill',base_color);
+        $("circle:nth-of-type(1)").css("fill", active_color);
 
 
+        $(".button").click(function () {
+            $("#svg_form_time rect").css("fill", active_color);
+            $("#svg_form_time circle").css("fill", active_color);
+            var id = $(this).attr("id");
+            if (id == "next") {
+                $("#prev").removeClass("disabled");
+                if (child >= length) {
+                    $(this).addClass("disabled");
+                    $('#submit').removeClass("disabled");
+                }
+                if (child <= length) {
+                    child++;
+                }
+            } else if (id == "prev") {
+                $("#next").removeClass("disabled");
+                $('#submit').addClass("disabled");
+                if (child <= 2) {
+                    $(this).addClass("disabled");
+                }
+                if (child > 1) {
+                    child--;
+                }
+            }
+            var circle_child = child + 1;
+            $("#svg_form_time rect:nth-of-type(n + " + child + ")").css(
+                "fill",
+                base_color
+            );
+            $("#svg_form_time circle:nth-of-type(n + " + circle_child + ")").css(
+                "fill",
+                base_color
+            );
+            var currentSection = $("section:nth-of-type(" + child + ")");
+            currentSection.fadeIn();
+            currentSection.css('transform','translateX(0)');
+            currentSection.prevAll('section').css('transform','translateX(-100px)');
+            currentSection.nextAll('section').css('transform','translateX(100px)');
+            $('section').not(currentSection).hide();
+        });
 
+    });
+</script>
 
-
-
-
-
-
-    </body>
-    </html>
+</body>
+</html>
