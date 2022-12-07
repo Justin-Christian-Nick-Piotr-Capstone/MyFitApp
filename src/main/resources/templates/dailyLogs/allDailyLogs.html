@@ -22,7 +22,7 @@
         });
     </script>
 
-    <link rel="stylesheet" href="CalendarPicker.style.css" />
+    <link rel="stylesheet" href="bootstrap-datepicker-1.9.-dist/js/boots" />
     <script src="CalendarPicker.js"></script>
 
     <!--    <style>-->
@@ -35,10 +35,11 @@
 </head>
 <body>
 <div id="navbar"></div>
-
-const myCalender = new CalendarPicker('#myCalendarWrapper', {
-    // options here
-});</script>
+<input type="text" name="" id="date">
+<!--<script>-->
+<!--const myCalender = new CalendarPicker('#myCalendarWrapper', {-->
+<!--    // options here-->
+<!--});</script>-->
 <!--<div th:each="item: ${daily_logs}">-->
 <!--    <p th:text="${item.getId()}">ID: </p>-->
 <!--    <p th:text="${item.getExercise_query()}">Exercises: </p>-->
@@ -60,5 +61,8 @@ const myCalender = new CalendarPicker('#myCalendarWrapper', {
 <!--        <h1>0</h1>-->
 <!--    </div>-->
 <!--</div>-->
+<script>
+    $('#date').datepicker()
+</script>
 </body>
 </html>
