@@ -1,15 +1,20 @@
+@media (min-width: 360px) and (max-width: 2000px) {
 
-body{margin-top:20px;}
-.avatar{
-    width:200px;
-    height:200px;
-}
+    body {
+        margin-top: 20px;
+    }
 
-h1.header-text {
-    color: black;
-}
+    .avatar {
+        width: 200px;
+        height: 200px;
+    }
+
+    h1.header-text {
+        color: black;
+    }
 
 
-button.btn.btn-danger {
-    margin-top: 10px;
+    button.btn.btn-danger {
+        margin-top: 10px;
+    }
 }
