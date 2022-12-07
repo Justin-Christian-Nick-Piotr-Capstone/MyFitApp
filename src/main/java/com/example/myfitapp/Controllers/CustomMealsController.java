@@ -1,26 +1,24 @@
 package com.example.myfitapp.Controllers;
 
-
 import com.example.myfitapp.Repos.CustomExerciseRepo;
+import com.example.myfitapp.Repos.CustomMealsRepo;
 import com.example.myfitapp.Repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@Controller
-public class CustomExerciseController {
+public class CustomMealsController {
 
     @Autowired
-    CustomExerciseRepo customExerciseRepo;
+    CustomMealsRepo customMealRepo;
 
     @Autowired
     UserRepo userRepo;
 
     @GetMapping("/exercise/view-all")
     public String showAllCustomExercise(Model model) {
-        model.addAttribute("custom_exercises", customExerciseRepo.findAll());
+        model.addAttribute("custom_exercises", customMealRepo.findAll());
         return "exercise/view-all";
     }
 
@@ -28,20 +26,21 @@ public class CustomExerciseController {
     @GetMapping("/exercise/create")
     public String createCustomExercise(Model model) {
 
-            model.addAttribute("custom-exercise");
+        model.addAttribute("exercise");
         return "exercise/create";
     }
 
-     @PostMapping("/exercise/create")
-     public String createCustomExercise(){
+    @PostMapping("/exercise/create")
+    public String createCustomExercise(){
 
 //            customExerciseRepo.save(exercise);
-          return "exercise/create";
-     }
+        return "exercise/create";
+    }
 
-     @GetMapping
+    @GetMapping
     public String deleteCustomExercise(){
         return "exercise/delete";
-     }
+    }
+
 
 }

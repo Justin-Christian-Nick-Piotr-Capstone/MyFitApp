@@ -41,6 +41,8 @@ public class DailyLogController {
         return "/dailyLogs/allDailyLogs";
     }
 
+
+    // Show daily log form
     @GetMapping("/create-daily-log")
     public String createDailyLog(Model model) {
         DailyLog dailyLog = new DailyLog();
@@ -50,6 +52,7 @@ public class DailyLogController {
         return "/dailyLogs/createDailyLog";
     }
 
+    // Handles the post request for the daily log
     @PostMapping("/create-daily-log")
     public String createDailyLog(@ModelAttribute DailyLog dailyLog) {
         User user = dailyLog.getUser();
@@ -57,4 +60,26 @@ public class DailyLogController {
         dailyLogRepo.save(dailyLog);
         return "redirect:/view-all-daily-logs";
     }
+
+    // Update daily log
+    @GetMapping("/update-daily-log/{id}")
+    public String showUpdateDailyLog(@PathVariable long id, Model model) {
+        DailyLog logToUpdate = dailyLogRepo.getReferenceById(id);
+        model.addAttribute("daily_log", logToUpdate);
+        return "/dailyLogs/updateDailyLog";
+    }
+
+    @PostMapping("/update-daily-log")
+    public String updateDailyLog(@ModelAttribute DailyLog dailyLog) {
+        dailyLogRepo.save(dailyLog);
+        return "redirect:/view-all-daily-logs";
+    }
+
+    @PostMapping("/delete-daily-log/{id}")
+    public String deleteDailyLog(@PathVariable long id) {
+        DailyLog logToDelete = dailyLogRepo.getReferenceById(id);
+        dailyLogRepo.delete(logToDelete);
+        return "redirect:/view-all-daily-logs";
+    }
+
 }
