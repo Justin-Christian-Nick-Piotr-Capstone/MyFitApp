@@ -6,6 +6,7 @@ import com.example.myfitapp.Models.User;
 import com.example.myfitapp.Repos.DailyLogRepo;
 import com.example.myfitapp.Repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +29,11 @@ public class DailyLogController {
     // Get all the daily logs in the database
     @GetMapping("/view-all-daily-logs")
     public String viewAllDailyLogs(Model model) {
+        User userLoggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = userLoggedIn.getUsername();
         model.addAttribute("daily_logs", dailyLogRepo.findAll());
-        return "/dailyLogs/allDailyLogs";
+        model.addAttribute("user", username);
+        return "/dailyLogs/viewAllDailyLogs";
     }
 
     // Get all the daily logs for a specific user
@@ -38,7 +42,7 @@ public class DailyLogController {
         User user = userRepo.getReferenceById(id);
         List<DailyLog> dailyLogs = user.getDailyLogs();
         model.addAttribute("daily_logs", dailyLogs);
-        return "/dailyLogs/allDailyLogs";
+        return "/dailyLogs/viewAllDailyLogs";
     }
 
 

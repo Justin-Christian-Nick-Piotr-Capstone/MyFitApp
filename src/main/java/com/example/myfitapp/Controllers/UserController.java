@@ -4,6 +4,7 @@ package com.example.myfitapp.Controllers;
 import com.example.myfitapp.Models.User;
 import com.example.myfitapp.Repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,8 @@ public class UserController {
 
     @GetMapping("/")
     public String landingPage() {
+        User loggedInUsername = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println("User logged in: " + loggedInUsername);
         return "/homepage";
     }
 
@@ -50,7 +53,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String showLogin(Model model) {
-        return "/users/login";
+        return "/login";
     }
 
     // Login functionality
