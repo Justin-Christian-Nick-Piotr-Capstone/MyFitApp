@@ -22,8 +22,8 @@
         });
     </script>
 
-    <link rel="stylesheet" href="bootstrap-datepicker-1.9.-dist/js/boots" />
-    <script src="CalendarPicker.js"></script>
+    <link rel="stylesheet" href="../bootstrap-datepicker-1.9.0-dist/css/bootstrap-datepicker.min.css" />
+    <script src="../bootstrap-datepicker-1.9.0-dist/js/bootstrap-datepicker.min.js"></script>
 
     <!--    <style>-->
     <!--        .card {-->
@@ -35,7 +35,9 @@
 </head>
 <body>
 <div id="navbar"></div>
+<label for="date"></label>
 <input type="text" name="" id="date">
+
 <!--<script>-->
 <!--const myCalender = new CalendarPicker('#myCalendarWrapper', {-->
 <!--    // options here-->
@@ -62,7 +64,10 @@
 <!--    </div>-->
 <!--</div>-->
 <script>
-    $('#date').datepicker()
+    $('#date').datepicker({
+        autoclose:true
+    });
+
 </script>
 </body>
 </html>
