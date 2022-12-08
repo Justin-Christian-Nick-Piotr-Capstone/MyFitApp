@@ -25,16 +25,16 @@ public class CustomExerciseController {
     @GetMapping("/show-custom-exercise")
     public String showAllCustomExercise(Model model) {
         model.addAttribute("custom_exercises", customExerciseRepo.findAll());
-        return "exercise/view-all";
+        return "/custom-exercises/show-all-custom-exercises";
     }
     //create custom exercise form
     @GetMapping("/create-custom-exercise")
     public String createCustomExercise(Model model) {
-        model.addAttribute("custom-exercise", new CustomExercise());
-        return "/create-custom-exercise";
+        model.addAttribute("custom_exercise", new CustomExercise());
+        return "/custom-exercises/create-custom-exercise";
     }
     //post custom exercise data
-     @PostMapping("/create-custom-exericse")
+     @PostMapping("/create-custom-exercise")
      public String createCustomExercise(@ModelAttribute CustomExercise customExercise){
         customExerciseRepo.save(customExercise);
         return "redirect:/show-custom-exercise";
@@ -43,9 +43,9 @@ public class CustomExerciseController {
     @GetMapping("/update-custom-exercise/{id}")
     public String updateCustomExercise(@PathVariable long id, Model model){
         CustomExercise exerciseToUpdate = customExerciseRepo.getReferenceById(id);
-        model.addAttribute("custom-exercise",exerciseToUpdate);
+        model.addAttribute("custom_exercise", exerciseToUpdate);
         customExerciseRepo.save(exerciseToUpdate);
-        return "/show-custom-exericse";
+        return "/custom-exercises/update-custom-exercise";
     }
     //post custom exercise
     @PostMapping("/update-custom-exercise")
@@ -57,7 +57,7 @@ public class CustomExerciseController {
     public String deleteCustomExercise(@PathVariable long id){
         CustomExercise exerciseToDelete = customExerciseRepo.getReferenceById(id);
         customExerciseRepo.delete(exerciseToDelete);
-        return "redirect:'/show-custom-exercise";
+        return "redirect:/show-custom-exercise";
      }
 
 }
