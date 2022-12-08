@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+</head>
+<body>
+
+<h1>This is the landing page</h1>
+<h1>User logged in: </h1>
+<h1 th:text="${user}">User logged in: </h1>
+
+<div th:each="item: ${daily_logs}">
+    <p>Daily log: </p>
+    <p th:text="${item.getId()}">ID: </p>
+    <p th:text="${item.getMeals_query()}">Meals Query: </p>
+    <p th:text="${item.getExercise_query()}">Exercise Query: </p>
+    <p th:text="${item.getTarget_calories()}">Target Calories: </p>
+    <p th:text="${item.getCurrent_calories()}">Current Calories: </p>
+    <p th:text="${item.getUser().getUsername()}">User's username: </p>
+    <hr>
+</div>
+</body>
+</html>

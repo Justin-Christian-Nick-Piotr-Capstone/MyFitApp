@@ -1,7 +1,7 @@
 package com.example.myfitapp.Models;
 
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "daily_log")
