@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
             crossorigin="anonymous"></script>
@@ -115,53 +115,58 @@
 <div id="svg_wrap"></div>
 
 <h1 class="text-center">Registration</h1>
-<section>
-    <p>Create Your Account</p>
-    <input type="text" placeholder="full name" />
-    <input type="text" placeholder="email" />
-    <input type="text" placeholder="password" />
-    <input type="text" placeholder="confirm password" />
-</section>
+<form th:action="@{/register}" method="POST" th:object="${user}">
+    <section>
+        <p>Create Your Account</p>
+        <input type="text" placeholder="full name" th:field="*{username}"/>
+        <input type="text" placeholder="email" th:field="*{email}"/>
+        <input type="text" placeholder="password" th:field="*{password}" />
+        <input type="text" placeholder="confirm password" />
+    </section>
 
-<section>
-    <p>What is your weight goal?</p>
-    <div class="wrapper-2">
-        <div class="container list">
+    <section>
+        <p>What is your weight goal? (In Pounds)</p>
+        <div class="wrapper-2">
+            <div class="container list">
 
-            <div class="list-item text-center">Lose Weight</div>
-            <input type="radio" name="list-radio" id="radio-two" class="radio"  checked/>
-            <label for="radio-two"></label>
-            <div class="list-item text-center">Maintain Weight</div>
-            <input type="radio" name="list-radio" id="radio-three" class="radio"/>
-            <label for="radio-three"></label>
-            <div class="list-item text-center">Gain Weight</div>
-            <input type="radio" name="list-radio" id="radio-four" class="radio"/>
-            <label for="radio-four"></label>
-            <div class="slider slider-list"></div>
-        </div>
-    </div><!--end .wrapper-2-->
-</section>
+<!--                <div class="list-item text-center">Lose Weight</div>-->
+<!--                <input type="radio" name="list-radio" id="radio-two" class="radio"  checked/>-->
+<!--                <label for="radio-two"></label>-->
+<!--                <div class="list-item text-center">Maintain Weight</div>-->
+<!--                <input type="radio" name="list-radio" id="radio-three" class="radio"/>-->
+<!--                <label for="radio-three"></label>-->
+<!--                <div class="list-item text-center">Gain Weight</div>-->
+                <input type="number" max="300" min="100" th:field="*{target_weight}">
+<!--                <input type="radio" name="list-radio" id="radio-four" class="radio"/>-->
+                <label for="radio-four"></label>
+                <div class="slider slider-list"></div>
+            </div>
+        </div><!--end .wrapper-2-->
+    </section>
 
-<section>
-    <p class="text-center">Personalization</p>
-    <input type="text" placeholder="Gender" />
-    <input type="text" placeholder="Age" />
-    <input type="text" placeholder="Current Weight lbs." />
-    <input type="text" placeholder="Current Height in." />
+    <section>
+        <p class="text-center">Personalization</p>
+        <input type="text" placeholder="Gender" th:field="*{gender}"/>
+        <input type="text" placeholder="Age" th:field="*{age}"/>
+        <input type="text" placeholder="Current Weight lbs." th:field="*{starting_weight}"/>
+        <input type="text" placeholder="Current Height in." th:field="*{height}"/>
+        <input type="hidden" th:field="*{profile_visibility}" value="private"/>
+        <input type="hidden" th:field="*{progress}" value="0"/>
 
-</section>
+    </section>
 
-<section>
-    <p>Enter Your Goal Date</p>
-    <input type="text" placeholder="Preferred entrance date"/>
-</section>
+    <section>
+        <p>Enter Your Goal Date</p>
+        <input type="text" placeholder="Preferred entrance date"/>
+    </section>
 
 
-<div class="d-flex justify-content-center">
-    <div class="button" id="prev" style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);">&larr; Previous</div>
-    <div class="button text-center" id="next" style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);">Next &rarr;</div>
-    <div class="button text-center" id="submit" style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);">Submit</div>
-</div>
+    <div class="d-flex justify-content-center">
+        <div class="button" id="prev" style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);">&larr; Previous</div>
+        <div class="button text-center" id="next" style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);">Next &rarr;</div>
+        <button type="submit" class="button text-center" id="submit" style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);">Submit</button>
+    </div>
+</form>
 
 
 
