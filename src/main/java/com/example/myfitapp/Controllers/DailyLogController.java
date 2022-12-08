@@ -50,7 +50,7 @@ public class DailyLogController {
     @GetMapping("/create-daily-log")
     public String createDailyLog(Model model) {
         DailyLog dailyLog = new DailyLog();
-        User user = userRepo.getReferenceById(1L);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         dailyLog.setUser(user);
         model.addAttribute("daily_log", dailyLog);
         return "/dailyLogs/createDailyLog";
