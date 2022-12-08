@@ -13,8 +13,22 @@
         color: black;
     }
 
-
     button.btn.btn-danger {
+        cursor: pointer;
         margin-top: 10px;
     }
+
+    .btn-danger:active {
+        transform: scale(0.98);
+    }
+
+    button.btn.btn-primary {
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .btn-primary:active {
+        transform: scale(0.98);
+    }
+
 }

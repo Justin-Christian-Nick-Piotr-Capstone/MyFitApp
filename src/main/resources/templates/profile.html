@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
             crossorigin="anonymous"></script>
@@ -11,8 +11,11 @@
     </script>
 
     <link rel="stylesheet" href="profile.css">
+    <title>MyFitTracker</title>
+
 </head>
 <body>
+
 <div id="navbar"></div>
 
 
@@ -40,36 +43,83 @@
                 <div class="form-group">
                     <label class="col-lg-3 control-label">First name:</label>
                     <div class="col-lg-8">
-                        <input class="form-control" type="text" >
+                        <input id="disable-field" class="form-control" type="text" >
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Last name:</label>
                     <div class="col-lg-8">
-                        <input class="form-control" type="text" >
+                        <input id="disable-field2" class="form-control" type="text" >
                     </div>
                 </div>
 
                 <div class="form-group">
-<!--                    <input type="email" required>-->
                     <label class="col-lg-3 control-label">Email:</label>
                     <div class="col-lg-8">
-                        <input class="form-control" type="text" >
+                        <input id="disable-field3" class="form-control" type="email" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Password:</label>
                     <div class="col-lg-8">
-                        <input class="form-control" type="text" value="">
+                        <input id="disable-field4" class="form-control" type="text" value="">
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-danger">Edit Profile</button>
+                <button onclick="enableBtn()" type="button" id="edit-profile" class="btn btn-danger">Edit Profile</button>
+                <button onclick="disableBtn()" type="button" id="save-changes" class="btn btn-primary">Save Changes</button>
+
 
             </form>
         </div>
     </div>
 </div>
 <hr>
+<script>
+    function enableBtn() {
+        document.getElementById("edit-profile").disabled = true;
+        document.getElementById("disable-field").disabled = false;
+        document.getElementById("disable-field2").disabled = false;
+        document.getElementById("disable-field3").disabled = false;
+        document.getElementById("disable-field4").disabled = false;
+    }
+    function disableBtn() {
+        document.getElementById("edit-profile").disabled = false;
+        document.getElementById("disable-field").disabled = true;
+        document.getElementById("disable-field2").disabled = true;
+        document.getElementById("disable-field3").disabled = true;
+        document.getElementById("disable-field4").disabled = true;
+    }
+
+    // let button = document.getElementById("edit-profile");
+    // let clickBtn = document.getElementsByClassName('btn-danger')[0];
+    // let button2 = document.getElementById("save-changes");
+    // let clickBtn2 = document.getElementsByClassName('btn-primary')[0];
+    //
+    // // Disable the button on initial page load
+    // button.disabled = true;
+    // button.disabled = false;
+    // button2.disabled = true;
+    // button2.disabled = false;
+    //
+    //
+    // //add event listener
+    // clickBtn.addEventListener('click', function(event) {
+    //     button.disabled = !button.disabled;
+    // });
+    //
+    // button.addEventListener('click', function(event) {
+    //     alert('Enabled!');
+    // });
+    //
+    // clickBtn2.addEventListener('click', function(event) {
+    //     button.disabled = !button.disabled;
+    // });
+    //
+    // button2.addEventListener('click', function(event) {
+    //     alert('Enabled!');
+    // });
+
+</script>
 </body>
 </html>
