@@ -54,20 +54,20 @@ public class UserController {
     }
 
     // Login functionality
-    @PostMapping("/login")
-    public String login(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password) {
-        User user = userRepo.findByUsername(username);
-        if (userRepo.findByUsername(username) == null) {
-            System.out.println("No user with that username found in the database.");
-        }
-        else if (BCrypt.checkpw(password, user.getPassword())) {
-            System.out.println("Username and password matches");
-        }
-        else {
-            System.out.println("Username and password does not match.");
-        }
-        return "/users/viewAllUsers";
-    }
+//    @PostMapping("/login")
+//    public String login(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password) {
+//        User user = userRepo.findByUsername(username);
+//        if (userRepo.findByUsername(username) == null) {
+//            System.out.println("No user with that username found in the database.");
+//        }
+//        else if (BCrypt.checkpw(password, user.getPassword())) {
+//            System.out.println("Username and password matches");
+//        }
+//        else {
+//            System.out.println("Username and password does not match.");
+//        }
+//        return "/users/viewAllUsers";
+//    }
 
 
     // Update functionality for users.
