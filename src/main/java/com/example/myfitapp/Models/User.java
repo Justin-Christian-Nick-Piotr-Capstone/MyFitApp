@@ -36,6 +36,10 @@ public class User {
     private int progress;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<DailyLog> dailyLogs;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<CustomExercise> customExercises;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<CustomMeal> customMeals;
 
     public List<DailyLog> getDailyLogs() {
         return dailyLogs;
