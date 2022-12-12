@@ -38,6 +38,16 @@
 <label for="date"></label>
 <input type="text" name="" id="date">
 
+<h6>Create exercise</h6>
+<form action="search">
+    <label>Search</label>
+    <input type="text">
+    <input type="submit">
+</form>
+
+<div class="result">
+    <h3>Result</h3>
+</div>
 <!--<script>-->
 <!--const myCalender = new CalendarPicker('#myCalendarWrapper', {-->
 <!--    // options here-->
@@ -69,5 +79,76 @@
     });
 
 </script>
+
+<script>
+    let apiKey = "3cbe6be390fb13028c6f5f48a2e4df8d";
+    let apiId = "c1e0a46a";
+    let queryItem;
+    let url = 'https://trackapi.nutritionix.com/v2/search/instant?query=';
+
+    let form = document.querySelector('form');
+    let input = document.querySelector('input[type="text"]');
+    let result = document.querySelector('.result');
+
+    function search(e){
+        e.preventDefault();
+        queryItem = input.value;
+        makeRequest(queryItem);
+        input.value= "";
+    }
+
+    function createFood(name, qty, unit, photo){
+        let item = document.createElement('div');
+        let foodName = document.createElement('h4');
+        let serving = document.createElement('p');
+        let img = document.createElement('img');
+
+        item.classList.add('item');
+        foodName.innerHTML = name;
+        serving.innerHTML = qty+' '+unit;
+        img.src = photo;
+
+        result.appendChild(item);
+        item.appendChild(img);
+        item.appendChild(foodName);
+        item.appendChild(serving)
+
+    }
+
+    let requestBody = {
+        "query": 'grilled cheese' ,
+    }
+    // fetch("https://trackapi.nutritionix.com/v2/search/instant", {
+    //     headers: {
+    //         "x-app-id": "c1e0a46a",
+    //         "x-app-key": "3cbe6be390fb13028c6f5f48a2e4df8d",
+    //         "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify(requestBody),
+    //     method: "POST"
+    // }).then(resp => resp.json()).then(data => console.log(data))
+
+
+    function makeRequest(queryItem) {
+        fetch("https://trackapi.nutritionix.com/v2/search/instant", {
+            headers: {
+                "x-app-id": "c1e0a46a",
+                "x-app-key": "3cbe6be390fb13028c6f5f48a2e4df8d",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(requestBody),
+            method: "POST"
+        }).then(resp => resp.json()).then(data => console.log(data))
+    }
+
+
+    form.addEventListener('submit', search)
+
+
+
+
+
+</script>
+
 </body>
 </html>
