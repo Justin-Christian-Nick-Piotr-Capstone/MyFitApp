@@ -1,6 +1,6 @@
 package com.example.myfitapp.Models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.util.List;
 
@@ -40,6 +40,22 @@ public class User {
     private List<CustomExercise> customExercises;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<CustomMeal> customMeals;
+
+    public User() {}
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+        height = copy.height;
+        age = copy.height;
+        gender = copy.gender;
+        maintenance_calories = copy.maintenance_calories;
+        starting_weight = copy.starting_weight;
+        target_weight = copy.target_weight;
+        profile_visibility = copy.profile_visibility;
+        progress = copy.progress;
+    }
 
     public List<DailyLog> getDailyLogs() {
         return dailyLogs;

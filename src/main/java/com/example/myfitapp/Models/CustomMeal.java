@@ -1,6 +1,6 @@
 package com.example.myfitapp.Models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name="custom_meals")
@@ -18,6 +18,14 @@ public class CustomMeal {
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public long getId() {
         return id;

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+</head>
+<body>
+
+<h1>This is the landing page</h1>
+
+<form th:action="@{/create-custom-exercise}" method="post" th:object="${custom_exercise}">
+    <label for="username">Calories: </label>
+    <input id="username" th:field="*{calories}">
+
+    <label for="email">Query: </label>
+    <input id="email" th:field="*{query}">
+
+    <label for="user-id">User's ID: </label>
+    <input id="user-id" th:field="*{user}">
+
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
