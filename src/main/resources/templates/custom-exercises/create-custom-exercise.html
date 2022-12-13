@@ -9,14 +9,14 @@
 </head>
 <body>
 
-<h1>This is the landing page</h1>
+<h1>Create custom exercise</h1>
 
 <form th:action="@{/create-custom-exercise}" method="post" th:object="${custom_exercise}">
-    <label for="username">Calories: </label>
-    <input id="username" th:field="*{calories}">
+    <label for="calories">Calories: </label>
+    <input id="calories" th:field="*{calories}">
 
-    <label for="email">Query: </label>
-    <input id="email" th:field="*{query}">
+    <label for="query">Query: </label>
+    <input id="query" th:field="*{query}">
 
     <label for="user-id">User's ID: </label>
     <input id="user-id" th:field="*{user}">
@@ -24,5 +24,15 @@
     <button type="submit">Submit</button>
 </form>
 
+<label for="query1">Query: </label>
+<input id="query1">
+
+<script>
+    let query = document.getElementById("query1");
+    query.addEventListener("input", (event) => {
+        console.log(event.target.value)
+    })
+    console.log(query)
+</script>
 </body>
 </html>
