@@ -9,14 +9,14 @@
 </head>
 <body>
 
-<h1>This is the landing page</h1>
+<h1>Create custom exercise</h1>
 
 <form th:action="@{/create-custom-exercise}" method="post" th:object="${custom_exercise}">
-    <label for="username">Calories: </label>
-    <input id="username" th:field="*{calories}">
+    <label for="calories">Calories: </label>
+    <input id="calories" th:field="*{calories}">
 
-    <label for="email">Query: </label>
-    <input id="email" th:field="*{query}">
+    <label for="query">Query: </label>
+    <input id="query" th:field="*{query}">
 
     <label for="user-id">User's ID: </label>
     <input id="user-id" th:field="*{user}">
@@ -24,5 +24,50 @@
     <button type="submit">Submit</button>
 </form>
 
+<form id="search-form">
+    <label for="query1">Query: </label>
+    <input name="query1" id="query1">
+    <button type="submit">Click me</button>
+</form>
+
+<script>
+
+
+    // TEST CODE TO MAKE SURE THE API WILL WORK
+    let requestBody = {
+        "query": "",
+        "gender": "male",
+        "weight_kg": 500,
+        "height_cm": 167.64,
+        "age": 30
+    }
+
+
+    let form = document.getElementById("search-form");
+    form.addEventListener("submit", async function(event) {
+        event.preventDefault();
+        requestBody.query = event.target.elements.query1.value
+        await fetch("https://trackapi.nutritionix.com/v2/natural/exercise", {
+            headers: {
+                "x-app-id": "c1e0a46a",
+                "x-app-key": "3cbe6be390fb13028c6f5f48a2e4df8d",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(requestBody),
+            method: "POST"
+        }).then(resp => resp.json()).then(data => {
+            console.log("The total calories burned are: " + data.exercises[0].nf_calories)
+            console.log(data)
+        }).catch(function() {
+            alert("That query is not recognized.")
+        })
+    })
+
+
+
+
+
+
+</script>
 </body>
 </html>

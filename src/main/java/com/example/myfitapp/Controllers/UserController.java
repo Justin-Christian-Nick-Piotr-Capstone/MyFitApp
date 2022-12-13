@@ -21,8 +21,8 @@ public class UserController {
 
     @GetMapping("/")
     public String landingPage() {
-        User loggedInUsername = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println("User logged in: " + loggedInUsername);
+//        User loggedInUsername = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        System.out.println("User logged in: " + loggedInUsername);
         return "/homepage";
     }
 
@@ -48,7 +48,7 @@ public class UserController {
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
         user.setPassword(hashedPassword);
         userRepo.save(user);
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @GetMapping("/login")

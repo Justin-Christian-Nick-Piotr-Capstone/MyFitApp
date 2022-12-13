@@ -38,7 +38,7 @@ public class SecurityConfiguration {
                 /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/view-all-daily-logs")// user's home page, it can be any URL
+                .defaultSuccessUrl("/")// user's home page, it can be any URL
                 .permitAll()// Anyone can go to the login page
                 /* Logout configuration */
                 .and()
@@ -47,15 +47,12 @@ public class SecurityConfiguration {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeRequests()
-                .antMatchers("/") // anyone can see the home and the ads pages
+                .antMatchers("/", "/register") // anyone can see the home page
                 .permitAll()
                 /* Pages that require authentication */
                 .and()
                 .authorizeRequests()
-                .antMatchers(
-                        "/posts/create", // only authenticated users can create ads
-                        "/posts/{id}/edit" // only authenticated users can edit ads
-                )
+                .antMatchers("/show-all-users")
                 .authenticated();
         return http.build();
     }
