@@ -6,6 +6,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
@@ -19,34 +24,52 @@
     <input id="query" th:field="*{query}">
 
     <label for="user-id">User's ID: </label>
-    <input id="user-id" th:field="*{user}">
+    <input id="user-id" th:field="*{user.id}">
 
     <button type="submit">Submit</button>
 </form>
 
-<form id="search-form">
+<form id="search-form" th:object="${user}">
     <label for="query1">Query: </label>
     <input name="query1" id="query1">
+
+    <label for="username" class="hidden">Username</label>
+    <input name="username" id="username" th:field="*{username}" readonly class="hidden">
+
+    <label for="user_id" class="hidden">User ID:</label>
+    <input name="user-id" id="user_id" th:field="*{id}" readonly class="hidden">
+
+    <label for="user_gender" class="hidden">Gender: </label>
+    <input name="user_gender" id="user_gender" th:field="*{gender}" readonly class="hidden">
+
+    <label for="user_height" class="hidden">Height: </label>
+    <input name="user_height" id="user_height" th:field="*{height}" readonly class="hidden">
+
+    <label for="user_weight" class="hidden">Weight: </label>
+    <input name="user_weight" id="user_weight" th:field="*{starting_weight}" readonly class="hidden">
+
+    <label for="user_age" class="hidden">Age: </label>
+    <input name="user_age" id="user_age" th:field="*{age}" readonly class="hidden">
+
     <button type="submit">Click me</button>
 </form>
 
 <script>
-
-
     // TEST CODE TO MAKE SURE THE API WILL WORK
-    let requestBody = {
-        "query": "",
-        "gender": "male",
-        "weight_kg": 500,
-        "height_cm": 167.64,
-        "age": 30
-    }
-
 
     let form = document.getElementById("search-form");
     form.addEventListener("submit", async function(event) {
         event.preventDefault();
-        requestBody.query = event.target.elements.query1.value
+        let weight = event.target.elements.user_weight.value * 0.453592;
+        let height = event.target.elements.user_height.value * 2.54;
+        let requestBody = {
+            "query": event.target.elements.query1.value,
+            "gender": event.target.elements.user_gender.value,
+            "weight_kg": weight,
+            "height_cm": height,
+            "age": event.target.elements.user_age.value
+        }
+        console.log(requestBody)
         await fetch("https://trackapi.nutritionix.com/v2/natural/exercise", {
             headers: {
                 "x-app-id": "c1e0a46a",
@@ -62,12 +85,6 @@
             alert("That query is not recognized.")
         })
     })
-
-
-
-
-
-
 </script>
 </body>
 </html>

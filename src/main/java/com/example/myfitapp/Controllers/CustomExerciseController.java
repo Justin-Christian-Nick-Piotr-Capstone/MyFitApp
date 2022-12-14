@@ -2,9 +2,11 @@ package com.example.myfitapp.Controllers;
 
 
 import com.example.myfitapp.Models.CustomExercise;
+import com.example.myfitapp.Models.User;
 import com.example.myfitapp.Repos.CustomExerciseRepo;
 import com.example.myfitapp.Repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +32,10 @@ public class CustomExerciseController {
     //create custom exercise form
     @GetMapping("/create-custom-exercise")
     public String createCustomExercise(Model model) {
-        model.addAttribute("custom_exercise", new CustomExercise());
+        CustomExercise customExercise = new CustomExercise();
+        customExercise.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        model.addAttribute("custom_exercise", customExercise);
+        model.addAttribute("user", (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         return "/custom-exercises/create-custom-exercise";
     }
     //post custom exercise data
