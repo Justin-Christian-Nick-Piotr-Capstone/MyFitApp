@@ -43,75 +43,71 @@
 <body>
 <div id="navbar"></div>
 
-
-<h1>Nutrition Search</h1>
-
-<div class="food_container">
-    <h2>Add Meal to Daily Log</h2>
-    <div class="line"></div>
-    <div style="display: flex;">
-        <h3>Search food by name:</h3>
-
-    </div>
-    <div style="display: flex;">
-        <form class="pure-form" id="searchForm">
-            <input class="pure-input-rounded" id='input'>
-            <button type="button" class="pure-button" onclick="searchItem()">Search Food</button>
-        </form>
-    </div>
-    <form th:action="@{/create-custom-exercise}" method="post" th:object="${custom_exercise}">
-        <label for="calories">Calories: </label>
-        <input id="calories" th:field="*{calories}">
-
-        <label for="query">Query: </label>
-        <input id="query" th:field="*{query}">
-
-        <label for="user-id">User's ID: </label>
-        <input id="user-id" th:field="*{user.id}">
-
-        <button type="submit">Submit</button>
-    </form>
-    <form id="search-form" th:object="${user}">
-        <label for="query1">Query: </label>
-        <input name="query1" id="query1">
-
-        <button type="submit">Click me</button>
-    </form>
-
-    <div style="display: flex;margin-top: 20px;">
-        <h3>Or, add a custom</h3>
-        <div class="food_container__deafult_down_arrow_image" id="deafult_down_arrow"><img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlcLbqk2RP_J0IpgUsCBX4cqCmnCGEbmJ0TA&usqp=CAU"
-                alt="down_arrow" height="20px" width="20px"/></div>
-    </div>
-    <div style="display: flex;margin-top: 20px;">
-        <button class="food_container__add_checked_button" id="add_food_button">Add </button>
-        <div style="margin-left: 100px; border-bottom: 2px solid #0072BC; display:flex;">
-            <div class="food_container__add_checked_elements">RECENT</div>
-            <div class="food_container__add_checked_elements">FREQUENT</div>
-            <div class="food_container__add_checked_elements">FOODS</div>
-            <div class="food_container__add_checked_elements">MEELS</div>
-            <div class="food_container__add_checked_elements">RECIPES</div>
-
-        </div>
-    </div>
-    <div style="display: flex;">
-        <div class="food_show_div">
-            <p id="exercise_show">You have not added any breakfast yet.</p>
-            <ul id="food_information"></ul>
-            <p><b>TIP:</b> As you enter foods to your food diary, the foods you've eaten most recently will appear in this list so that you can quickly add them <br/>to your meals.</p>
-        </div>
-
-
-
-    </div>
-    <div style="display: flex;">
-        <button class="food_container__add_checked_button" style="margin-top: 20px;">Add Checked</button>
-        <button class="food_container__add_checked_button" style="margin-top: 20px;margin-left: 750px;">View Deleted Items</button>
-    </div>
-    <p style="margin-top: 20px;">Note : Checked items from all tabs will be added</p>
-    <div  id="food_form_container"></div>
+<div class="d-flex justify-content-center">
+<h1>Daily Log</h1>
 </div>
+<div class="d-flex justify-content-around">
+    <h1>Calories Burned: </h1>
+    <h1>Calories Consumed: </h1>
+</div>
+
+
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Goal</th>
+            <th scope="col">Food</th>
+            <th scope="col">Exercise</th>
+            <th scope="col">Net</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1680</th>
+            <td>1700</td>
+            <td>300</td>
+            <td>1400</td>
+        </tr>
+
+        </tbody>
+    </table>
+    <div class="column">
+        <div style="display: flex;">
+            <h3>Add Meal:</h3>
+        </div>
+
+        <div style="display: flex;">
+            <form class="pure-form" id="searchForm">
+                <input class="pure-input-rounded" id='input'>
+                <button type="button" class="pure-button" onclick="searchItem()">Search Food</button>
+            </form>
+        </div>
+        <div style="display: flex;">
+            <h3>Add Exercise:</h3>
+        </div>
+        <form th:action="@{/allDailyLogs}" method="post" th:object="${custom_exercise}">
+            <label for="calories">Calories: </label>
+            <input id="calories" th:field="*{calories}">
+
+            <label for="query">Query: </label>
+            <input id="query" th:field="*{query}">
+
+            <label for="user-id">User's ID: </label>
+            <input id="user-id" th:field="*{user.id}">
+
+            <button type="submit">Submit</button>
+        </form>
+        <form id="search-form" th:object="${user}">
+            <label for="query1">Query: </label>
+            <input name="query1" id="query1">
+
+            <button type="submit">Click me</button>
+        </form>
+
+
+    </div>
+
 <!-- add food page container ends here -->
 <div id="results">
 
@@ -186,7 +182,9 @@
 </script>
 <script>
     // TEST CODE TO MAKE SURE THE API WILL WORK
-
+    let calories = document.getElementById("calories");
+    let queryToSubmit = document.getElementById("query");
+    let submitButton = document.getElementById("submit-button");
     let form = document.getElementById("search-form");
     form.addEventListener("submit", async function(event) {
         event.preventDefault();
@@ -209,8 +207,11 @@
             body: JSON.stringify(requestBody),
             method: "POST"
         }).then(resp => resp.json()).then(data => {
-            console.log("The total calories burned are: " + data.exercises[0].nf_calories)
-            console.log(data)
+            console.log("The total calories burned are: " + Math.round(data.exercises[0].nf_calories));
+            calories.value = Math.round(data.exercises[0].nf_calories);
+            queryToSubmit.value = event.target.elements.query1.value;
+            submitButton.classList.remove("hidden");
+            console.log(calories.value);
         }).catch(function() {
             alert("That query is not recognized.")
         })
