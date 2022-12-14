@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-            crossorigin="anonymous"></script>
 
-    <script>
-        $(function(){
-            $("#navbar").load("partials/navbar.html");
-        });
-    </script>
+<!--    <script>-->
+<!--        $(function(){-->
+<!--            $("#navbar").load("partials/navbar.html");-->
+<!--        });-->
+<!--    </script>-->
 
     <link rel="stylesheet" href="/css/profile.css">
     <title>MyFitTracker</title>
@@ -16,80 +14,78 @@
 </head>
 <body>
 
-<div id="navbar"></div>
+    <nav id="navbar" th:insert="partials/navbar.html :: navbar"></nav>
 
-<div class="container">
+    <div class="container">
+        <h1 class="header-text">Edit Profile</h1>
+        <hr>
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-3">
+                <div class="text-center">
+                    <img src="https://www.freeiconspng.com/uploads/profile-icon-9.png"  class="avatar img-circle img-thumbnail" alt="avatar">
+                    <h6>Upload a different photo...</h6>
+
+                    <input type="file" class="form-control">
+                </div>
+            </div>
+
+            <!-- edit form column -->
+            <div class="col-md-9 personal-info">
+                <h3>Personal info</h3>
+
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">First name:</label>
+                        <div class="col-lg-8">
+                            <input id="disable-field" class="form-control" type="text" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Last name:</label>
+                        <div class="col-lg-8">
+                            <input id="disable-field2" class="form-control" type="text" >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Email:</label>
+                        <div class="col-lg-8">
+                            <input id="disable-field3" class="form-control" type="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Password:</label>
+                        <div class="col-lg-8">
+                            <input id="disable-field4" class="form-control" type="text" value="">
+                        </div>
+                    </div>
+
+                    <button onclick="enableBtn()" type="button" id="edit-profile" class="btn btn-danger">Edit Profile</button>
+                    <button onclick="disableBtn()" type="button" id="save-changes" class="btn btn-primary">Save Changes</button>
 
 
-    <h1 class="header-text">Edit Profile</h1>
-    <hr>
-    <div class="row">
-        <!-- left column -->
-        <div class="col-md-3">
-            <div class="text-center">
-                <img src="https://www.freeiconspng.com/uploads/profile-icon-9.png"  class="avatar img-circle img-thumbnail" alt="avatar">
-                <h6>Upload a different photo...</h6>
-
-                <input type="file" class="form-control">
+                </form>
             </div>
         </div>
-
-        <!-- edit form column -->
-        <div class="col-md-9 personal-info">
-            <h3>Personal info</h3>
-
-            <form class="form-horizontal" role="form">
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">First name:</label>
-                    <div class="col-lg-8">
-                        <input id="disable-field" class="form-control" type="text" >
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Last name:</label>
-                    <div class="col-lg-8">
-                        <input id="disable-field2" class="form-control" type="text" >
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Email:</label>
-                    <div class="col-lg-8">
-                        <input id="disable-field3" class="form-control" type="email" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Password:</label>
-                    <div class="col-lg-8">
-                        <input id="disable-field4" class="form-control" type="text" value="">
-                    </div>
-                </div>
-
-                <button onclick="enableBtn()" type="button" id="edit-profile" class="btn btn-danger">Edit Profile</button>
-                <button onclick="disableBtn()" type="button" id="save-changes" class="btn btn-primary">Save Changes</button>
-
-
-            </form>
-        </div>
     </div>
-</div>
-<hr>
-<script>
-    function enableBtn() {
-        document.getElementById("edit-profile").disabled = true;
-        document.getElementById("disable-field").disabled = false;
-        document.getElementById("disable-field2").disabled = false;
-        document.getElementById("disable-field3").disabled = false;
-        document.getElementById("disable-field4").disabled = false;
-    }
-    function disableBtn() {
-        document.getElementById("edit-profile").disabled = false;
-        document.getElementById("disable-field").disabled = true;
-        document.getElementById("disable-field2").disabled = true;
-        document.getElementById("disable-field3").disabled = true;
-        document.getElementById("disable-field4").disabled = true;
-    }
+    <hr>
+    <script>
+        function enableBtn() {
+            document.getElementById("edit-profile").disabled = true;
+            document.getElementById("disable-field").disabled = false;
+            document.getElementById("disable-field2").disabled = false;
+            document.getElementById("disable-field3").disabled = false;
+            document.getElementById("disable-field4").disabled = false;
+        }
+        function disableBtn() {
+            document.getElementById("edit-profile").disabled = false;
+            document.getElementById("disable-field").disabled = true;
+            document.getElementById("disable-field2").disabled = true;
+            document.getElementById("disable-field3").disabled = true;
+            document.getElementById("disable-field4").disabled = true;
+        }
 
-</script>
+    </script>
 </body>
 </html>

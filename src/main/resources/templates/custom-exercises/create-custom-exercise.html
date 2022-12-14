@@ -18,7 +18,7 @@
 
 <form th:action="@{/create-custom-exercise}" method="post" th:object="${custom_exercise}">
     <label for="calories">Calories: </label>
-    <input id="calories" th:field="*{calories}">
+    <input id="calories" th:field="*{calories}" readonly>
 
     <label for="query">Query: </label>
     <input id="query" th:field="*{query}">
@@ -26,7 +26,7 @@
     <label for="user-id">User's ID: </label>
     <input id="user-id" th:field="*{user.id}">
 
-    <button type="submit">Submit</button>
+    <button type="submit" class="hidden" id="submit-button">Submit</button>
 </form>
 
 <form id="search-form" th:object="${user}">
@@ -56,7 +56,9 @@
 
 <script>
     // TEST CODE TO MAKE SURE THE API WILL WORK
-
+    let calories = document.getElementById("calories");
+    let queryToSubmit = document.getElementById("query");
+    let submitButton = document.getElementById("submit-button");
     let form = document.getElementById("search-form");
     form.addEventListener("submit", async function(event) {
         event.preventDefault();
@@ -79,8 +81,11 @@
             body: JSON.stringify(requestBody),
             method: "POST"
         }).then(resp => resp.json()).then(data => {
-            console.log("The total calories burned are: " + data.exercises[0].nf_calories)
-            console.log(data)
+            console.log("The total calories burned are: " + Math.round(data.exercises[0].nf_calories));
+            calories.value = Math.round(data.exercises[0].nf_calories);
+            queryToSubmit.value = event.target.elements.query1.value;
+            submitButton.classList.remove("hidden");
+            console.log(calories.value);
         }).catch(function() {
             alert("That query is not recognized.")
         })
