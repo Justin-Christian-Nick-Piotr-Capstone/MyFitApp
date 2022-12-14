@@ -59,6 +59,25 @@
             <button type="button" class="pure-button" onclick="searchItem()">Search Food</button>
         </form>
     </div>
+    <form th:action="@{/create-custom-exercise}" method="post" th:object="${custom_exercise}">
+        <label for="calories">Calories: </label>
+        <input id="calories" th:field="*{calories}">
+
+        <label for="query">Query: </label>
+        <input id="query" th:field="*{query}">
+
+        <label for="user-id">User's ID: </label>
+        <input id="user-id" th:field="*{user.id}">
+
+        <button type="submit">Submit</button>
+    </form>
+    <form id="search-form" th:object="${user}">
+        <label for="query1">Query: </label>
+        <input name="query1" id="query1">
+
+        <button type="submit">Click me</button>
+    </form>
+
     <div style="display: flex;margin-top: 20px;">
         <h3>Or, add a custom</h3>
         <div class="food_container__deafult_down_arrow_image" id="deafult_down_arrow"><img
@@ -163,6 +182,38 @@
             '</div>'
         );
         return newMovieObj;
+    })
+</script>
+<script>
+    // TEST CODE TO MAKE SURE THE API WILL WORK
+
+    let form = document.getElementById("search-form");
+    form.addEventListener("submit", async function(event) {
+        event.preventDefault();
+        let weight = event.target.elements.user_weight.value * 0.453592;
+        let height = event.target.elements.user_height.value * 2.54;
+        let requestBody = {
+            "query": event.target.elements.query1.value,
+            "gender": event.target.elements.user_gender.value,
+            "weight_kg": weight,
+            "height_cm": height,
+            "age": event.target.elements.user_age.value
+        }
+        console.log(requestBody)
+        await fetch("https://trackapi.nutritionix.com/v2/natural/exercise", {
+            headers: {
+                "x-app-id": "c1e0a46a",
+                "x-app-key": "3cbe6be390fb13028c6f5f48a2e4df8d",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(requestBody),
+            method: "POST"
+        }).then(resp => resp.json()).then(data => {
+            console.log("The total calories burned are: " + data.exercises[0].nf_calories)
+            console.log(data)
+        }).catch(function() {
+            alert("That query is not recognized.")
+        })
     })
 </script>
 
