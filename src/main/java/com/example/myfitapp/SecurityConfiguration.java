@@ -54,8 +54,9 @@ public class SecurityConfiguration {
                 .authorizeRequests()
                 .antMatchers("/show-all-users",
                         "/create-custom-exercise",
-                        "/create-daily-log"
-                        )
+                        "/create-daily-log",
+                        "/show-custom-exercise"
+                )
                 .authenticated();
         return http.build();
     }

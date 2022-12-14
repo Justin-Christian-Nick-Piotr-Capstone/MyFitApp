@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class CustomExerciseController {
 
@@ -23,12 +26,27 @@ public class CustomExerciseController {
     @Autowired
     UserRepo userRepo;
 
+
     //show list of all custom exercises
     @GetMapping("/show-custom-exercise")
     public String showAllCustomExercise(Model model) {
-        model.addAttribute("custom_exercises", customExerciseRepo.findAll());
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<CustomExercise> customExerciseList = customExerciseRepo.findAll();
+        for (int i = 0; i < customExerciseList.size(); i++) {
+            CustomExercise customExercise = customExerciseList.get(i);
+            if (customExercise.getUser().getId() != loggedInUser.getId()) {
+                customExerciseList.remove(i);
+                i-=1;
+                System.out.println("Custom exercise " + customExercise.getId() + " removed.");
+            }
+            System.out.println("----------------------------------------------------");
+        }
+        model.addAttribute("custom_exercises", customExerciseList);
         return "/custom-exercises/show-all-custom-exercises";
     }
+
+
+
     //create custom exercise form
     @GetMapping("/create-custom-exercise")
     public String createCustomExercise(Model model) {
@@ -49,6 +67,7 @@ public class CustomExerciseController {
     public String updateCustomExercise(@PathVariable long id, Model model){
         CustomExercise exerciseToUpdate = customExerciseRepo.getReferenceById(id);
         model.addAttribute("custom_exercise", exerciseToUpdate);
+        model.addAttribute("user", (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         customExerciseRepo.save(exerciseToUpdate);
         return "/custom-exercises/update-custom-exercise";
     }
