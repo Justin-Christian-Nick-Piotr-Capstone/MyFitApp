@@ -52,7 +52,10 @@ public class SecurityConfiguration {
                 /* Pages that require authentication */
                 .and()
                 .authorizeRequests()
-                .antMatchers("/show-all-users", "/create-custom-exercise")
+                .antMatchers("/show-all-users",
+                        "/create-custom-exercise",
+                        "/create-daily-log"
+                        )
                 .authenticated();
         return http.build();
     }
