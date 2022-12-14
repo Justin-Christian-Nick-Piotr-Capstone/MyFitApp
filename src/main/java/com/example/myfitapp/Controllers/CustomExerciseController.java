@@ -37,9 +37,9 @@ public class CustomExerciseController {
             if (customExercise.getUser().getId() != loggedInUser.getId()) {
                 customExerciseList.remove(i);
                 i-=1;
-                System.out.println("Custom exercise " + customExercise.getId() + " removed.");
+//                System.out.println("Custom exercise " + customExercise.getId() + " removed.");
             }
-            System.out.println("----------------------------------------------------");
+//            System.out.println("----------------------------------------------------");
         }
         model.addAttribute("custom_exercises", customExerciseList);
         return "/custom-exercises/show-all-custom-exercises";
