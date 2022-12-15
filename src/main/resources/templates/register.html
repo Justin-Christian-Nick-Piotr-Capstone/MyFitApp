@@ -139,7 +139,7 @@
                 <select th:field="*{target_weight}">
                     <option th:each="n : ${#numbers.sequence(100,315)}" th:value="${n}" th:text="${n}"/>
                 </select>
-                <input type="number" max="400" min="100" th:field="*{target_weight}">
+<!--                <input type="number" max="400" min="100" th:field="*{target_weight}">-->
 <!--                <input type="radio" name="list-radio" id="radio-four" class="radio"/>-->
                 <label for="radio-four"></label>
                 <div class="slider slider-list"></div>
