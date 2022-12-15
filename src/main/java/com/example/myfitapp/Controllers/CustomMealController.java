@@ -24,7 +24,7 @@ public class CustomMealController {
     @GetMapping("/show-custom-meals")
     public String showAllCustomMeals(Model model) {
         model.addAttribute("custom_meals", customMealRepo.findAll());
-        return "/custom-meals/show-all-custom-meals";
+        return "custom-meals/show-all-custom-meals";
     }
     //show create meal form
     @GetMapping("/create-custom-meal")
