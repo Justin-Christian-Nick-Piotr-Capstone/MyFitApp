@@ -105,6 +105,6 @@ public class UserController {
     @GetMapping("/profile")
     public String showProfilePage(Model model) {
         model.addAttribute("user", (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        return "/profile";
+        return "/users/profile";
     }
 }
