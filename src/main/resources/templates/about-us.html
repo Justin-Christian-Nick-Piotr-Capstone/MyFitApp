@@ -11,7 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/about-us.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/about-us.css">
     <title>MyFitTracker</title>
 
     <script>
@@ -21,6 +22,66 @@
     </script>
 </head>
 <body>
+
+<style>
+
+    h1.first-text {
+        color: #eeeeee;
+        opacity: 70%;
+    }
+
+    h1.second-text {
+        color: #eeeeee;
+        opacity: 70%;
+    }
+
+    h4 {
+        color: #eeeeee;
+        opacity: 70%;
+    }
+
+    h1.third-text {
+        color: #eeeeee;
+        opacity: 70%;
+    }
+
+    div.card {
+        color: #eeeeee;
+        opacity: 70%;
+        background-color: transparent;
+    }
+
+    #display_image {
+        width: 100px;
+        height: 100px;
+        background-position: center;
+        background-size: cover;
+        background-image: url("../templates/Linkedin photo.jpeg");
+    }
+
+    /*#display_image2 {*/
+    /*    width: 100px;*/
+    /*    height: 100px;*/
+    /*    background-position: center;*/
+    /*    background-size: cover;*/
+    /*}*/
+
+    /*#display_image3 {*/
+    /*    width: 100px;*/
+    /*    height: 100px;*/
+    /*    background-position: center;*/
+    /*    background-size: cover;*/
+    /*}*/
+
+    /*#display_image4 {*/
+    /*    width: 100px;*/
+    /*    height: 100px;*/
+    /*    background-position: center;*/
+    /*    background-size: cover;*/
+    /*}*/
+
+
+</style>
 <div id="navbar" th:replace="partials/navbar :: navbar"></div>
 
 
@@ -34,57 +95,50 @@
 
 <div class="container">
 <div class="row">
-    <div class="card" style="width: 12rem;">
-        <img src="https://www.freeiconspng.com/uploads/profile-icon-9.png" class="avatar img-circle img-thumbnail" alt="avatar">
-        <input type="file" class="form-control">
+    <div class="card" style="width: 11rem;">
+<!--                <div id="display_image4" style="height:150px; width:150px; border-radius: 50%; border: 5px solid grey;"></div>-->
         <div class="card-body">
             <h5 class="card-title">Justin Hollmer</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Backend Developer</h6>
-<!--            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-            <a href="#" class="card-link">LinkedIn</a>
+            <h6 class="card-subtitle mb-2">Backend Developer</h6>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
             <a href="#" class="card-link">Alumni</a>
 
 
         </div>
     </div>
 
-    <div class="card" style="width: 12rem;">
-        <img src="https://www.freeiconspng.com/uploads/profile-icon-9.png" class="avatar img-circle img-thumbnail" alt="avatar">
-        <input type="file" class="form-control">
+    <div class="card" style="width: 11rem;">
+<!--        <div id="display_image3" style="height:150px; width:150px; border-radius: 50%; border: 5px solid grey;"></div>-->
         <div class="card-body">
             <h5 class="card-title">Nicholas Barrera</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Frontend Developer</h6>
-<!--            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-            <a href="#" class="card-link">LinkedIn</a>
+            <h6 class="card-subtitle mb-2">Frontend Developer</h6>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
             <a href="#" class="card-link">Alumni</a>
 </div>
     </div>
 
-    <div class="card" style="width: 12rem;">
-        <img src="https://www.freeiconspng.com/uploads/profile-icon-9.png" class="avatar img-circle img-thumbnail" alt="avatar">
-        <input type="file" class="form-control">
+    <div class="card" style="width: 11rem;">
+<!--        <div id="display_image2" style="height:150px; width:150px; border-radius: 50%; border: 5px solid grey;"></div>-->
         <div class="card-body">
             <h5 class="card-title">Peter Chomicki</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Backend Developer</h6>
-<!--            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-            <a href="#" class="card-link">LinkedIn</a>
+            <h6 class="card-subtitle mb-2">Backend Developer</h6>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
             <a href="#" class="card-link">Alumni</a>
         </div>
     </div>
 
-    <div class="card" style="width: 12rem;">
-        <img src="https://www.freeiconspng.com/uploads/profile-icon-9.png" class="avatar img-circle img-thumbnail" alt="avatar">
-        <input type="file" class="form-control">
+    <div class="card" style="width: 11rem;">
+        <div id="display_image" style="height:150px; width:150px; border-radius: 50%; border: 5px solid transparent;"></div>
         <div class="card-body">
             <h5 class="card-title">Christian Carter</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Frontend Developer</h6>
-<!--            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-            <a href="#" class="card-link">LinkedIn</a>
+            <h6 class="card-subtitle mb-2">Frontend Developer</h6>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
             <a href="#" class="card-link">Alumni</a>
         </div>
     </div>
 
 </div>
+
 </div>
 
 </body>
