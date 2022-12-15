@@ -11,17 +11,17 @@ public class NavController {
     @Autowired
     UserRepo userRepo;
 
-    @GetMapping("/about-us")
+    @GetMapping("/about-us.html")
     public String showAboutUs(){
         return"/about-us";
     }
 
-    @GetMapping("/profile")
+    @GetMapping("/profile.html")
     public String showProfile(){
         return "/profile";
     }
 
-    @GetMapping("/homepage")
+    @GetMapping("/homepage.html")
     public String showHomepage(){
         return"/homepage";
     }
