@@ -16,7 +16,32 @@
     <p th:text="*{current_calories}"></p>
     <h1>Target calories</h1>
     <p th:text="*{target_calories}"></p>
+    <p>Current exercises done for the day: </p>
+    <p th:text="*{exercise_query}"></p>
+    <p>Current food eaten for the day: </p>
+    <p th:text="*{meals_query}"></p>
 </div>
 
+
+<h1>Custom Exercise List: </h1>
+<div th:each="item: ${customExercises}">
+    <span>Calories for this exercise: </span>
+    <span th:text="${item.getCalories()}"></span>
+    <br>
+    <span>Query for this exercise: </span>
+    <span th:text="${item.getQuery()}"></span>
+    <button th:onclick="">Click me</button>
+</div>
+
+<h1>Add exercise:</h1>
+<form th:action="">
+
+</form>
+
+<script>
+    function addCustomExercise() {
+
+    }
+</script>
 </body>
 </html>

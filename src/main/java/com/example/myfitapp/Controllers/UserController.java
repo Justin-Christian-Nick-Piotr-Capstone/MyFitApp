@@ -48,6 +48,7 @@ public class UserController {
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
         user.setPassword(hashedPassword);
         userRepo.save(user);
+        System.out.println("Tried to register");
         return "redirect:/login";
     }
 
@@ -56,7 +57,7 @@ public class UserController {
         return "/login";
     }
 
-   // Login functionality
+//    Login functionality
 //    @PostMapping("/login")
 //    public String login(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password) {
 //        User user = userRepo.findByUsername(username);
