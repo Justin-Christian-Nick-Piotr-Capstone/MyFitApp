@@ -13,11 +13,11 @@
           rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
           crossorigin="anonymous">
 
-    <script>
-        $(function(){
-            $("#navbar").load("partials/navbar.html");
-        });
-    </script>
+<!--    <script>-->
+<!--        $(function(){-->
+<!--            $("#navbar").load("partials/navbar.html");-->
+<!--        });-->
+<!--    </script>-->
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Slab:wght@400;700&display=swap');
@@ -115,7 +115,9 @@
 <div id="svg_wrap"></div>
 
 <h1 class="text-center">Registration</h1>
-<form th:action="@{/register}" method="POST" th:object="${user}">
+
+
+<form th:action="@{/register}" method="post" th:object="${user}">
     <section>
         <p>Create Your Account</p>
         <input type="text" placeholder="full name" th:field="*{username}"/>

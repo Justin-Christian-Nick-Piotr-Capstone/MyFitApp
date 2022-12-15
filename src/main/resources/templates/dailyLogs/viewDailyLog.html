@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div th:object="${dailyLog}">
+    <span>Daily Log For: </span>
+    <span th:text="*{date}">day</span>
+    <h1>Current calories</h1>
+    <p th:text="*{current_calories}"></p>
+    <h1>Target calories</h1>
+    <p th:text="*{target_calories}"></p>
+    <p>Current exercises done for the day: </p>
+    <p th:text="*{exercise_query}"></p>
+    <p>Current food eaten for the day: </p>
+    <p th:text="*{meals_query}"></p>
+</div>
+
+
+<h1>Custom Exercise List: </h1>
+<div th:each="item: ${customExercises}">
+    <span>Calories for this exercise: </span>
+    <span th:text="${item.getCalories()}"></span>
+    <br>
+    <span>Query for this exercise: </span>
+    <span th:text="${item.getQuery()}"></span>
+    <button th:onclick="">Click me</button>
+</div>
+
+<h1>Add exercise:</h1>
+<form th:action="">
+
+</form>
+
+<script>
+    function addCustomExercise() {
+
+    }
+</script>
+</body>
+</html>
