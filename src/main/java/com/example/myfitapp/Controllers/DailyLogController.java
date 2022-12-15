@@ -136,6 +136,12 @@ public class DailyLogController {
         return "redirect:/view-all-daily-logs";
     }
 
+    @PostMapping("/update-daily-log-functional")
+    public String updateDailyLogFunctional(@ModelAttribute DailyLog dailyLog) {
+        dailyLogRepo.save(dailyLog);
+        return "redirect:/view-daily-log";
+    }
+
     @PostMapping("/delete-daily-log/{id}")
     public String deleteDailyLog(@PathVariable long id) {
         DailyLog logToDelete = dailyLogRepo.getReferenceById(id);
