@@ -17,16 +17,12 @@
     <nav id="navbar" th:insert="partials/navbar.html :: navbar"></nav>
 
     <div class="container">
-        <h1 class="header-text">Edit Profile</h1>
+        <h1 class="header-text">Welcome Username</h1>
         <hr>
         <div class="row">
             <!-- left column -->
             <div class="col-md-3">
                 <div class="text-center">
-                    <img src="https://www.freeiconspng.com/uploads/profile-icon-9.png"  class="avatar img-circle img-thumbnail" alt="avatar">
-                    <h6>Upload a different photo...</h6>
-
-                    <input type="file" class="form-control">
                 </div>
             </div>
 
@@ -61,8 +57,14 @@
                         </div>
                     </div>
 
-                    <button onclick="enableBtn()" type="button" id="edit-profile" class="btn btn-danger">Edit Profile</button>
-                    <button onclick="disableBtn()" type="button" id="save-changes" class="btn btn-primary">Save Changes</button>
+<!--                    <button onclick="enableBtn()" type="button" id="edit-profile" class="btn btn-danger">Edit Profile</button>-->
+<!--                    <button onclick="disableBtn()" type="button" id="save-changes" class="btn btn-primary">Save Changes</button>-->
+                    <button type="button">View Daily Logs</button>
+                    <button type="button">View Custom Exercises</button>
+                    <button type="button">View Custom Meals</button>
+
+
+
 
 
                 </form>
@@ -70,22 +72,22 @@
         </div>
     </div>
     <hr>
-    <script>
-        function enableBtn() {
-            document.getElementById("edit-profile").disabled = true;
-            document.getElementById("disable-field").disabled = false;
-            document.getElementById("disable-field2").disabled = false;
-            document.getElementById("disable-field3").disabled = false;
-            document.getElementById("disable-field4").disabled = false;
-        }
-        function disableBtn() {
-            document.getElementById("edit-profile").disabled = false;
-            document.getElementById("disable-field").disabled = true;
-            document.getElementById("disable-field2").disabled = true;
-            document.getElementById("disable-field3").disabled = true;
-            document.getElementById("disable-field4").disabled = true;
-        }
+<!--    <script>-->
+<!--        function enableBtn() {-->
+<!--            document.getElementById("edit-profile").disabled = true;-->
+<!--            document.getElementById("disable-field").disabled = false;-->
+<!--            document.getElementById("disable-field2").disabled = false;-->
+<!--            document.getElementById("disable-field3").disabled = false;-->
+<!--            document.getElementById("disable-field4").disabled = false;-->
+<!--        }-->
+<!--        function disableBtn() {-->
+<!--            document.getElementById("edit-profile").disabled = false;-->
+<!--            document.getElementById("disable-field").disabled = true;-->
+<!--            document.getElementById("disable-field2").disabled = true;-->
+<!--            document.getElementById("disable-field3").disabled = true;-->
+<!--            document.getElementById("disable-field4").disabled = true;-->
+<!--        }-->
 
-    </script>
+<!--    </script>-->
 </body>
 </html>

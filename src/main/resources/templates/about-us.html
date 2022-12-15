@@ -24,27 +24,61 @@
 <body>
 
 <style>
+
+    h1.first-text {
+        color: #eeeeee;
+        opacity: 70%;
+    }
+
+    h1.second-text {
+        color: #eeeeee;
+        opacity: 70%;
+    }
+
+    h4 {
+        color: #eeeeee;
+        opacity: 70%;
+    }
+
+    h1.third-text {
+        color: #eeeeee;
+        opacity: 70%;
+    }
+
+    div.card {
+        color: #eeeeee;
+        opacity: 70%;
+        background-color: transparent;
+    }
+
     #display_image {
         width: 100px;
         height: 100px;
-        /*border: 1px solid black;*/
         background-position: center;
         background-size: cover;
+        background-image: url("../templates/Linkedin photo.jpeg");
     }
-    #display_image2 {
-        width: 100px;
-        height: 100px;
-        /*border: 1px solid black;*/
-        background-position: center;
-        background-size: cover;
-    }
-    #display_image3 {
-        width: 100px;
-        height: 100px;
-        /*border: 1px solid black;*/
-        background-position: center;
-        background-size: cover;
-    }
+
+    /*#display_image2 {*/
+    /*    width: 100px;*/
+    /*    height: 100px;*/
+    /*    background-position: center;*/
+    /*    background-size: cover;*/
+    /*}*/
+
+    /*#display_image3 {*/
+    /*    width: 100px;*/
+    /*    height: 100px;*/
+    /*    background-position: center;*/
+    /*    background-size: cover;*/
+    /*}*/
+
+    /*#display_image4 {*/
+    /*    width: 100px;*/
+    /*    height: 100px;*/
+    /*    background-position: center;*/
+    /*    background-size: cover;*/
+    /*}*/
 
 
 </style>
@@ -62,11 +96,10 @@
 <div class="container">
 <div class="row">
     <div class="card" style="width: 11rem;">
-        <img src="https://www.freeiconspng.com/uploads/profile-icon-9.png" class="avatar img-circle img-thumbnail" alt="avatar">
-        <input type="file" class="form-control">
+<!--                <div id="display_image4" style="height:150px; width:150px; border-radius: 50%; border: 5px solid grey;"></div>-->
         <div class="card-body">
             <h5 class="card-title">Justin Hollmer</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Backend Developer</h6>
+            <h6 class="card-subtitle mb-2">Backend Developer</h6>
             <a href="#"><i class="fa fa-linkedin"></i></a>
             <a href="#" class="card-link">Alumni</a>
 
@@ -75,85 +108,38 @@
     </div>
 
     <div class="card" style="width: 11rem;">
-<!--        <img src="https://www.freeiconspng.com/uploads/profile-icon-9.png" class="avatar img-circle img-thumbnail" alt="avatar">-->
-        <div id="display_image3" style="height:150px; width:150px; border-radius: 50%; border: 5px solid grey;"></div>
-        <input type="file" id="image_input3" accept="image/jpeg, image/png">
+<!--        <div id="display_image3" style="height:150px; width:150px; border-radius: 50%; border: 5px solid grey;"></div>-->
         <div class="card-body">
             <h5 class="card-title">Nicholas Barrera</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Frontend Developer</h6>
+            <h6 class="card-subtitle mb-2">Frontend Developer</h6>
             <a href="#"><i class="fa fa-linkedin"></i></a>
             <a href="#" class="card-link">Alumni</a>
 </div>
     </div>
 
     <div class="card" style="width: 11rem;">
-<!--        <img src="https://www.freeiconspng.com/uploads/profile-icon-9.png" class="avatar img-circle img-thumbnail" alt="avatar">-->
-        <div id="display_image2" style="height:150px; width:150px; border-radius: 50%; border: 5px solid grey;"></div>
-        <input type="file" id="image_input2" accept="image/jpeg, image/png">
+<!--        <div id="display_image2" style="height:150px; width:150px; border-radius: 50%; border: 5px solid grey;"></div>-->
         <div class="card-body">
             <h5 class="card-title">Peter Chomicki</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Backend Developer</h6>
+            <h6 class="card-subtitle mb-2">Backend Developer</h6>
             <a href="#"><i class="fa fa-linkedin"></i></a>
             <a href="#" class="card-link">Alumni</a>
         </div>
     </div>
 
     <div class="card" style="width: 11rem;">
-<!--        <img src="https://www.freeiconspng.com/uploads/profile-icon-9.png" class="avatar img-circle img-thumbnail" alt="avatar">-->
-        <div id="display_image" style="height:150px; width:150px; border-radius: 50%; border: 5px solid grey;"></div>
-        <input type="file" id="image_input" accept="image/jpeg, image/png">
+        <div id="display_image" style="height:150px; width:150px; border-radius: 50%; border: 5px solid transparent;"></div>
         <div class="card-body">
             <h5 class="card-title">Christian Carter</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Frontend Developer</h6>
+            <h6 class="card-subtitle mb-2">Frontend Developer</h6>
             <a href="#"><i class="fa fa-linkedin"></i></a>
             <a href="#" class="card-link">Alumni</a>
         </div>
     </div>
 
 </div>
+
 </div>
-
-<script>
-    const image_input = document.querySelector("#image_input");
-    const image_input2 = document.querySelector("#image_input2");
-    const image_input3 = document.querySelector("#image_input3");
-
-
-
-    let uploaded_image = "";
-    let uploaded_image2 = "";
-    let uploaded_image3 = "";
-
-
-
-
-    image_input, image_input2, image_input3.addEventListener("change", function() {
-        const reader = new FileReader();
-        reader.addEventListener("load", () => {
-            uploaded_image = reader.result;
-            uploaded_image2 = reader.result;
-            uploaded_image3 = reader.result;
-            document.querySelector("#display_image, #display_image2, #display_image3").style.backgroundImage = `url(${uploaded_image, uploaded_image2, uploaded_image3})`;
-        });
-        reader.readAsDataURL(this.files[0]);
-
-
-
-
-        // image_input2.addEventListener("change", function () {
-        //     const reader = new FileReader();
-        //     reader.addEventListener("load", () => {
-        //         uploaded_image2 = reader.result;
-        //         document.querySelector("#display_image2").style.backgroundImage = `url(${uploaded_image2})`;
-        //     });
-        //     reader.readAsDataURL(this.files[0]);
-        //
-        // })
-    })
-
-
-
-</script>
 
 </body>
 </html>
