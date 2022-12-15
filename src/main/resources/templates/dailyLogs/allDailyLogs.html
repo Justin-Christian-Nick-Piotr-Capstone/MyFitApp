@@ -66,7 +66,7 @@
         <tr>
             <th scope="row">1680</th>
             <td>1700</td>
-            <td>300</td>
+            <td><p th:text="${item.getCalories()}"></p></td>
             <td>1400</td>
         </tr>
 
@@ -102,8 +102,28 @@
             <label for="query1">Query: </label>
             <input name="query1" id="query1">
 
-            <button type="submit">Click me</button>
+            <button type="submit">Add Exercise</button>
         </form>
+
+        <div class="d-flex justify-content-around">
+        <div>
+        <p>Exercises</p>
+        <div th:each="item: ${custom_exercises}">
+            <p th:text="${item.getId()}">ID: </p>
+            <p th:text="${item.getCalories()}">Calories: </p>
+            <p th:text="${item.getQuery()}">Query: </p>
+
+            <a th:href="@{/update-custom-exercise/{id}(id = ${item.getId()})}"><button class="edit-button">Edit</button></a>
+            <form th:action="@{/delete-custom-exercise/{id}(id = ${item.getId()})}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+        </div>
+        <div>
+            <p>Meals</p>
+
+        </div>
+        </div>
 
 
     </div>
