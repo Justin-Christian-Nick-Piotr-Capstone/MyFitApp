@@ -67,7 +67,7 @@ public class DailyLogController {
         User userLoggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         // Getting the date for the daily log and checking to see if a daily log with that date already exists.
         LocalDate dateObj = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String date = dateObj.format(formatter);
         List<DailyLog> dailyLogs = dailyLogRepo.findDailyLogByUser(userLoggedIn);
         boolean logForDateExists = false;
@@ -96,6 +96,8 @@ public class DailyLogController {
         }
         List<CustomExercise> customExerciseList = customExerciseRepo.findCustomExerciseByUser(userLoggedIn);
         model.addAttribute("customExercises", customExerciseList);
+        System.out.println("IT works until here");
+        System.out.println("THE DAY IS: " + date);
         return "dailyLogs/viewDailyLog";
     }
 
