@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous"></script>
+    <title>Register</title>
+    <style>
+        * {box-sizing: border-box}
+        .page {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .date {
+            background: #555;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #efefef;
+            padding: 1em;
+        }
+        nav {
+            width: 100%;
+            padding: 0;
+        }
+        nav > a {
+            display: inline-block;
+            width: 49%;
+            background: #efefef;
+            color: #222;
+            text-decoration: none;
+            padding: 1em;
+            margin: 0.2em 0;
+        }
+        nav > a:nth-child(2) {
+            text-align: right;
+        }
+        nav > a[href="#today"] {
+            width: 100%;
+            text-align: center;
+        }
+        nav > a:hover {
+            background: #ddd;
+        }
+
+    </style>
+    <script src="moment.js"
+    ></script>
+    <script>
+        $(function(){
+            $(".datepicker").load("./dailyLogs/allDailyLogs.html");
+        });
+    </script>
+</head>
+<body>
+
+<div class="page">
+    <div class="date">
+        2016-01-01
+    </div>
+    <div class="datepicker">
+        <div id="datepicker" th:replace="dailyLogs/allDailyLogs :: allDailyLogs"></div>
+    </div>
+    <nav>
+        <a href="#prev-date">&lt;- Prev</a>
+        <a href="#next-date">Next -&gt;</a>
+        <a href="#today">Today</a>
+    </nav>
+    <small>About: This is a simple diary utility. All data are saved locally in browser.</small>
+</div>
+
+
+<script>
+    function DateHelper(date){
+        if (date === undefined) {
+            date = new Date();
+        }
+
+        // Require MomentJS: https://momentjs.com
+        return {
+            today: function() {
+                return moment(date);
+            },
+            nextDay: function(){
+                return moment(date).add(1,'day');
+            },
+            prevDay: function(){
+                return moment(date).subtract(1,'day');
+            },
+            toString: function(){
+                return moment(date).format('YYYY-MM-DD');
+            }
+        }
+    }
+
+    // Save/Load LocalStorage
+    function save(data) {
+        localStorage["DiaryData"] = JSON.stringify(data);
+    }
+    function loadOrDefault(defaultObject) {
+        if (localStorage["DiaryData"] !== undefined) {
+            return JSON.parse(localStorage["DiaryData"]);
+        } else {
+            return defaultObject;
+        }
+    }
+
+    // Load data or setup default data
+    var allData = loadOrDefault({
+        "2019-06-08": "Hello World."
+    });
+
+
+
+    // todo: render day
+    function render(day){
+        let dayString = DateHelper(day).toString();
+        $(".page .date").html(dayString);
+        $(".page textarea").val(allData[dayString]);
+    }
+
+
+    // todo: init
+    let today = DateHelper().today();
+    let currentDate = today;
+    render(currentDate);
+
+
+    // handling date choosing UI
+    $("[href='#next-date']").on("click", function(e){
+        currentDate = DateHelper(currentDate).nextDay();
+        render(currentDate);
+    });
+
+
+    $("[href='#prev-date']").on("click", function(e){
+        currentDate = DateHelper(currentDate).prevDay();
+        render(currentDate);
+    });
+
+    $("[href='#today']").on("click", function(e){
+        currentDate = DateHelper().today();
+        render(currentDate);
+    });
+
+
+
+    // handling content changes
+    $("textarea").on("input", function(){
+        allData[currentDate] = $("textarea").val();
+        save(allData);
+    });
+</script>
+
+
+</body>
+</html>

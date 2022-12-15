@@ -21,10 +21,10 @@
     <input id="calories" th:field="*{calories}" readonly>
 
     <label for="query">Query: </label>
-    <input id="query" th:field="*{query}">
+    <input id="query" th:field="*{query}" readonly>
 
     <label for="user-id">User's ID: </label>
-    <input id="user-id" th:field="*{user.id}">
+    <input id="user-id" th:field="*{user.id}" readonly>
 
     <button type="submit" class="hidden" id="submit-button">Submit</button>
 </form>
@@ -85,11 +85,14 @@
             calories.value = Math.round(data.exercises[0].nf_calories);
             queryToSubmit.value = event.target.elements.query1.value;
             submitButton.classList.remove("hidden");
+            form.classList.add("hidden")
             console.log(calories.value);
         }).catch(function() {
             alert("That query is not recognized.")
         })
     })
+
+    ghsghghs
 </script>
 </body>
 </html>
