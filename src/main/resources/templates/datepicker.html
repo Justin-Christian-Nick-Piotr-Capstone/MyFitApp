@@ -59,9 +59,16 @@
             $(".datepicker").load("./dailyLogs/allDailyLogs.html");
         });
     </script>
+    <script>
+        $(function(){
+            $("#navbar").load("partials/navbar.html");
+        });
+    </script>
 </head>
 <body>
-
+<nav>
+    <div id="navbar" th:replace="partials/navbar :: navbar"></div>
+</nav>
 <div class="page">
     <div class="date">
         2016-01-01
