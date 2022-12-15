@@ -4,6 +4,7 @@ package com.example.myfitapp.Controllers;
 import com.example.myfitapp.Models.CustomExercise;
 import com.example.myfitapp.Models.DailyLog;
 import com.example.myfitapp.Models.User;
+import com.example.myfitapp.Repos.CustomExerciseRepo;
 import com.example.myfitapp.Repos.DailyLogRepo;
 import com.example.myfitapp.Repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class DailyLogController {
 
     @Autowired
     DailyLogRepo dailyLogRepo;
+
+    @Autowired
+    CustomExerciseRepo customExerciseRepo;
 
     @Autowired
     UserRepo userRepo;
@@ -83,15 +87,15 @@ public class DailyLogController {
             // Checks if the user wants to gain or lose weight and sets the calorie value accordingly.
             if (userLoggedIn.getTarget_weight() < userLoggedIn.getStarting_weight()) {
                 dailyLog = new DailyLog(date, (userLoggedIn.getMaintenance_calories() - 500), 0, userLoggedIn);
-            }
-            else {
+            } else {
                 dailyLog = new DailyLog(date, (userLoggedIn.getMaintenance_calories() + 500), 0, userLoggedIn);
             }
             model.addAttribute("dailyLog", dailyLog);
             System.out.println(dailyLog.getDate());
+            dailyLogRepo.save(dailyLog);
         }
-        System.out.println("If gain weight: " + (userLoggedIn.getMaintenance_calories()));
-        System.out.println("If lose weight: " + (userLoggedIn.getMaintenance_calories()));
+        List<CustomExercise> customExerciseList = customExerciseRepo.findCustomExerciseByUser(userLoggedIn);
+        model.addAttribute("customExercises", customExerciseList);
         return "dailyLogs/viewDailyLog";
     }
 
