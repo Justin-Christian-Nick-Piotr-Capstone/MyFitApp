@@ -115,33 +115,29 @@
 <div id="svg_wrap"></div>
 
 <h1 class="text-center">Registration</h1>
-
 <form th:action="@{/register}" method="POST" th:object="${user}">
     <section>
         <p>Create Your Account</p>
         <input type="text" placeholder="full name" th:field="*{username}"/>
         <input type="text" placeholder="email" th:field="*{email}"/>
-        <input type="password" placeholder="password" th:field="*{password}" />
-        <input type="password" placeholder="confirm password" />
+        <input type="text" placeholder="password" th:field="*{password}" />
+        <input type="text" placeholder="confirm password" />
     </section>
 
     <section>
-        <p>What is your weight goal? (In Pounds, range 100-400)</p>
+        <p>What is your weight goal? (In Pounds)</p>
         <div class="wrapper-2">
             <div class="container list">
 
-<!--                <div class="list-item text-center">Lose Weight</div>-->
-<!--                <input type="radio" name="list-radio" id="radio-two" class="radio"  checked/>-->
-<!--                <label for="radio-two"></label>-->
-<!--                <div class="list-item text-center">Maintain Weight</div>-->
-<!--                <input type="radio" name="list-radio" id="radio-three" class="radio"/>-->
-<!--                <label for="radio-three"></label>-->
-<!--                <div class="list-item text-center">Gain Weight</div>-->
-                <select th:field="*{target_weight}">
-                    <option th:each="n : ${#numbers.sequence(100,315)}" th:value="${n}" th:text="${n}"/>
-                </select>
-<!--                <input type="number" max="400" min="100" th:field="*{target_weight}">-->
-<!--                <input type="radio" name="list-radio" id="radio-four" class="radio"/>-->
+                <!--                <div class="list-item text-center">Lose Weight</div>-->
+                <!--                <input type="radio" name="list-radio" id="radio-two" class="radio"  checked/>-->
+                <!--                <label for="radio-two"></label>-->
+                <!--                <div class="list-item text-center">Maintain Weight</div>-->
+                <!--                <input type="radio" name="list-radio" id="radio-three" class="radio"/>-->
+                <!--                <label for="radio-three"></label>-->
+                <!--                <div class="list-item text-center">Gain Weight</div>-->
+                <input type="number" max="300" min="100" th:field="*{target_weight}">
+                <!--                <input type="radio" name="list-radio" id="radio-four" class="radio"/>-->
                 <label for="radio-four"></label>
                 <div class="slider slider-list"></div>
             </div>
@@ -149,33 +145,11 @@
     </section>
 
     <section>
-        <h1 class="text-center">Personal Data</h1>
-        <p>Select Gender</p>
-        <select th:field="*{gender}">
-            <option th:value="'M'" th:text="Male"></option>
-            <option th:value="'F'" th:text="Female"></option>
-        </select>
-        <br>
-<!--        <input type="text" placeholder="Gender" th:field="*{gender}"/>-->
-        <p>Your Age(18-99)</p>
-        <select th:field="*{age}">
-            <option th:each="n : ${#numbers.sequence(18,99)}" th:value="${n}" th:text="${n}"/>
-        </select>
-<!--        <input type="text" placeholder="Age" th:field="*{age}"/>-->
-        <br>
-        <p>Current Weight Lbs(85-400)</p>
-        <select th:field="*{starting_weight}">
-            <option th:each="n :${#numbers.sequence(85,400)}" th:value="${n}" th:text="${n}"/>
-        </select>
-<!--        <input type="number" max="400" min="85" placeholder="Current Weight" th:field="*{starting_weight}"/>-->
-        <p>Height in Inches</p>
-        <select th:field="*{height}">
-            <option th:each="n :${#numbers.sequence(24,110)}" th:value="${n}" th:text="${n}"/>
-        </select>
-        <p>How many daily calories to maintain current weight </p>
-      <input type="number" max="400" min="85" placeholder="Maintenance Calories" th:field="*{maintenance_calories}"/>
-
-        <!--        <input type="text" max="110" min = "24"placeholder="Current Height" th:field="*{height}"/>-->
+        <p class="text-center">Personalization</p>
+        <input type="text" placeholder="Gender" th:field="*{gender}"/>
+        <input type="text" placeholder="Age" th:field="*{age}"/>
+        <input type="text" placeholder="Current Weight lbs." th:field="*{starting_weight}"/>
+        <input type="text" placeholder="Current Height in." th:field="*{height}"/>
         <input type="hidden" th:field="*{profile_visibility}" value="private"/>
         <input type="hidden" th:field="*{progress}" value="0"/>
 
