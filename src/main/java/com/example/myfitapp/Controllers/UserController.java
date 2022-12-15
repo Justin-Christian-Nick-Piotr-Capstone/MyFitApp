@@ -56,7 +56,7 @@ public class UserController {
         return "/login";
     }
 
-    // Login functionality
+   // Login functionality
 //    @PostMapping("/login")
 //    public String login(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password) {
 //        User user = userRepo.findByUsername(username);
