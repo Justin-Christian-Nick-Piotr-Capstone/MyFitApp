@@ -115,7 +115,8 @@
 <div id="svg_wrap"></div>
 
 <h1 class="text-center">Registration</h1>
-<form th:autocomplete="off" th:action="@{/register}" method="POST" th:object="${user}">
+
+<form th:action="@{/register}" method="POST" th:object="${user}">
     <section>
         <p>Create Your Account</p>
         <input type="text" placeholder="full name" th:field="*{username}"/>
