@@ -5,6 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous"></script>
     <title>Register</title>
     <style>
         * {box-sizing: border-box}
@@ -50,8 +52,13 @@
         }
 
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"
+    <script src="moment.js"
     ></script>
+    <script>
+        $(function(){
+            $(".datepicker").load("./dailyLogs/allDailyLogs.html");
+        });
+    </script>
 </head>
 <body>
 
@@ -59,9 +66,9 @@
     <div class="date">
         2016-01-01
     </div>
-    <textarea>
-
-  </textarea>
+    <div class="datepicker">
+        <div id="datepicker" th:replace="dailyLogs/allDailyLogs :: allDailyLogs"></div>
+    </div>
     <nav>
         <a href="#prev-date">&lt;- Prev</a>
         <a href="#next-date">Next -&gt;</a>
