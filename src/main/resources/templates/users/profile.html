@@ -50,13 +50,6 @@
                             <input id="disable-field3" class="form-control" type="email" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Password: <pre><input type="password" id="myInput"></pre></label>
-                        <div class="col-lg-8">
-                            <input id="disable-field4" class="form-control" type="checkbox" onclick="disablePass()"> Show Password
-                        </div>
-                    </div>
-
 
                     <a href="/view-daily-log"><button type="button">View Daily Log</button></a>
                     <a href="/show-custom-exercise"><button type="button">View Custom Exercises</button></a>
@@ -68,15 +61,6 @@
     </div>
     <hr>
 
-    <script>
-        function disablePass() {
-            var x = document.getElementById("myInput");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
-        }
-    </script>
+
 </body>
 </html>
