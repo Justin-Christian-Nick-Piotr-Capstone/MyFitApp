@@ -2,6 +2,7 @@ package com.example.myfitapp.Models;
 
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "daily_log")
@@ -23,6 +24,14 @@ public class DailyLog {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    public DailyLog() {}
+    public DailyLog(String date, int target_calories, int current_calories, User user) {
+        this.date = date;
+        this.target_calories = target_calories;
+        this.current_calories = current_calories;
+        this.user = user;
+    }
 
     public long getId() {
         return id;

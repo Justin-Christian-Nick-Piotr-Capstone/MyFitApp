@@ -55,7 +55,8 @@ public class SecurityConfiguration {
                 .antMatchers("/show-all-users",
                         "/create-custom-exercise",
                         "/create-daily-log",
-                        "/show-custom-exercise"
+                        "/show-custom-exercise",
+                        "/view-all-daily-logs"
                 )
                 .authenticated();
         return http.build();
