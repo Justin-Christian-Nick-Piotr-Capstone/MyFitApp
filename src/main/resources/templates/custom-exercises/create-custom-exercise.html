@@ -21,14 +21,14 @@
             display: none;
         }
     </style>
-    <script>
-        $(function(){
-            $("#navbar").load("../partials/navbar.html");
-        });
-    </script>
+<!--    <script>-->
+<!--        $(function(){-->
+<!--            $("#navbar").load("../partials/navbar.html");-->
+<!--        });-->
+<!--    </script>-->
 </head>
 <body>
-<div id="navbar" th:replace="../partials/navbar :: navbar"></div>
+<!--<div id="navbar" th:replace="../partials/navbar :: navbar"></div>-->
 <h1>Create custom exercise</h1>
 
 <form th:action="@{/create-custom-exercise}" method="post" th:object="${custom_exercise}">

@@ -18,14 +18,14 @@
             display: none;
         }
     </style>
-    <script>
-        $(function(){
-            $("#navbar").load("../partials/navbar.html");
-        });
-    </script>
+<!--    <script>-->
+<!--        $(function(){-->
+<!--            $("#navbar").load("../partials/navbar.html");-->
+<!--        });-->
+<!--    </script>-->
 </head>
 <body>
-<div id="navbar" th:replace="../partials/navbar :: navbar"></div>
+<!--<div id="navbar" th:replace="../partials/navbar :: navbar"></div>-->
     <div th:object="${dailyLog}">
         <span>Daily Log For: </span>
         <span th:text="*{date}">day</span>
