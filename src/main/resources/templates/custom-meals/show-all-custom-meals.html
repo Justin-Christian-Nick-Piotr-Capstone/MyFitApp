@@ -9,14 +9,18 @@
 </head>
 <body>
 
-<h1>This is the landing page</h1>
+<h1>All Custom Meals: </h1>
 
 <div th:each="item: ${custom_meals}">
     <p th:text="${item.getId()}">ID: </p>
     <p th:text="${item.getCalories()}">Calories: </p>
     <p th:text="${item.getQuery()}">Query: </p>
-    <p th:text="${item.getUser().getUsername()}"></p>
+
+    <a th:href="@{/update-custom-meal/{id}(id = ${item.getId()})}"><button class="edit-button">Edit</button></a>
+    <form th:action="@{/delete-custom-meal/{id}(id = ${item.getId()})}" method="post">
+        <button type="submit">Delete</button>
+    </form>
 </div>
-<a href="/create-custom-meal"><button>Create custom meal</button></a>
+<a href="/create-custom-meal"><button>Create Custom Meal</button></a>
 </body>
 </html>
