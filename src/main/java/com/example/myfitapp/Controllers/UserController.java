@@ -54,7 +54,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String showLogin() {
-        return "/login";
+        return "users/login";
     }
 
 //    Login functionality
