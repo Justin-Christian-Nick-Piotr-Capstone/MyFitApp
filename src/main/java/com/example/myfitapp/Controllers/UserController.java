@@ -54,7 +54,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String showLogin() {
-        return "/login";
+        return "users/login";
     }
 
 //    Login functionality
@@ -105,6 +105,6 @@ public class UserController {
     @GetMapping("/profile")
     public String showProfilePage(Model model) {
         model.addAttribute("user", (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        return "/users/profile";
+        return "/profile";
     }
 }
