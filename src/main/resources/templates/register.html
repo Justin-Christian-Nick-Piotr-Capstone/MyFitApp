@@ -161,19 +161,15 @@
         </select>
         <!--        <input type="text" placeholder="Age" th:field="*{age}"/>-->
         <br>
-        <p>Current Weight Lbs(85-400)</p>
-        <select th:field="*{starting_weight}">
-            <option th:each="n :${#numbers.sequence(85,400)}" th:value="${n}" th:text="${n}"/>
-        </select>
-        <!--        <input type="number" max="400" min="85" placeholder="Current Weight" th:field="*{starting_weight}"/>-->
-        <p>Height in Inches</p>
-        <select th:field="*{height}">
-            <option th:each="n :${#numbers.sequence(24,110)}" th:value="${n}" th:text="${n}"/>
-        </select>
-        <p>How many daily calories to maintain current weight </p>
+        <p>Current Weight in Pounds</p>
+                <input type="number" max="400" min="85" placeholder="Current Weight" th:field="*{starting_weight}"/>
+        <p>Current Height in Inches</p>
+
+                <input type="text" max="110" min = "24"placeholder="Current Height" th:field="*{height}"/>
+
+        <p>Daily Calorie Intake(2000 recommended) </p>
         <input type="number"  placeholder="Maintenance Calories" th:field="*{maintenance_calories}"/>
 
-        <!--        <input type="text" max="110" min = "24"placeholder="Current Height" th:field="*{height}"/>-->
         <input type="hidden" th:field="*{profile_visibility}" value="private"/>
         <input type="hidden" th:field="*{progress}" value="0"/>
 
@@ -190,9 +186,15 @@
 
 <!--    </section>-->
 
+
+
     <section>
-        <p>Enter Your Goal Date</p>
-        <input type="text" placeholder="Preferred entrance date"/>
+        <label for="goal">Goal Date achieve</label>
+
+        <input type="date" id="goal" name="trip-start"
+               value="2022-12-16">
+<!--        <p>Enter Your Goal Date</p>-->
+<!--        <input type="text" placeholder="Preferred entrance date"/>-->
     </section>
 
 
