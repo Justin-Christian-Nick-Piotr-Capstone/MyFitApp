@@ -45,6 +45,7 @@ public class CustomMealController {
         model.addAttribute("custom_meal", mealToUpdate);
         return "/custom-meals/update-custom-meal";
     }
+
     //post updated meal
     @PostMapping("/update-custom-meal")
     public String updateCustomMeal(@ModelAttribute CustomMeal updatedMeal){
