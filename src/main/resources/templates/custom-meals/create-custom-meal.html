@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-
+<div id="navbar" th:replace="partials/navbar :: navbar"></div>
 <h1>Create custom meal</h1>
 
 <form th:action="@{/create-custom-meal}" method="post" th:object="${custom_meal}">
