@@ -6,26 +6,89 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-
-<h1>This is the landing page</h1>
+<div id="navbar" th:replace="partials/navbar :: navbar"></div>
+<h1>Update Meal: </h1>
 
 <form th:action="@{/update-custom-meal}" method="post" th:object="${custom_meal}">
-    <label>ID: </label>
-    <input th:field="*{id}" readonly>
-
+    <input th:field="*{id}" class="hidden">
     <label for="calories">Calories: </label>
-    <input type="text" id="calories" th:field="*{calories}">
+    <input id="calories" th:field="*{calories}" readonly>
 
-    <label for="query">Query:  </label>
-    <input type="text" id="query" th:field="*{query}">
+    <label for="query">Query: </label>
+    <input id="query" th:field="*{query}" readonly>
 
-    <label for="user_id">UserID</label>
-    <input id="user_id" th:field="*{user}" readonly>
+    <label for="user-id">User's ID: </label>
+    <input id="user-id" th:field="*{user.id}" readonly>
 
-    <button type="submit">Submit</button>
+    <button type="submit" class="hidden" id="submit-button">Submit</button>
 </form>
 
+<form id="search-form" th:object="${user}">
+    <label for="query1">Query: </label>
+    <input name="query1" id="query1">
+
+    <label for="username" class="hidden">Username</label>
+    <input name="username" id="username" th:field="*{username}" readonly class="hidden">
+
+    <label for="user_id" class="hidden">User ID:</label>
+    <input name="user-id" id="user_id" th:field="*{id}" readonly class="hidden">
+
+    <label for="user_gender" class="hidden">Gender: </label>
+    <input name="user_gender" id="user_gender" th:field="*{gender}" readonly class="hidden">
+
+    <label for="user_height" class="hidden">Height: </label>
+    <input name="user_height" id="user_height" th:field="*{height}" readonly class="hidden">
+
+    <label for="user_weight" class="hidden">Weight: </label>
+    <input name="user_weight" id="user_weight" th:field="*{starting_weight}" readonly class="hidden">
+
+    <label for="user_age" class="hidden">Age: </label>
+    <input name="user_age" id="user_age" th:field="*{age}" readonly class="hidden">
+
+    <button type="submit">Click me</button>
+</form>
+
+<script>
+    // TEST CODE TO MAKE SURE THE API WILL WORK
+    let calories = document.getElementById("calories");
+    let queryToSubmit = document.getElementById("query");
+    let submitButton = document.getElementById("submit-button");
+    let form = document.getElementById("search-form");
+    form.addEventListener("submit", async function(event) {
+        event.preventDefault();
+        // let weight = event.target.elements.user_weight.value * 0.453592;
+        // let height = event.target.elements.user_height.value * 2.54;
+        let requestBody = {
+            "query": event.target.elements.query1.value,
+            "timezone": "US/Central"
+        }
+        console.log(requestBody)
+        await fetch("https://trackapi.nutritionix.com/v2/natural/nutrients", {
+            headers: {
+                "x-app-id": "c1e0a46a",
+                "x-app-key": "3cbe6be390fb13028c6f5f48a2e4df8d",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(requestBody),
+            method: "POST"
+        }).then(resp => resp.json()).then(data => {
+            console.log("The total calories burned are: " + Math.round(data.foods[0].nf_calories));
+            calories.value = Math.round(data.foods[0].nf_calories);
+            queryToSubmit.value = event.target.elements.query1.value;
+            submitButton.classList.remove("hidden");
+            form.classList.add("hidden")
+            console.log(calories.value);
+        }).catch(function() {
+            alert("That query is not recognized.")
+        })
+    })
+</script>
 </body>
 </html>

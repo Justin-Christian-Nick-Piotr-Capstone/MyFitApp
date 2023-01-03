@@ -120,10 +120,10 @@
 <form th:action="@{/register}" method="post" th:object="${user}">
     <section>
         <p>Create Your Account</p>
-        <input type="text" placeholder="full name" th:field="*{username}"/>
+        <input type="text" placeholder="username" th:field="*{username}"/>
         <input type="text" placeholder="email" th:field="*{email}"/>
-        <input type="text" placeholder="password" th:field="*{password}" />
-        <input type="text" placeholder="confirm password" />
+        <input type="password" placeholder="password" th:field="*{password}" />
+        <input type="password" placeholder="confirm password" />
     </section>
 
     <section>
@@ -147,19 +147,54 @@
     </section>
 
     <section>
-        <p class="text-center">Personalization</p>
-        <input type="text" placeholder="Gender" th:field="*{gender}"/>
-        <input type="text" placeholder="Age" th:field="*{age}"/>
-        <input type="text" placeholder="Current Weight lbs." th:field="*{starting_weight}"/>
-        <input type="text" placeholder="Current Height in." th:field="*{height}"/>
+        <h1 class="text-center">Personal Data</h1>
+        <p>Select Gender</p>
+        <select th:field="*{gender}">
+            <option th:value="'M'" th:text="Male"></option>
+            <option th:value="'F'" th:text="Female"></option>
+        </select>
+        <br>
+        <!--        <input type="text" placeholder="Gender" th:field="*{gender}"/>-->
+        <p>Your Age(18-99)</p>
+        <select th:field="*{age}">
+            <option th:each="n : ${#numbers.sequence(18,99)}" th:value="${n}" th:text="${n}"/>
+        </select>
+        <!--        <input type="text" placeholder="Age" th:field="*{age}"/>-->
+        <br>
+            <p1>Current Weight(pounds)</p1>
+                <input type="number" max="400" min="85" placeholder="Current Weight" th:field="*{starting_weight}"/>
+            <p1>Current Height(inches)</p1>
+
+                <input type="text" max="110" min = "24"placeholder="Current Height" th:field="*{height}"/>
+
+        <p>Average Daily Calorie Intake </p>
+        <input type="number"  placeholder="Maintenance Calories" th:field="*{maintenance_calories}"/>
+
         <input type="hidden" th:field="*{profile_visibility}" value="private"/>
         <input type="hidden" th:field="*{progress}" value="0"/>
 
     </section>
 
+<!--    <section>-->
+<!--        <p class="text-center">Personalization</p>-->
+<!--        <input type="text" placeholder="Gender" th:field="*{gender}"/>-->
+<!--        <input type="text" placeholder="Age" th:field="*{age}"/>-->
+<!--        <input type="text" placeholder="Current Weight lbs." th:field="*{starting_weight}"/>-->
+<!--        <input type="text" placeholder="Current Height in." th:field="*{height}"/>-->
+<!--        <input type="hidden" th:field="*{profile_visibility}" value="private"/>-->
+<!--        <input type="hidden" th:field="*{progress}" value="0"/>-->
+
+<!--    </section>-->
+
+
+
     <section>
-        <p>Enter Your Goal Date</p>
-        <input type="text" placeholder="Preferred entrance date"/>
+        <label for="goal">Goal Date achieve</label>
+
+        <input type="date" id="goal" name="trip-start"
+               value="2022-12-16">
+<!--        <p>Enter Your Goal Date</p>-->
+<!--        <input type="text" placeholder="Preferred entrance date"/>-->
     </section>
 
 
