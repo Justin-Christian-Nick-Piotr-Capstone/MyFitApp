@@ -18,16 +18,9 @@
             display: none;
         }
     </style>
-<!--    <script>-->
-<!--        $(function(){-->
-<!--            $("#navbar").load("../partials/navbar.html");-->
-<!--        });-->
-<!--    </script>-->
 </head>
 <body>
 <nav id="navbar" th:replace="/partials/navbar :: navbar"></nav>
-
-#<!--<div id="navbar" th:replace="../partials/navbar :: navbar"></div>-->
     <div th:object="${dailyLog}">
         <span>Daily Log For: </span>
         <span th:text="*{date}">day</span>
@@ -100,16 +93,5 @@
         <button th:onclick="">Click me</button>
     </div>
     <button type="submit">Update</button>
-
-<!--<h1>Add exercise:</h1>-->
-<!--<form th:action="">-->
-
-<!--</form>-->
-
-<!--<script>-->
-<!--    function addCustomExercise() {-->
-
-<!--    }-->
-<!--</script>-->
 </body>
 </html>
