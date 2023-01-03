@@ -28,7 +28,11 @@
 <!--    </script>-->
 </head>
 <body>
+
 <!--<div id="navbar" th:replace="../partials/navbar :: navbar"></div>-->
+=======
+<div id="navbar" th:replace="partials/navbar :: navbar"></div>
+>>>>>>> 5a6b19df73e6260a64955a473dfb4ec36d97b9bd
 <h1>Create custom exercise</h1>
 
 <form th:action="@{/create-custom-exercise}" method="post" th:object="${custom_exercise}">

@@ -68,7 +68,7 @@ public class CustomExerciseController {
         CustomExercise exerciseToUpdate = customExerciseRepo.getReferenceById(id);
         model.addAttribute("custom_exercise", exerciseToUpdate);
         model.addAttribute("user", (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        customExerciseRepo.save(exerciseToUpdate);
+//        customExerciseRepo.save(exerciseToUpdate);
         return "/custom-exercises/update-custom-exercise";
     }
     //post custom exercise

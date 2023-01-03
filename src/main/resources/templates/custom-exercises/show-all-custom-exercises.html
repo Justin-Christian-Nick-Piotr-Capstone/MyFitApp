@@ -8,6 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
             crossorigin="anonymous"></script>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <title>Register</title>
 <!--    <script>-->
 <!--        $(function(){-->
@@ -17,7 +18,14 @@
 </head>
 <body>
 <!--<div id="navbar" th:replace="../partials/navbar :: navbar"></div>-->
+=======
+    <title>Custom Exercises</title>
+</head>
+<body>
+<div id="navbar" th:replace="partials/navbar :: navbar"></div>
+>>>>>>> 5a6b19df73e6260a64955a473dfb4ec36d97b9bd
 
+<h1>All Custom Exercises: </h1>
 
 <div th:each="item: ${custom_exercises}">
     <p th:text="${item.getId()}">ID: </p>

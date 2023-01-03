@@ -25,7 +25,13 @@
 <!--    </script>-->
 </head>
 <body>
+<<<<<<< HEAD
 <!--<div id="navbar" th:replace="../partials/navbar :: navbar"></div>-->
+=======
+<nav id="navbar" th:replace="/partials/navbar :: navbar"></nav>
+
+#<!--<div id="navbar" th:replace="../partials/navbar :: navbar"></div>-->
+>>>>>>> 5a6b19df73e6260a64955a473dfb4ec36d97b9bd
     <div th:object="${dailyLog}">
         <span>Daily Log For: </span>
         <span th:text="*{date}">day</span>
