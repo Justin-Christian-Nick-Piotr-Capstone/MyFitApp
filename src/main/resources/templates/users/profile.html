@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<!--    <script>-->
+<!--        $(function(){-->
+<!--            $("#navbar").load("partials/navbar.html");-->
+<!--        });-->
+<!--    </script>-->
+
+    <link rel="stylesheet" href="../../static/css/profile.css">
+    <title>MyFitTracker</title>
+
+</head>
+<body>
+
+    <nav id="navbar" th:insert="partials/navbar.html :: navbar"></nav>
+
+    <div class="container">
+        <h1 class="header-text" th:text="${'Welcome' + user.username}">Welcome Username</h1>
+        <hr>
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-3">
+                <div class="text-center">
+                </div>
+            </div>
+
+            <!-- edit form column -->
+            <div class="col-md-9 personal-info">
+                <h3>Personal info</h3>
+
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Username:</label>
+                        <div class="col-lg-8">
+                            <input id="disable-field" class="form-control" type="text" >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Email:</label>
+                        <div class="col-lg-8">
+                            <input id="disable-field3" class="form-control" type="email" required>
+                        </div>
+                    </div>
+
+                    <button type="button">View Daily Logs</button>
+                    <button type="button">View Custom Exercises</button>
+                    <button type="button">View Custom Meals</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+
+</body>
+</html>
