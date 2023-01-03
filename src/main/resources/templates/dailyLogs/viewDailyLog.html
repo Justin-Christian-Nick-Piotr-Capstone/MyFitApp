@@ -27,7 +27,7 @@
 <body>
 <nav id="navbar" th:replace="/partials/navbar :: navbar"></nav>
 
-#<!--<div id="navbar" th:replace="../partials/navbar :: navbar"></div>-->
+<!--<div id="navbar" th:replace="../partials/navbar :: navbar"></div>-->
     <div th:object="${dailyLog}">
         <span>Daily Log For: </span>
         <span th:text="*{date}">day</span>
@@ -55,37 +55,37 @@
             </div>
         </div>
 
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col m-5">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Current Exercises</h5>
-                        <hr>
-                        <form th:action="@{/update-daily-log-functional}" method="post" th:object="${dailyLog}">
-                            <input class="hidden" th:field="*{user}" readonly>
-                            <input class="hidden" th:field="*{id}" readonly>
-                            <input class="hidden" th:field="*{date}" readonly>
-                            <p>Current exercises done for the day: </p>
-                            <input th:field="*{exercise_query}">
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col m-5">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Current Meals</h5>
-                        <hr>
-                        <form th:action="@{/update-daily-log-functional}" method="post" th:object="${dailyLog}">
-                            <input class="hidden" th:field="*{user}" readonly>
-                            <input class="hidden" th:field="*{id}" readonly>
-                            <input class="hidden" th:field="*{date}" readonly>
-                            <p>Current food eaten for the day: </p>
-                            <input th:field="*{meals_query}">
-                        </form>
-                    </div>
-                </div>
-            </div>
+<!--        <div class="row row-cols-1 row-cols-md-3 g-4">-->
+<!--            <div class="col m-5">-->
+<!--                <div class="card">-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title text-center">Current Exercises</h5>-->
+<!--                        <hr>-->
+<!--                        <form th:action="@{/update-daily-log-functional}" method="post" th:object="${dailyLog}">-->
+<!--                            <input class="hidden" th:field="*{user}" readonly>-->
+<!--                            <input class="hidden" th:field="*{id}" readonly>-->
+<!--                            <input class="hidden" th:field="*{date}" readonly>-->
+<!--                            <p>Current exercises done for the day: </p>-->
+<!--                            <input th:field="*{exercise_query}">-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col m-5">-->
+<!--                <div class="card">-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title text-center">Current Meals</h5>-->
+<!--                        <hr>-->
+<!--                        <form th:action="@{/update-daily-log-functional}" method="post" th:object="${dailyLog}">-->
+<!--                            <input class="hidden" th:field="*{user}" readonly>-->
+<!--                            <input class="hidden" th:field="*{id}" readonly>-->
+<!--                            <input class="hidden" th:field="*{date}" readonly>-->
+<!--                            <p>Current food eaten for the day: </p>-->
+<!--                            <input th:field="*{meals_query}">-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </div>
 
