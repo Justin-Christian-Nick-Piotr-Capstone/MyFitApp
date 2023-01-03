@@ -30,6 +30,9 @@ public class CustomMealController {
     public String showAllCustomExercise(Model model) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<CustomMeal> customMealList = customMealRepo.findAll();
+        if (customMealList.isEmpty()) {
+            return "redirect:/profile";
+        }
         for (int i = 0; i < customMealList.size(); i++) {
             CustomMeal customMeal = customMealList.get(i);
             if (customMeal.getUser().getId() != loggedInUser.getId()) {
