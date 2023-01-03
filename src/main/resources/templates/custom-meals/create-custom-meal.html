@@ -25,9 +25,10 @@
     <label for="query">Query: </label>
     <input id="query" th:field="*{query}" readonly>
 
+    <div hidden>
     <label for="user-id">User's ID: </label>
     <input id="user-id" th:field="*{user.id}" readonly>
-
+    </div>
     <button type="submit" class="hidden" id="submit-button">Submit</button>
 </form>
 

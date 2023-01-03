@@ -33,6 +33,7 @@
 <h1>Update Exercise: </h1>
 
 <form th:action="@{/update-custom-exercise}" method="post" th:object="${custom_exercise}">
+    <div>
     <input th:field="*{id}" class="hidden">
     <label for="calories">Calories: </label>
     <input id="calories" th:field="*{calories}" readonly>
@@ -42,7 +43,7 @@
 
     <label for="user-id">User's ID: </label>
     <input id="user-id" th:field="*{user.id}" readonly>
-
+    </div>
     <button type="submit" class="hidden" id="submit-button">Submit</button>
 </form>
 
