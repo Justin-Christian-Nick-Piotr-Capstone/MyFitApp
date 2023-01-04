@@ -48,7 +48,7 @@ public class User {
         username = copy.username;
         password = copy.password;
         height = copy.height;
-        age = copy.height;
+        age = copy.age;
         gender = copy.gender;
         maintenance_calories = copy.maintenance_calories;
         starting_weight = copy.starting_weight;

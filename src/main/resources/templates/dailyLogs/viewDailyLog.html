@@ -21,6 +21,17 @@
     </style>
 </head>
 <body>
+<!--This is all hidden data about the user-->
+    <div th:object="${user}" class="hidden">
+        <span id="user-id" th:text="*{id}"></span>
+        <span id="user-gender" th:text="*{gender}"></span>
+        <span id="user-age" th:text="*{age}"></span>
+        <span id="user-height" th:text="*{height}"></span>
+        <span id="user-weight" th:text="*{starting_weight}"></span>
+    </div>
+
+
+
 <nav id="navbar" th:replace="/partials/navbar :: navbar"></nav>
     <div th:object="${dailyLog}">
         <span>Daily Log For: </span>
@@ -34,7 +45,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-center">Current Calories</h5>
                         <hr>
-                        <p th:text="*{current_calories}"></p>
+                        <p id="current-calories" th:text="*{current_calories}"></p>
                     </div>
                 </div>
             </div>
@@ -49,37 +60,37 @@
             </div>
         </div>
 
-<!--        <div class="row row-cols-1 row-cols-md-3 g-4">-->
-<!--            <div class="col m-5">-->
-<!--                <div class="card">-->
-<!--                    <div class="card-body">-->
-<!--                        <h5 class="card-title text-center">Current Exercises</h5>-->
-<!--                        <hr>-->
-<!--                        <form th:action="@{/update-daily-log-functional}" method="post" th:object="${dailyLog}">-->
-<!--                            <input class="hidden" th:field="*{user}" readonly>-->
-<!--                            <input class="hidden" th:field="*{id}" readonly>-->
-<!--                            <input class="hidden" th:field="*{date}" readonly>-->
-<!--                            <p>Current exercises done for the day: </p>-->
-<!--                            <input th:field="*{exercise_query}">-->
-<!--                        </form>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col m-5">-->
-<!--                <div class="card">-->
-<!--                    <div class="card-body">-->
-<!--                        <h5 class="card-title text-center">Current Meals</h5>-->
-<!--                        <hr>-->
-<!--                        <form th:action="@{/update-daily-log-functional}" method="post" th:object="${dailyLog}">-->
-<!--                            <input class="hidden" th:field="*{user}" readonly>-->
-<!--                            <input class="hidden" th:field="*{id}" readonly>-->
-<!--                            <input class="hidden" th:field="*{date}" readonly>-->
-<!--                            <p>Current food eaten for the day: </p>-->
-<!--                            <input th:field="*{meals_query}">-->
-<!--                        </form>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col m-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Current Exercises</h5>
+                        <hr>
+                        <form th:action="@{/update-daily-log-functional}" method="post" th:object="${dailyLog}">
+                            <input class="hidden" th:field="*{user}" readonly>
+                            <input class="hidden" th:field="*{id}" readonly>
+                            <input class="hidden" th:field="*{date}" readonly>
+                            <p>Current exercises done for the day: </p>
+                            <input id="exercise-query" th:field="*{exercise_query}">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col m-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Current Meals</h5>
+                        <hr>
+                        <form th:action="@{/update-daily-log-functional}" method="post" th:object="${dailyLog}">
+                            <input class="hidden" th:field="*{user}" readonly>
+                            <input class="hidden" th:field="*{id}" readonly>
+                            <input class="hidden" th:field="*{date}" readonly>
+                            <p>Current food eaten for the day: </p>
+                            <input id="meals-query" th:field="*{meals_query}">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -93,6 +104,120 @@
         <span th:text="${item.getQuery()}"></span>
         <button th:onclick="">Click me</button>
     </div>
+
+    <h1>Custom Exercise List: </h1>
+    <div th:each="item: ${customMeals}">
+        <span>Calories for this exercise: </span>
+        <span th:text="${item.getCalories()}"></span>
+        <br>
+        <span>Query for this exercise: </span>
+        <span th:text="${item.getQuery()}"></span>
+        <button th:onclick="">Click me</button>
+    </div>
     <button type="submit">Update</button>
+<script>
+
+
+    // Grab all attributes of the user and store them in memory
+
+    let userHeight = document.getElementById("user-height").innerText;
+    let userAge = document.getElementById("user-age").innerText;
+    let userGender = document.getElementById("user-gender").innerText;
+    let userWeight = document.getElementById("user-weight").innerText;
+    // console.log("User age is: " + userAge);
+    // console.log("User height is: " + userHeight);
+    // console.log("User weight is: " + userWeight);
+    // console.log("User gender is: " + userGender);
+
+
+    // On page load get the exercise query and meal query and store them in memory.
+
+
+
+    async function onPageLoad() {
+        let exerciseQuery = document.getElementById("exercise-query").value;
+        let mealQuery = document.getElementById("meals-query").value;
+        let caloriesConsumed;
+        let caloriesBurned;
+        let currentCalories = document.getElementById("current-calories");
+
+        // This is for the exercise part API
+
+        async function runExerciseThroughAPI() {
+            let weight = userWeight * 0.453592;
+            let height = userHeight * 2.54;
+            let requestBody = {
+                "query": exerciseQuery,
+                "gender": userGender,
+                "weight_kg": weight,
+                "height_cm": height,
+                "age": userAge
+            }
+            console.log(requestBody)
+            await fetch("https://trackapi.nutritionix.com/v2/natural/exercise", {
+                headers: {
+                    "x-app-id": "c1e0a46a",
+                    "x-app-key": "3cbe6be390fb13028c6f5f48a2e4df8d",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(requestBody),
+                method: "POST"
+            }).then(resp => resp.json()).then(data => {
+                console.log("The total calories burned are: " + Math.round(data.exercises[0].nf_calories));
+                caloriesBurned = Math.round(data.exercises[0].nf_calories);
+                // queryToSubmit.value = event.target.elements.query1.value;
+                // submitButton.classList.remove("hidden");
+                // form.classList.add("hidden")
+                // console.log(caloriesBurned);
+            }).catch(function() {
+                alert("That query is not recognized.")
+            })
+        }
+
+        // This is for the meals part API
+
+        async function runMealsThroughAPI() {
+            // let weight = event.target.elements.user_weight.value * 0.453592;
+            // let height = event.target.elements.user_height.value * 2.54;
+            let requestBody = {
+                "query": mealQuery,
+                "timezone": "US/Central"
+            }
+            console.log(requestBody)
+            await fetch("https://trackapi.nutritionix.com/v2/natural/nutrients", {
+                headers: {
+                    "x-app-id": "c1e0a46a",
+                    "x-app-key": "3cbe6be390fb13028c6f5f48a2e4df8d",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(requestBody),
+                method: "POST"
+            }).then(resp => resp.json()).then(data => {
+                console.log("The total calories consumed are: " + Math.round(data.foods[0].nf_calories));
+                caloriesConsumed = Math.round(data.foods[0].nf_calories);
+                // queryToSubmit.value = event.target.elements.query1.value;
+                // submitButton.classList.remove("hidden");
+                // form.classList.add("hidden")
+                console.log(caloriesConsumed);
+            }).catch(function() {
+                alert("That query is not recognized.")
+            })
+        }
+        function setCurrentCalories() {
+            currentCalories.innerHTML = String(caloriesConsumed - caloriesBurned);
+            console.log("The total calories so far are: " + currentCalories.innerHTML);
+        }
+
+        await runExerciseThroughAPI();
+        await runMealsThroughAPI();
+        await setCurrentCalories();
+        // await console.log("The total calories consumed are: " + caloriesConsumed);
+        // await console.log("The total calories burned are: " + caloriesBurned);
+    }
+    onPageLoad();
+
+
+
+</script>
 </body>
 </html>
