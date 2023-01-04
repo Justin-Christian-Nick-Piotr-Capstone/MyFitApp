@@ -2,9 +2,11 @@ package com.example.myfitapp.Controllers;
 
 
 import com.example.myfitapp.Models.CustomExercise;
+import com.example.myfitapp.Models.CustomMeal;
 import com.example.myfitapp.Models.DailyLog;
 import com.example.myfitapp.Models.User;
 import com.example.myfitapp.Repos.CustomExerciseRepo;
+import com.example.myfitapp.Repos.CustomMealsRepo;
 import com.example.myfitapp.Repos.DailyLogRepo;
 import com.example.myfitapp.Repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,9 @@ public class DailyLogController {
 
     @Autowired
     CustomExerciseRepo customExerciseRepo;
+
+    @Autowired
+    CustomMealsRepo customMealsRepo;
 
     @Autowired
     UserRepo userRepo;
@@ -65,6 +70,7 @@ public class DailyLogController {
     @GetMapping("/view-daily-log")
     public String viewDailyLog(Model model) {
         User userLoggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", userLoggedIn);
         // Getting the date for the daily log and checking to see if a daily log with that date already exists.
         LocalDate dateObj = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -96,6 +102,8 @@ public class DailyLogController {
         }
         List<CustomExercise> customExerciseList = customExerciseRepo.findCustomExerciseByUser(userLoggedIn);
         model.addAttribute("customExercises", customExerciseList);
+        List<CustomMeal> customMealList = customMealsRepo.findCustomMealByUser(userLoggedIn);
+        model.addAttribute("customMeals", customMealList);
         System.out.println("IT works until here");
         System.out.println("THE DAY IS: " + date);
         return "dailyLogs/viewDailyLog";
