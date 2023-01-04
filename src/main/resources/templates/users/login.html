@@ -16,34 +16,143 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../../static/css/login.css">
     <title>MyFitTracker</title>
     <link rel="shortcut icon" type="image/png" th:href="@{../../static/favicon.ico}"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Slab:wght@400;700&display=swap');
+
+        html {
+            height: 100%;
+            min-height:800px;
+        }
+        body {
+
+            background-size:cover;
+            background-repeat:no-repeat;
+            text-align: center;
+            font-family: 'Noto Sans', sans-serif;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        h1{
+            font-weight:400;
+            padding-top:0;
+            margin-top:0;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        #svg_form_time {
+            height: 15px;
+            max-width: 80%;
+            margin: 40px auto 20px;
+            display: block;
+        }
+
+        #svg_form_time circle,
+        #svg_form_time rect {
+            fill: white;
+        }
+
+        .button {
+            background: rgb(237, 40, 70);
+            border-radius: 5px;
+            padding: 15px 25px;
+            display: inline-block;
+            margin: 10px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            box-shadow:0px 2px 5px rgb(0,0,0,0.5);
+        }
+
+        .disabled {
+            display:none;
+        }
+
+        section {
+            padding: 50px ;
+            max-width: 300px;
+            margin: 30px auto;
+            background:white;
+            background:rgba(255,255,255,0.9);
+            backdrop-filter:blur(10px);
+            box-shadow:0px 2px 10px rgba(0,0,0,0.3);
+            border-radius:5px;
+            transition:transform 0.2s ease-in-out;
+        }
+
+
+        input {
+            width: 100%;
+            margin: 7px 0px;
+            display: inline-block;
+            padding: 12px 25px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid lightgrey;
+            font-size: 1em;
+            font-family:inherit;
+            background:white;
+        }
+
+        p{
+            text-align:justify;
+            margin-top:0;
+        }
+    </style>
 </head>
 <body>
 <div id="navbar" th:replace="partials/navbar :: navbar"></div>
 
     <a class="navbar-brand text-white">MyFitTracker</a>
 
-<div class="container">
-    <h1>Please Login</h1>
-    <form th:action="@{/login}" method="post">
-        <div class="form-control">
-            <input id="username" type="text" name="username" required>
-            <label for="username">Username</label>
-        </div>
-        <div class="form-control">
-            <input id="password" type="password" name="password" required>
-            <label for="password">Password</label>
-        </div>
-        <button type="submit" class="btn">Login</button>
 
-        <p class="text">Don't have an account? <a href="/register">Register</a> </p>
-    </form>
+<form th:action="@{/login}" method="post">
+    <div>
+        <h1>Please Login</h1>
+        <section>
+            <div class="form-control">
+                <input id="username" type="text" name="username" placeholder="username" required>
+            </div>
+            <div class="form-control">
+                <input id="password" type="password" name="password" placeholder="password" required>
+
+            </div>
+            <button type="submit" class="button text-center" id="submit" style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);">Submit</button>
+            <p class="text">Don't have an account? <a  class="d-flex text-center" href="/register">Register</a> </p>
+        </section>
+    </div>
+</form>
+
+
+
+
+
+
+
+<!--    <h1>Please Login</h1>-->
+<!--    <form th:action="@{/login}" method="post">-->
+<!--        <div class="form-control">-->
+<!--            <input id="username" type="text" name="username" required>-->
+<!--            <label for="username">Username</label>-->
+<!--        </div>-->
+<!--        <div class="form-control">-->
+<!--            <input id="password" type="password" name="password" required>-->
+<!--            <label for="password">Password</label>-->
+<!--        </div>-->
+<!--        <button type="submit" class="btn">Login</button>-->
+
+<!--        <p class="text">Don't have an account? <a href="/register">Register</a> </p>-->
+<!--    </form>-->
 <!--    <form th:action="@{/logout}" method="post">-->
 <!--        <button type="submit">Logout</button>-->
 <!--    </form>-->
-</div>
+
 
 <!--<script src="login.js"></script>-->
 <script>
