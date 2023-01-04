@@ -102,7 +102,7 @@
         <br>
         <span>Query for this exercise: </span>
         <span th:text="${item.getQuery()}"></span>
-        <button th:onclick="">Click me</button>
+        <button class="custom-exercise-buttons">Click me</button>
     </div>
 
     <h1>Custom Exercise List: </h1>
@@ -112,7 +112,7 @@
         <br>
         <span>Query for this exercise: </span>
         <span th:text="${item.getQuery()}"></span>
-        <button th:onclick="">Click me</button>
+        <button class="custom-meals-buttons">Click me</button>
     </div>
     <button type="submit">Update</button>
 <script>
@@ -213,10 +213,41 @@
         await setCurrentCalories();
         // await console.log("The total calories consumed are: " + caloriesConsumed);
         // await console.log("The total calories burned are: " + caloriesBurned);
+
+        // Next step is to add event listeners so that whenever a custom exercise or meal is pressed, it adds that to the current meal query.
+
+        async function createEventListeners() {
+            let customMealButtons = document.getElementsByClassName("custom-meals-buttons");
+
+            for (let i = 0; i < customMealButtons.length; i++) {
+                let customMealButton = customMealButtons[i];
+                let customMealQuery = customMealButton.previousElementSibling.innerText;
+                let customMealCalories = customMealButton.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerText;
+                customMealButton.addEventListener("click", () => {
+                    mealQuery.innerText += ", " + customMealQuery;
+                    onPageLoad();
+                })
+            }
+
+            let customExerciseButtons = document.getElementsByClassName("custom-exercise-buttons");
+
+            for (let i = 0; i < customExerciseButtons.length; i++) {
+                let customExerciseButton = customExerciseButtons[i];
+                let customExerciseQuery = customExerciseButton.previousElementSibling.innerText;
+                let customExerciseCalories = customExerciseButton.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerText;
+                customExerciseButton.addEventListener("click", () => {
+                    exerciseQuery.innerText += ", " + customExerciseQuery;
+                    onPageLoad();
+                })
+            }
+        }
+
+        await createEventListeners();
+
+
+
     }
     onPageLoad();
-
-
 
 </script>
 </body>
