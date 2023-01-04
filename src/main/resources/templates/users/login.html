@@ -109,23 +109,22 @@
 <body>
 <div id="navbar" th:replace="partials/navbar :: navbar"></div>
 
-    <a class="navbar-brand text-white">MyFitTracker</a>
 
 
 <form th:action="@{/login}" method="post">
     <div>
         <h1>Please Login</h1>
         <section>
-            <div class="form-control">
-                <input id="username" type="text" name="username" placeholder="username" required>
-            </div>
-            <div class="form-control">
-                <input id="password" type="password" name="password" placeholder="password" required>
 
-            </div>
-            <button type="submit" class="button text-center" id="submit" style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);">Submit</button>
+                <input id="username" type="text" name="username" placeholder="username" required>
+
+                <input id="password" type="password" name="password" placeholder="password" required>
+            <br>
+            <br>
             <p class="text">Don't have an account? <a  class="d-flex text-center" href="/register">Register</a> </p>
         </section>
+        <button type="submit" class="button text-center" id="submit" style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);">Submit</button>
+
     </div>
 </form>
 
