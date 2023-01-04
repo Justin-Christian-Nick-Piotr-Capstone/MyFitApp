@@ -47,6 +47,7 @@ public class SecurityConfiguration {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeRequests()
+                .antMatchers("/static/favicon.ico").permitAll()
                 .antMatchers("/", "/register") // anyone can see the home page
                 .permitAll()
                 /* Pages that require authentication */
