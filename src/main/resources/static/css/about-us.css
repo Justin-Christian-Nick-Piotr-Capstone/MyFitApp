@@ -55,10 +55,10 @@
         background-color: #eeeeee;
 
     }
-    /*.avatar {*/
-    /*    width: 170px;*/
-    /*    !*height: 500px;*!*/
-    /*}*/
+    .avatar {
+        width: 170px;
+        /*height: 500px;*/
+    }
 
 
 }
