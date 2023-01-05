@@ -47,8 +47,8 @@
 </form>
 
 <form id="search-form" th:object="${user}">
-    <label for="query1">Query: </label>
-    <input name="query1" id="query1">
+    <label for="query1">Enter an exercise </label>
+    <input name="query1" id="query1" placeholder="ex. ran 3 miles">
 
     <label for="username" class="hidden">Username</label>
     <input name="username" id="username" th:field="*{username}" readonly class="hidden">

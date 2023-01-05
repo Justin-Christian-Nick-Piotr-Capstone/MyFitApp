@@ -16,23 +16,25 @@
 <body>
 <div id="navbar" th:replace="partials/navbar :: navbar"></div>
 
-<h1>Custom Exercises </h1>
+<h1 class="text-center">Your Exercises</h1>
+<hr>
+<br>
+<br>
 
-
-    <div class="d-flex">
+    <div class="d-flex justify-content-center">
         <div th:each="item: ${custom_exercises}">
             <div class="card" style="width: 18rem;">
-                <div class="card-header">
-                    Exercise
+                <div class="card-header text-center">
+                    Workout
                 </div>
                 <p hidden th:text="${item.getId()}">ID: </p>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><p>Calories: </p>
+                    <li class="list-group-item text-center"><p>Calories Burned </p>
                         <p th:text="${item.getCalories()}"></p></li>
-                    <li class="list-group-item"> <p>Exercise: </p>
+                    <li class="list-group-item text-center"> <p>Exercise </p>
                         <p th:text="${item.getQuery()}"></p></li>
-                    <li class="list-group-item"> <a th:href="@{/update-custom-exercise/{id}(id = ${item.getId()})}"><button class="edit-button">Edit</button></a></li>
-                    <li class="list-group-item"><form th:action="@{/delete-custom-exercise/{id}(id = ${item.getId()})}" method="post">
+                    <li class="list-group-item text-center"> <a th:href="@{/update-custom-exercise/{id}(id = ${item.getId()})}"><button class="edit-button">Edit</button></a></li>
+                    <li class="list-group-item text-center"><form th:action="@{/delete-custom-exercise/{id}(id = ${item.getId()})}" method="post">
                         <button type="submit">Delete</button>
                     </form></li>
                 </ul>
@@ -42,8 +44,10 @@
 
 
 <br>
-<a href="/create-custom-exercise"><button>Create custom exercise</button></a>
 
+<div class="text-center">
+<a href="/create-custom-exercise"><button>Add Exercise</button></a>
+</div>
 <!--<div id="exercise" th:replace="create-custom-exercise :: exercise"></div>-->
 
 

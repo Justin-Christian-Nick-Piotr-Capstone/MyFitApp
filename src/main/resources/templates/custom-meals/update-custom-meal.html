@@ -22,7 +22,7 @@
 </head>
 <body>
 <div id="navbar" th:replace="partials/navbar :: navbar"></div>
-<h1>Update Meal: </h1>
+<h1>Update Meal </h1>
 
 <form th:action="@{/update-custom-meal}" method="post" th:object="${custom_meal}">
     <input th:field="*{id}" class="hidden">
@@ -45,8 +45,10 @@
     <label for="username" class="hidden">Username</label>
     <input name="username" id="username" th:field="*{username}" readonly class="hidden">
 
+    <div hidden>
     <label for="user_id" class="hidden">User ID:</label>
     <input name="user-id" id="user_id" th:field="*{id}" readonly class="hidden">
+    </div>
 
     <label for="user_gender" class="hidden">Gender: </label>
     <input name="user_gender" id="user_gender" th:field="*{gender}" readonly class="hidden">

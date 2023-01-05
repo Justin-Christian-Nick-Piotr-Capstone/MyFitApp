@@ -41,8 +41,8 @@
 </form>
 
 <form id="search-form" th:object="${user}">
-    <label for="query1">Query: </label>
-    <input name="query1" id="query1">
+    <label for="query1">Enter a meal </label>
+    <input name="query1" id="query1" placeholder="ex. 3 cups of oatmeal">
 
     <label for="username" class="hidden">Username</label>
     <input name="username" id="username" th:field="*{username}" readonly class="hidden">
@@ -62,7 +62,7 @@
     <label for="user_age" class="hidden">Age: </label>
     <input name="user_age" id="user_age" th:field="*{age}" readonly class="hidden">
 
-    <button type="submit">Click me</button>
+    <button type="submit">Submit</button>
 </form>
 
 <script>

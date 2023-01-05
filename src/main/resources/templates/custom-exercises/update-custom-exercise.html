@@ -23,7 +23,7 @@
 <body>
 <div id="navbar" th:replace="partials/navbar :: navbar"></div>
 
-<h1>Update Exercise: </h1>
+<h1>Update Exercise </h1>
 
 <form th:action="@{/update-custom-exercise}" method="post" th:object="${custom_exercise}">
     <div>
@@ -34,8 +34,10 @@
     <label for="query">Query: </label>
     <input id="query" th:field="*{query}" readonly>
 
+    <div>
     <label for="user-id">User's ID: </label>
     <input id="user-id" th:field="*{user.id}" readonly>
+    </div>
     </div>
     <button type="submit" class="hidden" id="submit-button">Submit</button>
 </form>
