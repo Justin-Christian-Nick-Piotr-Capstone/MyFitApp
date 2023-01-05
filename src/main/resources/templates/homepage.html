@@ -36,25 +36,26 @@
 <body>
 <div id="navbar" th:replace="partials/navbar :: navbar"></div>
 <div class="row d-flex justify-content-center">
-    <div class="card border-0 w-25" style="width: 18rem;">
+        <div class="card border-0 w-25" style="width: 18rem;">
 
-        <div class="card-body">
-            <h1 class="card-title" style="font-family: 'Noto Sans', sans-serif;
- font-size: 3rem">Good health starts with a plan.</h1>
+            <div class="card-body">
+                <h1 class="card-title" style="font-family: 'Noto Sans', sans-serif;
+     font-size: 3rem">Good health starts with a plan.</h1>
+            </div>
+
+            <div class="card-body">
+                <p>Want to keep your health in check? Track your daily meal habits, exercises, and reach your goals with MyFitnessTracker</p>
+                <a href="/register"><button type="button" class="btn btn-primary w-100">Register Today</button></a>
+                <p class="text-center">or</p>
+                <a href="/login"><button type="button" class="btn btn-primary w-100">Login</button></a>
+            </div>
+        </div>
+        <div class="card border-0" style="width: 40rem;">
+            <div class="card-body">
+                <img src="https://images.unsplash.com/photo-1587411768515-eeac0647deed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80">
+            </div>
         </div>
 
-        <div class="card-body">
-            <p>Want to keep your health in check? Track your daily meal habits, exercises, and reach your goals with MyFitnessTracker</p>
-            <a href="/register"><button type="button" class="btn btn-primary w-100">Register Today</button></a>
-            <p class="text-center">or</p>
-            <a href="/login"><button type="button" class="btn btn-primary w-100">Login</button></a>
-        </div>
-    </div>
-    <div class="card border-0" style="width: 40rem;">
-        <div class="card-body">
-            <img src="https://images.unsplash.com/photo-1587411768515-eeac0647deed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80">
-        </div>
-    </div>
 </div>
 
 <div class="row d-flex justify-content-center">
