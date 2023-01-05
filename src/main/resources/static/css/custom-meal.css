@@ -1,0 +1,53 @@
+@media (min-width: 360px) and (max-width: 2000px) {
+
+    body {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        color: #eeeeee;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+
+    h1 {
+        text-align: center;
+    }
+
+    input {
+        margin-bottom: 50px;
+    }
+
+    input#calories {
+        background-color: rgba(0, 0, 0, 0.5);
+        outline: none;
+        color: white;
+    }
+    input#query {
+        background-color: rgba(0, 0, 0, 0.5);
+        outline: none;
+        color: white;
+    }
+    input#user-id {
+        background-color: rgba(0, 0, 0, 0.5);
+        outline: none;
+        color: white;
+    }
+    input#query1 {
+        background-color: rgba(0, 0, 0, 0.5);
+        outline: none;
+        color: white;
+    }
+
+    button.lower-btn {
+        height: 50px;
+        text-transform: uppercase;
+        background-color: #4b88a6;
+    }
+}
