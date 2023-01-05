@@ -8,6 +8,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body {
+            width: 100%;
+        }
+    </style>
     <title>Register</title>
 </head>
 <body>
@@ -19,7 +24,7 @@
 <br>
 <br>
 
-<div class="d-flex justify-content-center">
+<div class="row d-flex justify-content-center">
     <div th:each="item: ${custom_meals}">
         <div class="card" style="width: 18rem;">
             <div class="card-header text-center">
