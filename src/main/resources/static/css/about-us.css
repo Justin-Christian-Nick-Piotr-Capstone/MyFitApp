@@ -1,4 +1,4 @@
-@media (min-width: 360px) and (max-width: 2000px) {
+@media (min-width: 330px) and (max-width: 2000px) {
 
     @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@400;700&display=swap');
 
@@ -55,10 +55,10 @@
         background-color: #eeeeee;
 
     }
-    .avatar {
-        width: 170px;
-        /*height: 500px;*/
-    }
+    /*.avatar {*/
+    /*    width: 170px;*/
+    /*    !*height: 500px;*!*/
+    /*}*/
 
 
 }

@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../static/css/about-us.css">
+    <link rel="stylesheet" href="/css/about-us.css">
     <title>MyFitTracker</title>
 
 <!--    <script>-->
@@ -40,43 +40,49 @@
     h1.third-text {
         color: #eeeeee;
     }
+    h5.card-title {
+        color: black;
+    }
 
     div.card {
         color: #eeeeee;
-        background-color: rgba(14, 14, 13, 0.5);
+        /*background-color: rgba(14, 14, 13, 0.5);*/
     }
     div.row {
         justify-content: space-around;
     }
 
     #display_image {
-        width: 100px;
-        height: 100px;
+
         background-position: center;
         background-size: cover;
-        background-image: url("../templates/Linkedin photo.jpeg");
+        background-image: url("https://s3.amazonaws.com/alumni.codeup.com/AP%20Christian%20Carter.jpg");
+        background-repeat: no-repeat;
     }
 
-    /*#display_image2 {*/
-    /*    width: 100px;*/
-    /*    height: 100px;*/
-    /*    background-position: center;*/
-    /*    background-size: cover;*/
-    /*}*/
+    #display_image2 {
 
-    /*#display_image3 {*/
-    /*    width: 100px;*/
-    /*    height: 100px;*/
-    /*    background-position: center;*/
-    /*    background-size: cover;*/
-    /*}*/
+        background-position: center;
+        background-size: cover;
+        background-image: url("https://s3.amazonaws.com/alumni.codeup.com/AP%20Piotr%20Chomicki.jpg");
+        background-repeat: no-repeat;
+    }
 
-    /*#display_image4 {*/
-    /*    width: 100px;*/
-    /*    height: 100px;*/
-    /*    background-position: center;*/
-    /*    background-size: cover;*/
-    /*}*/
+    #display_image3 {
+
+        background-position: center;
+        background-size: cover;
+        background-image: url("https://s3.amazonaws.com/alumni.codeup.com/AP%20Nicholas%20Barrera.jpg");
+        background-repeat: no-repeat;
+    }
+
+    #display_image4 {
+
+        background-position: center;
+        background-size: cover;
+        background-image: url("https://s3.amazonaws.com/alumni.codeup.com/AP%20Justin%20Hollmer.jpg");
+        background-repeat: no-repeat;
+    }
 
 
 </style>
@@ -94,44 +100,48 @@
 <div class="container">
 <div class="row">
     <div class="card" style="width: 11rem;">
-<!--                <div id="display_image4" style="height:150px; width:150px; border-radius: 50%; border: 5px solid grey;"></div>-->
+                <div id="display_image4" style="height:150px; width:150px; border-radius: 50%;"></div>
         <div class="card-body">
             <h5 class="card-title">Justin Hollmer</h5>
-            <h6 class="card-subtitle mb-2">Backend Developer</h6>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#" class="card-link">Alumni</a>
+            <a href="https://www.linkedin.com/in/justinhollmer/"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/Justin-Hollmer1" class="fa-brands fa-github"></a>
+            <a href="https://alumni.codeup.com/students/1656">Alumni</a>
+
 
 
         </div>
     </div>
 
     <div class="card" style="width: 11rem;">
-<!--        <div id="display_image3" style="height:150px; width:150px; border-radius: 50%; border: 5px solid grey;"></div>-->
+        <div id="display_image3" style="height:150px; width:150px; border-radius: 50%;"></div>
         <div class="card-body">
             <h5 class="card-title">Nicholas Barrera</h5>
-            <h6 class="card-subtitle mb-2">Frontend Developer</h6>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#" class="card-link">Alumni</a>
-</div>
-    </div>
+            <a href="https://www.linkedin.com/in/nicholasbarrera1/"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/NicholasBarrera" class="fa-brands fa-github"></a>
+            <a href="https://alumni.codeup.com/students/1652">Alumni</a>
 
-    <div class="card" style="width: 11rem;">
-<!--        <div id="display_image2" style="height:150px; width:150px; border-radius: 50%; border: 5px solid grey;"></div>-->
-        <div class="card-body">
-            <h5 class="card-title">Peter Chomicki</h5>
-            <h6 class="card-subtitle mb-2">Backend Developer</h6>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#" class="card-link">Alumni</a>
         </div>
     </div>
 
     <div class="card" style="width: 11rem;">
-        <div id="display_image" style="height:150px; width:150px; border-radius: 50%; border: 5px solid transparent;"></div>
+        <div id="display_image2" style="height:150px; width:150px; border-radius: 50%;"></div>
+        <div class="card-body">
+            <h5 class="card-title">Piotr Chomicki</h5>
+            <a href="https://www.linkedin.com/in/piotr-k-c/"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/xioulin" class="fa-brands fa-github"></a>
+            <a href="https://alumni.codeup.com/students/1651">Alumni</a>
+
+        </div>
+    </div>
+
+    <div class="card" style="width: 11rem;">
+        <div id="display_image" style="height:150px; width:150px; border-radius: 50%;"></div>
         <div class="card-body">
             <h5 class="card-title">Christian Carter</h5>
-            <h6 class="card-subtitle mb-2">Frontend Developer</h6>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#" class="card-link">Alumni</a>
+            <a href="https://www.linkedin.com/in/christian-carter-b60389254/"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/leeCarter25" class="fa-brands fa-github"></a>
+            <a href="https://alumni.codeup.com/students/1670">Alumni</a>
+
         </div>
     </div>
 
