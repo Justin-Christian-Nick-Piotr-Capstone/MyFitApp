@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -29,30 +30,32 @@
             background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);
         }
     </style>
-    <title>Document</title>
+    <title>My Fit Tracker</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{../static/favicon.ico}"/>
 </head>
 <body>
 <div id="navbar" th:replace="partials/navbar :: navbar"></div>
 <div class="row d-flex justify-content-center">
-    <div class="card border-0 w-25" style="width: 18rem;">
+        <div class="card border-0 w-25" style="width: 18rem;">
 
-        <div class="card-body">
-            <h1 class="card-title" style="font-family: 'Noto Sans', sans-serif;
- font-size: 3rem">Good health starts with a plan.</h1>
+            <div class="card-body">
+                <h1 class="card-title" style="font-family: 'Noto Sans', sans-serif;
+     font-size: 3rem">Good health starts with a plan.</h1>
+            </div>
+
+            <div class="card-body">
+                <p>Want to keep your health in check? Track your daily meal habits, exercises, and reach your goals with MyFitnessTracker</p>
+                <a href="/register"><button type="button" class="btn btn-primary w-100">Register Today</button></a>
+                <p class="text-center">or</p>
+                <a href="/login"><button type="button" class="btn btn-primary w-100">Login</button></a>
+            </div>
+        </div>
+        <div class="card border-0" style="width: 40rem;">
+            <div class="card-body">
+                <img src="https://images.unsplash.com/photo-1587411768515-eeac0647deed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80">
+            </div>
         </div>
 
-        <div class="card-body">
-            <p>Want to keep your health in check? Track your daily meal habits, exercises, and reach your goals with MyFitnessTracker</p>
-            <a href="/register"><button type="button" class="btn btn-primary w-100">Register Today</button></a>
-            <p class="text-center">or</p>
-            <a href="/login"><button type="button" class="btn btn-primary w-100">Login</button></a>
-        </div>
-    </div>
-    <div class="card border-0" style="width: 40rem;">
-        <div class="card-body">
-            <img src="https://images.unsplash.com/photo-1587411768515-eeac0647deed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80">
-        </div>
-    </div>
 </div>
 
 <div class="row d-flex justify-content-center">
@@ -88,7 +91,7 @@
     </div>
     <div class="card border-0" style="width: 40rem;">
         <div class="card-body">
-            <img src="https://plus.unsplash.com/premium_photo-1664391732442-51cfcba47f47?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=727&q=80">
+            <img src="https://cdn.pixabay.com/photo/2015/07/25/22/14/weight-860625_960_720.jpg" style="width: 600px">
         </div>
     </div>
 
