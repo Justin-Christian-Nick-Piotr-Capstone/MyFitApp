@@ -21,8 +21,8 @@
 <br>
 <br>
 
-    <div class="d-flex justify-content-center w-100">
-        <div th:each="item: ${custom_exercises}">
+<div class="card-group d-flex justify-content-center">
+    <div th:each="item: ${custom_exercises}">
             <div class="card" style="width: 18rem;">
                 <div class="card-header text-center">
                     Workout
@@ -39,17 +39,82 @@
                     </form></li>
                 </ul>
             </div>
-        </div>
     </div>
+</div>
 
 
 <br>
+
+
 
 <div class="text-center">
 <a href="/create-custom-exercise"><button>Add Exercise</button></a>
 </div>
 <!--<div id="exercise" th:replace="create-custom-exercise :: exercise"></div>-->
 
+
+<!-- Button trigger modal -->
+<!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
+<!--    Create Exercise-->
+<!--</button>-->
+
+<!-- Modal -->
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--&lt;!&ndash;                Create custom exercise modal&ndash;&gt;-->
+<!--                <form th:action="@{/create-custom-exercise}" method="post" th:object="${custom_exercise}">-->
+<!--                    <div hidden>-->
+<!--                        <label for="calories">Calories: </label>-->
+<!--                        <input id="calories" th:field="*{calories}" readonly>-->
+
+<!--                        <label for="query">Query: </label>-->
+<!--                        <input id="query" th:field="*{query}" readonly>-->
+
+<!--                        <label for="user-id">User's ID: </label>-->
+<!--                        <input id="user-id" th:field="*{user.id}" readonly>-->
+<!--                    </div>-->
+
+<!--                    <button type="submit" class="hidden" id="submit-button">Submit</button>-->
+<!--                </form>-->
+
+<!--                <form id="search-form" th:object="${user}">-->
+<!--                    <label for="query1">Enter an exercise </label>-->
+<!--                    <input name="query1" id="query1" placeholder="ex. ran 3 miles">-->
+
+<!--                    <label for="username" class="hidden">Username</label>-->
+<!--                    <input name="username" id="username" th:field="*{username}" readonly class="hidden">-->
+
+<!--                    <label for="user_id" class="hidden">User ID:</label>-->
+<!--                    <input name="user-id" id="user_id" th:field="*{id}" readonly class="hidden">-->
+
+<!--                    <label for="user_gender" class="hidden">Gender: </label>-->
+<!--                    <input name="user_gender" id="user_gender" th:field="*{gender}" readonly class="hidden">-->
+
+<!--                    <label for="user_height" class="hidden">Height: </label>-->
+<!--                    <input name="user_height" id="user_height" th:field="*{height}" readonly class="hidden">-->
+
+<!--                    <label for="user_weight" class="hidden">Weight: </label>-->
+<!--                    <input name="user_weight" id="user_weight" th:field="*{starting_weight}" readonly class="hidden">-->
+
+<!--                    <label for="user_age" class="hidden">Age: </label>-->
+<!--                    <input name="user_age" id="user_age" th:field="*{age}" readonly class="hidden">-->
+
+<!--                    <button type="submit">Click me</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--                <button type="button" class="btn btn-primary">Save changes</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <script>
     // let editButtons = document.getElementsByClassName("edit-button");
@@ -60,5 +125,6 @@
     // }
 
 </script>
+
 </body>
 </html>

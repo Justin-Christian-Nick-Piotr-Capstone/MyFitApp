@@ -24,7 +24,7 @@
 <br>
 <br>
 
-<div class="row d-flex justify-content-center">
+<div class="card-group d-flex justify-content-center">
     <div th:each="item: ${custom_meals}">
         <div class="card" style="width: 18rem;">
             <div class="card-header text-center">
@@ -35,13 +35,22 @@
                 <li class="list-group-item"><p class="text-center">Calories</p>
                     <p class="text-center font-weight-bold" th:text="${item.getCalories()}">Calories </p>
                 <li class="list-group-item"> <p class="text-center">Meal </p>
-                <p class="text-center font-weight-bold" th:text="${item.getQuery()}">Query </p></li>
+                    <p class="text-center font-weight-bold" th:text="${item.getQuery()}">Query </p></li>
                 <li class="list-group-item text-center"><a th:href="@{/update-custom-meal/{id}(id = ${item.getId()})}"><button class="edit-button">Edit</button></a></li>
                 <li class="list-group-item text-center"><form th:action="@{/delete-custom-meal/{id}(id = ${item.getId()})}" method="post">
                     <button type="submit">Delete</button>
                 </form></li>
             </ul>
         </div>
+    </div>
+</div>
+
+
+
+
+<div class="row d-flex justify-content-center">
+
+
     </div>
 </div>
 <br>

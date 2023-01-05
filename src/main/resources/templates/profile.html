@@ -19,7 +19,11 @@
 
     <title>MyFitTracker</title>
     <link rel="shortcut icon" type="image/png" th:href="@{../static/favicon.ico}"/>
-
+    <style>
+        .btn-primary {
+            background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);
+        }
+    </style>
 
 
 </head>
@@ -30,7 +34,7 @@
     <div class="container">
         <div class=".col-xs-4 .col-md-offset-2">
             <div class="panel panel-default panel-info Profile">
-                <h1 class="header-text" th:text="${'Welcome ' + user.username}">Welcome Username</h1>
+                <h1 class="header-text" th:text="${'Welcome ' + user.username}">Welcome</h1>
 
 <!--                <div class="panel-body">-->
 <!--                    <div class="form-horizontal">-->
