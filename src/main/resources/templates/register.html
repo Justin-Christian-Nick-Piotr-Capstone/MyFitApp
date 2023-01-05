@@ -169,24 +169,24 @@
 
                 <input type="text" max="110" min = "24"placeholder="Current Height" th:field="*{height}"/>
 
-        <p>Average Daily Calorie Intake </p>
-        <input type="number"  placeholder="Maintenance Calories" th:field="*{maintenance_calories}"/>
+<!--        <p>Average Daily Calorie Intake </p>-->
+<!--        <input type="number"  placeholder="Maintenance Calories" th:field="*{maintenance_calories}"/>-->
 
         <input type="hidden" th:field="*{profile_visibility}" value="private"/>
         <input type="hidden" th:field="*{progress}" value="0"/>
 
     </section>
 
-<!--    <section>-->
-<!--        <p class="text-center">Personalization</p>-->
-<!--        <input type="text" placeholder="Gender" th:field="*{gender}"/>-->
-<!--        <input type="text" placeholder="Age" th:field="*{age}"/>-->
-<!--        <input type="text" placeholder="Current Weight lbs." th:field="*{starting_weight}"/>-->
-<!--        <input type="text" placeholder="Current Height in." th:field="*{height}"/>-->
-<!--        <input type="hidden" th:field="*{profile_visibility}" value="private"/>-->
-<!--        <input type="hidden" th:field="*{progress}" value="0"/>-->
+    <section>
+        <p class="text-center">Personalization</p>
+        <input type="text" placeholder="Gender" th:field="*{gender}"/>
+        <input type="text" placeholder="Age" th:field="*{age}"/>
+        <input type="text" placeholder="Current Weight lbs." th:field="*{starting_weight}"/>
+        <input type="text" placeholder="Current Height in." th:field="*{height}"/>
+        <input type="hidden" th:field="*{profile_visibility}" value="private"/>
+        <input type="hidden" th:field="*{progress}" value="0"/>
 
-<!--    </section>-->
+    </section>
 
 
 
