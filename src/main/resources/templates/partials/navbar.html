@@ -25,6 +25,10 @@
                 color: white
             }
 
+            .login-btn {
+                background-color: black;
+            }
+
         </style>
     </head>
     <body>
@@ -34,13 +38,10 @@
             <div class="container-fluid">
                 <div class="text-center">
                 <a class="navbar-brand text-white" href="../homepage.html">MyFitTracker</a>
-<<<<<<< HEAD
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color: white">
-                    <span class="navbar-toggler-icon" style="background-color: grey"></span>
-=======
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="color: white">
-                    <span class="navbar-toggler-icon"></span>
->>>>>>> 8c18e777e77d8c077e18161ad3553067aaae9dde
+                    <span class="navbar-toggler-icon" style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);"></span>
+
                 </button>
                 </div>
                 <div>
@@ -70,7 +71,7 @@
                                 </div>
                                 <div sec:authorize="!isAuthenticated()">
                                     <form th:action="@{/login}" method="get">
-                                        <button type="submit">Login</button>
+                                        <button class="login-btn" type="submit">Login</button>
                                     </form>
                                 </div>
                             </li>
