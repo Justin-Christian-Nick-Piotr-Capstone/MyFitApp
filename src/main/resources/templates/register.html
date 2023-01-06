@@ -127,6 +127,8 @@
         <input type="text" placeholder="username" th:field="*{username}"/>
         <input type="text" placeholder="email" th:field="*{email}"/>
         <input id= "password" type="password" placeholder="password" th:field="*{password}" required/>
+        <span id="conf_pass_alert"></span>
+        <span id="conf_pass_alert2"></span>
         <input id="confirm_pass"type="password" placeholder="confirm password" required onkeyup="validate_password()">
 
         <span id="wrong_pass_alert"></span>
@@ -197,6 +199,18 @@
 
         var pass = document.getElementById('password').value;
         var confirm_pass = document.getElementById('confirm_pass').value;
+        var hasNumber = /\d/;
+        if (pass.length<6 || pass.length>12 || hasNumber.test(pass) === false){
+            document.getElementById('conf_pass_alert').style.color = 'red';
+            document.getElementById('conf_pass_alert').innerHTML = "-password must have 6-12 characters and at least one number"
+        }else if (pass.length>6 || pass.length<12){
+            document.getElementById('conf_pass_alert').style.color = 'green';
+            document.getElementById('conf_pass_alert').innerHTML = "password is fine"
+        }
+        // if(hasNumber.test(pass) === false){
+        //     document.getElementById('conf_pass_alert2').style.color = "red";
+        //     document.getElementById('conf_pass_alert2').innerHTML = "-password must contain at least one number"
+        // }
         if (pass !== confirm_pass) {
             document.getElementById('wrong_pass_alert').style.color = 'red';
             document.getElementById('wrong_pass_alert').innerHTML
