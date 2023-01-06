@@ -144,7 +144,7 @@
                     <div class="d-flex justify-content-between">
                         <a th:href="@{/update-custom-exercise/{id}(id = ${item.getId()})}"><button class="edit-button"><i class="fa-solid fa-pen-to-square"></i></i></button></a>
                         <form th:action="@{/delete-custom-exercise/{id}(id = ${item.getId()})}" method="post">
-                            <button type="submit"><i class="fa-solid fa-minus"></i></button>
+                            <button type="submit"><i class="fa-solid fa-trash-can"></i></button>
                         </form>
                     </div>
                 </section>
