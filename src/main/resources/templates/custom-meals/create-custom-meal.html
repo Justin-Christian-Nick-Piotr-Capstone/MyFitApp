@@ -28,11 +28,11 @@
 <h1>Create custom meal</h1>
 
 <form th:action="@{/create-custom-meal}" method="post" th:object="${custom_meal}">
-    <label for="calories">Calories: </label>
-    <input id="calories" th:field="*{calories}" readonly>
+<!--    <label for="calories">Calories: </label>-->
+    <input id="calories" class="hidden" th:field="*{calories}" readonly>
 
-    <label for="query">Query: </label>
-    <input id="query" th:field="*{query}" readonly>
+<!--    <label for="query">Query: </label>-->
+    <input id="query"  class="hidden" th:field="*{query}" readonly>
 
     <div hidden>
     <label for="user-id">User's ID: </label>
