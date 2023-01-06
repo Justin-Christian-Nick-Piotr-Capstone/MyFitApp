@@ -45,14 +45,14 @@
                     <div class="card-body">
                         <h5 class="card-title text-center">Current Calories</h5>
                         <hr>
-                        <p id="current-calories" th:text="*{current_calories}"></p>
+                        <p  class="text-center" id="current-calories" th:text="*{current_calories}"></p>
                     </div>
                 </div>
             </div>
             <div class="col m-5">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Target Calories</h5>
+                        <h5 class="card-title text-center"> Your Target Calories</h5>
                         <hr>
                         <p th:text="*{target_calories}"></p>
                     </div>
@@ -98,27 +98,49 @@
         </form>
     </form>
 
-
-    <h1>Custom Exercise List: </h1>
-    <div th:each="item: ${customExercises}">
-        <span>Calories for this exercise: </span>
-        <span th:text="${item.getCalories()}"></span>
-        <br>
-        <span>Query for this exercise: </span>
-        <span th:text="${item.getQuery()}"></span>
-        <button class="custom-exercise-buttons">Click me</button>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">
+                <h1>Exercises </h1>
+            </div>
+            <ul class="list-group list-group-flush">
+                <div th:each="item: ${customExercises}">
+                    <span>Calories for this exercise: </span>
+                    <span th:text="${item.getCalories()}"></span>
+                    <br>
+                    <span>Exercise </span>
+                    <span th:text="${item.getQuery()}"></span>
+                    <button class="custom-exercise-buttons">Add to counter</button>
+                </div>
+            </ul>
+        </div>
     </div>
-
-    <h1>Custom Exercise List: </h1>
-    <div th:each="item: ${customMeals}">
-        <span>Calories for this exercise: </span>
-        <span th:text="${item.getCalories()}"></span>
-        <br>
-        <span>Query for this exercise: </span>
-        <span th:text="${item.getQuery()}"></span>
-        <button class="custom-meals-buttons">Click me</button>
+    <div class="col-md-6">
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">
+                <h1>Meals</h1>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><div th:each="item: ${customMeals}">
+                    <span>Calories for meal: </span>
+                    <span th:text="${item.getCalories()}"></span>
+                    <br>
+                    <span>Meal: </span>
+                    <span th:text="${item.getQuery()}"></span>
+                    <button class="custom-meals-buttons">Add to counter</button>
+                </div></li>
+            </ul>
+        </div>
     </div>
-    <button type="submit">Update</button>
+</div>
+
+
+
+
+
+
+
 <script>
 
 
@@ -223,9 +245,13 @@
             currentCalories.innerHTML = String(caloriesConsumed - caloriesBurned);
             console.log("The total calories so far are: " + currentCalories.innerHTML);
         }
-
-        await runExerciseThroughAPI();
-        await runMealsThroughAPI();
+        console.log(exerciseQuery)
+        if (exerciseQuery) {
+            await runExerciseThroughAPI();
+        }
+        if (mealQuery) {
+            await runMealsThroughAPI();
+        }
         await setCurrentCalories();
         // await console.log("The total calories consumed are: " + caloriesConsumed);
         // await console.log("The total calories burned are: " + caloriesBurned);
@@ -240,7 +266,11 @@
                 let customMealQuery = customMealButton.previousElementSibling.innerText;
                 let customMealCalories = customMealButton.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerText;
                 customMealButton.addEventListener("click", () => {
-                    mealQueryElement.value += ", " + customMealQuery;
+                    if (!mealQueryElement.value) {
+                        mealQueryElement.value += customMealQuery;
+                    } else {
+                        mealQueryElement.value += ", " + customMealQuery;
+                    }
                     // console.log(mealQuery.innerHTML);
                 })
             }
@@ -252,7 +282,11 @@
                 let customExerciseQuery = customExerciseButton.previousElementSibling.innerText;
                 let customExerciseCalories = customExerciseButton.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerText;
                 customExerciseButton.addEventListener("click", () => {
-                    exerciseQueryElement.value += ", " + customExerciseQuery;
+                    if (!exerciseQueryElement.value) {
+                        exerciseQueryElement.value += customExerciseQuery;
+                    } else {
+                        exerciseQueryElement.value += ", " + customExerciseQuery;
+                    }
                     // console.log(exerciseQueryElement);
                     // console.log(exerciseQuery);
                 })
