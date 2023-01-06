@@ -14,21 +14,6 @@ public class NavController {
     @Autowired
     UserRepo userRepo;
 
-//    @GetMapping("/about-us.html")
-//    public String showAboutUs(){
-//        return"/about-us";
-//    }
-//
-//    @GetMapping("/profile.html")
-//    public String showProfile(){
-//        return "/profile";
-//    }
-//
-//    @GetMapping("/homepage.html")
-//    public String showHomepage(){
-//        return"/homepage";
-//    }
-
     @GetMapping("/profile")
     public String showProfilePage(Model model) {
         model.addAttribute("user", (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
@@ -44,5 +29,4 @@ public class NavController {
     public String showHomePage() {
         return "/homepage";
     }
-
 }

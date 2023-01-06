@@ -107,7 +107,7 @@
             margin-top:0;
         }
     </style>
-    <title>Register</title>
+    <title>MyFitTracker - Register</title>
     <link rel="shortcut icon" type="image/png" th:href="@{../static/favicon.ico}"/>
 
 </head>
@@ -202,10 +202,10 @@
         var hasNumber = /\d/;
         if (pass.length<6 || pass.length>12 || hasNumber.test(pass) === false){
             document.getElementById('conf_pass_alert').style.color = 'red';
-            document.getElementById('conf_pass_alert').innerHTML = "-password must have 6-12 characters and at least one number"
+            document.getElementById('conf_pass_alert').innerHTML = "-Password must have 6-12 characters and at least one number"
         }else if (pass.length>6 || pass.length<12){
             document.getElementById('conf_pass_alert').style.color = 'green';
-            document.getElementById('conf_pass_alert').innerHTML = "password is fine"
+            document.getElementById('conf_pass_alert').innerHTML = "Password is fine"
         }
         // if(hasNumber.test(pass) === false){
         //     document.getElementById('conf_pass_alert2').style.color = "red";
