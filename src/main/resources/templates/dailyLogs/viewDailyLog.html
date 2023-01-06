@@ -340,9 +340,13 @@
             currentCalories.innerHTML = String(caloriesConsumed - caloriesBurned);
             console.log("The total calories so far are: " + currentCalories.innerHTML);
         }
-
-        await runExerciseThroughAPI();
-        await runMealsThroughAPI();
+        console.log(exerciseQuery)
+        if (exerciseQuery) {
+            await runExerciseThroughAPI();
+        }
+        if (mealQuery) {
+            await runMealsThroughAPI();
+        }
         await setCurrentCalories();
         // await console.log("The total calories consumed are: " + caloriesConsumed);
         // await console.log("The total calories burned are: " + caloriesBurned);
@@ -357,7 +361,11 @@
                 let customMealQuery = customMealButton.previousElementSibling.innerText;
                 let customMealCalories = customMealButton.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerText;
                 customMealButton.addEventListener("click", () => {
-                    mealQueryElement.value += ", " + customMealQuery;
+                    if (!mealQueryElement.value) {
+                        mealQueryElement.value += customMealQuery;
+                    } else {
+                        mealQueryElement.value += ", " + customMealQuery;
+                    }
                     // console.log(mealQuery.innerHTML);
                 })
             }
@@ -369,7 +377,11 @@
                 let customExerciseQuery = customExerciseButton.previousElementSibling.innerText;
                 let customExerciseCalories = customExerciseButton.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerText;
                 customExerciseButton.addEventListener("click", () => {
-                    exerciseQueryElement.value += ", " + customExerciseQuery;
+                    if (!exerciseQueryElement.value) {
+                        exerciseQueryElement.value += customExerciseQuery;
+                    } else {
+                        exerciseQueryElement.value += ", " + customExerciseQuery;
+                    }
                     // console.log(exerciseQueryElement);
                     // console.log(exerciseQuery);
                 })
