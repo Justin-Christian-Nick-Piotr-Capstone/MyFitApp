@@ -174,10 +174,9 @@
 
 
     <section>
-        <label for="goal">Goal Date achieve</label>
+        <label class="goal" for="goal">Goal Date achieve</label>
 
-        <input type="date" id="goal" name="trip-start"
-               value="2022-12-16">
+        <input type="date" id="goal" name="trip-start">
     </section>
 
 
@@ -219,7 +218,7 @@
         var base_color = "rgb(230,230,230)";
         var active_color = "rgb(237, 40, 70)";
 
-
+        document.getElementsByClassName('goal').value = new Date().toISOString().slice(0, 10);
 
         var child = 1;
         var length = $("section").length - 1;
@@ -310,6 +309,7 @@
             currentSection.nextAll('section').css('transform','translateX(100px)');
             $('section').not(currentSection).hide();
         });
+
 
 
         // function wrong_pass_alert() {
