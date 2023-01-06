@@ -16,10 +16,9 @@
               rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
               crossorigin="anonymous">
         <style>
-            .login-btn {
-                background-color: black;
-            }
-
+            /*#login-logout-buttons {*/
+            /*    height:100%;*/
+            /*}*/
         </style>
     </head>
     <body>
@@ -46,7 +45,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="../about-us.html">    About Us</a>
+                                <a class="nav-link text-white" href="/about-us">About Us</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="/profile">Profile</a>
@@ -54,21 +53,20 @@
 
                         </ul>
 
-                        <a style="font-size: 30px; margin-right: 10%;" class="navbar-brand text-white" href="../homepage.html">MyFitTracker</a>
+                        <a style="font-size: 30px; margin-right: 10%;" class="navbar-brand text-white" href="/homepage">MyFitTracker</a>
 
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
+                            <li class="nav-item" id="login-logout-buttons">
                                 <div sec:authorize="isAuthenticated()">
                                     <form th:action="@{/logout}" method="post">
-                                        <button style="height: 40px; background-color: transparent; border-color: transparent; color: white;" type="submit">Logout</button>
+                                        <button style="height: 40px; background-color: transparent; border-color: transparent; color: white; justify-self: center; align-self: center;" type="submit">Logout</button>
                                     </form>
                                 </div>
                                 <div sec:authorize="!isAuthenticated()">
                                     <form th:action="@{/login}" method="get">
-                                        <button style="height: 40px; background-color: transparent; border-color: transparent; color: white;" class="login-btn" type="submit">Login</button>
+                                        <button style="height: 40px; background-color: transparent; border-color: transparent; color: white; justify-self: center; align-self: center;" class="login-btn" type="submit">Login</button>
                                     </form>
                                 </div>
-
                             </li>
                         </ul>
                     </div>

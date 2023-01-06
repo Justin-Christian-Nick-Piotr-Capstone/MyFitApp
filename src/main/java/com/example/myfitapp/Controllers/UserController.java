@@ -101,10 +101,4 @@ public class UserController {
         userRepo.delete(userToDelete);
         return "redirect:/show-all-users";
     }
-
-    @GetMapping("/profile")
-    public String showProfilePage(Model model) {
-        model.addAttribute("user", (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        return "/profile";
-    }
 }
