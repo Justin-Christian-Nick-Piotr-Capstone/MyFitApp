@@ -131,10 +131,9 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</div>-->
-
-<div class="row d-flex">
-    <div>
-        <div th:each="item: ${custom_meals}">
+<div class="container">
+    <div class="card-group justify-content-center">
+        <div class="card col-md-4" style="width: 20rem; border: none" th:each="item: ${custom_meals}">
                 <section>
                     <h3 class="text-center">Meal</h3>
                     <hr>
@@ -150,12 +149,11 @@
                         </form>
                     </div>
                 </section>
-            </div>
         </div>
     </div>
 </div>
 
-</div>
+
 <br>
 
 <div class="text-center">

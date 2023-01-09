@@ -146,35 +146,11 @@
                     <h3 class="text-center">Your Target Calories</h3>
                     <hr>
                     <br>
-                    <p th:text="*{target_calories}"></p>
+                    <p class="text-center" th:text="*{target_calories}"></p>
                 </section>
             </div>
     </div>
 
-<!--////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-<!--        <div class="row d-flex">-->
-<!--            <div class="col-md-6">-->
-<!--                <section>-->
-<!--                    <h3 class="text-center">Your Current Calories</h3>-->
-<!--                    <hr>-->
-<!--                    <br>-->
-
-<!--                </section>-->
-<!--            </div>-->
-<!--            <div class="col-md-6">-->
-<!--                <section>-->
-<!--                    <h3 class="text-center">Your Target Calories</h3>-->
-<!--                    <hr>-->
-<!--                    <br>-->
-<!--                    <div class="card-body">-->
-<!--                        <h5 class="card-title text-center">Current Meals</h5>-->
-<!--                        <hr>-->
-
-<!--                    </div>-->
-<!--                </section>-->
-<!--            </div>-->
-<!--            </form>-->
-<!--        </div>-->
 
 
 
@@ -192,7 +168,7 @@
                 <input class="hidden" th:field="*{current_calories}">
                 <p>Current exercises done for the day: </p>
                 <textarea id="exercise-query" th:field="*{exercise_query}"></textarea>
-                <button style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);" class="button" type="submit">Update</button>
+                <button style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);" class="button " type="submit">Update</button>
             </div>
             <br>
             <ul class="list-group list-group-flush">
@@ -202,7 +178,7 @@
                     <br>
                     <span>Exercise </span>
                     <span th:text="${item.getQuery()}"></span>
-                    <button class="btn"><i class="fa-solid fa-plus" style="color: teal"></i></button>
+                    <button class="btn custom-exercise-buttons"><i class="fa-solid fa-plus" style="color: teal"></i></button>
                 </div>
             </ul>
         </section>
@@ -224,7 +200,7 @@
                     <br>
                     <span>Meal: </span>
                     <span th:text="${item.getQuery()}"></span>
-                    <button class="btn"><i class="fa-solid fa-plus" style="color: teal"></i></button>
+                    <button class="btn custom-meals-buttons"><i class="fa-solid fa-plus" style="color: teal"></i></button>
                 </div></li>
             </ul>
         </section>
