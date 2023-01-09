@@ -138,26 +138,27 @@
 <!--            </div>-->
 <!--    </div>-->
 <!--</div>-->
+<div class="container">
+    <div class="card-group justify-content-center">
+            <div class="card col-md-4" style="width: 20rem; border: none" th:each="item: ${custom_exercises}">
+                <section>
+                    <h3 class="text-center">Exercise</h3>
+                    <hr>
+                    <br>
+                    <p hidden th:text="${item.getId()}">ID: </p>
+                    <p class="text-center" th:text="${item.getQuery()}"></p></li>
+                    <p  class="text-center" th:text="${item.getCalories()} + ' calories burned'"></p>
 
-    <div class="col-md-12">
-        <div th:each="item: ${custom_exercises}">
-            <section>
-                <h3 class="text-center">Exercise</h3>
-                <hr>
-                <br>
-                <p hidden th:text="${item.getId()}">ID: </p>
-                <p class="text-center" th:text="${item.getQuery()}"></p></li>
-                <p  class="text-center" th:text="${item.getCalories()} + ' calories burned'"></p>
-
-                <div class="d-flex justify-content-between">
-                    <a th:href="@{/update-custom-exercise/{id}(id = ${item.getId()})}"><button class="edit-button"><i class="fa-solid fa-pen-to-square"></i></button></a>
-                    <form th:action="@{/delete-custom-exercise/{id}(id = ${item.getId()})}" method="post">
-                        <button type="submit"><i class="fa-solid fa-trash-can"></i></button>
-                    </form>
-                </div>
-            </section>
-        </div>
+                    <div class="d-flex justify-content-between">
+                        <a th:href="@{/update-custom-exercise/{id}(id = ${item.getId()})}"><button class="edit-button btn"><i class="fa-solid fa-pen-to-square" style="color: teal"></i></button></a>
+                        <form th:action="@{/delete-custom-exercise/{id}(id = ${item.getId()})}" method="post">
+                            <button class="btn" type="submit"><i class="fa-solid fa-trash-can" style="color: teal"></i></button>
+                        </form>
+                    </div>
+                </section>
+            </div>
     </div>
+</div>
 <br>
 <br>
 
