@@ -115,61 +115,64 @@
             display: none;
         }
 
+        #query {
+            border: none;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 <div id="navbar" th:replace="partials/navbar :: navbar"></div>
 
-
-<form th:action="@{/update-custom-exercise}" method="post" th:object="${custom_exercise}">
-    <div>
-        <section>
+<section>
+    <form th:action="@{/update-custom-exercise}" method="post" th:object="${custom_exercise}">
+        <div>
             <h3 class="text-center">Update Exercise</h3>
             <hr>
             <br>
-    <div>
-    <input th:field="*{id}" class="hidden">
-    <label class="hidden" for="calories">Calories: </label>
-    <input class="hidden" id="calories" th:field="*{calories}" readonly>
+        <div>
+        <input th:field="*{id}" class="hidden">
+        <label class="hidden" for="calories">Calories: </label>
+        <input class="hidden" id="calories" th:field="*{calories}" readonly>
 
-    <label class="hidden" for="query">Query: </label>
-    <input class="hidden" id="query" th:field="*{query}" readonly>
+        <label for="query">Current Exercise: </label>
+            <input id="query" th:field="*{query}" readonly>
 
-    <div>
-    <label class="hidden" for="user-id">User's ID: </label>
-    <input class="hidden" id="user-id" th:field="*{user.id}" readonly>
-    </div>
-    </div>
-    <button style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);" type="submit" class="hidden button" id="submit-button">Confirm</button>
-        </section>
-    </div>
-</form>
+            <div>
+                <label class="hidden" for="user-id">User's ID: </label>
+                <input class="hidden" id="user-id" th:field="*{user.id}" readonly>
+            </div>
+        </div>
+        <button style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);" type="submit" class="hidden button" id="submit-button">Confirm</button>
 
-<form id="search-form" th:object="${user}">
-    <label class="hidden" for="query1">Query: </label>
-    <input name="query1" id="query1">
+        </div>
+    </form>
 
-    <label for="username" class="hidden">Username</label>
-    <input name="username" id="username" th:field="*{username}" readonly class="hidden">
+    <form id="search-form" th:object="${user}">
+        <label for="query1">New Exercise: </label>
+        <input name="query1" id="query1">
 
-    <label for="user_id" class="hidden">User ID:</label>
-    <input name="user-id" id="user_id" th:field="*{id}" readonly class="hidden">
+        <label for="username" class="hidden">Username</label>
+        <input name="username" id="username" th:field="*{username}" readonly class="hidden">
 
-    <label for="user_gender" class="hidden">Gender: </label>
-    <input name="user_gender" id="user_gender" th:field="*{gender}" readonly class="hidden">
+        <label for="user_id" class="hidden">User ID:</label>
+        <input name="user-id" id="user_id" th:field="*{id}" readonly class="hidden">
 
-    <label for="user_height" class="hidden">Height: </label>
-    <input name="user_height" id="user_height" th:field="*{height}" readonly class="hidden">
+        <label for="user_gender" class="hidden">Gender: </label>
+        <input name="user_gender" id="user_gender" th:field="*{gender}" readonly class="hidden">
 
-    <label for="user_weight" class="hidden">Weight: </label>
-    <input name="user_weight" id="user_weight" th:field="*{starting_weight}" readonly class="hidden">
+        <label for="user_height" class="hidden">Height: </label>
+        <input name="user_height" id="user_height" th:field="*{height}" readonly class="hidden">
 
-    <label for="user_age" class="hidden">Age: </label>
-    <input name="user_age" id="user_age" th:field="*{age}" readonly class="hidden">
+        <label for="user_weight" class="hidden">Weight: </label>
+        <input name="user_weight" id="user_weight" th:field="*{starting_weight}" readonly class="hidden">
 
-    <button style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);" class="button" type="submit">Update</button>
-</form>
+        <label for="user_age" class="hidden">Age: </label>
+        <input name="user_age" id="user_age" th:field="*{age}" readonly class="hidden">
 
+        <button style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);" class="button" type="submit">Update</button>
+    </form>
+</section>
 <script>
     // TEST CODE TO MAKE SURE THE API WILL WORK
     let calories = document.getElementById("calories");

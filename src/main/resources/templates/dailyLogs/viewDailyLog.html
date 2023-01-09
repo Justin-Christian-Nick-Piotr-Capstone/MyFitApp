@@ -113,6 +113,11 @@
             border: 1px solid black;
         }
 
+        .button2 {
+            background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);
+            color: white;
+        }
+
     </style>
 </head>
 <body>
@@ -130,8 +135,7 @@
 <nav id="navbar" th:replace="/partials/navbar :: navbar"></nav>
 
     <div th:object="${dailyLog}">
-        <span>Daily Log For: </span>
-        <span th:text="*{date}">day</span>
+        <h3 id="date" th:text="*{date}">day</h3>
 
 
         <hr>
@@ -172,7 +176,7 @@
                 <input class="hidden" th:field="*{current_calories}">
                 <p>Current exercises done for the day: </p>
                 <textarea id="exercise-query" th:field="*{exercise_query}"></textarea>
-                <button style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);" class="button " type="submit">Update</button>
+                <button style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);" class="button" type="submit">Update</button>
             </div>
             <br>
             <ul class="list-group list-group-flush">
@@ -182,7 +186,7 @@
                     <br>
                     <span>Exercise </span>
                     <span th:text="${item.getQuery()}"></span>
-                    <button class="btn custom-exercise-buttons"><i class="fa-solid fa-plus" style="color: teal"></i></button>
+                    <button class="btn custom-exercise-buttons button2">Add to daily exercises</button>
                 </div>
             </ul>
         </section>
@@ -194,7 +198,7 @@
             <div>
                 <p>Current food eaten for the day: </p>
                 <textarea type="text" id="meals-query" th:field="*{meals_query}"></textarea>
-                <button style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);" class="button" type="submit">Update</button>
+                <button class="button button2" type="submit">Update</button>
             </div>
             <br>
             <ul class="list-group list-group-flush">
@@ -204,18 +208,13 @@
                     <br>
                     <span>Meal: </span>
                     <span th:text="${item.getQuery()}"></span>
-                    <button class="btn custom-meals-buttons"><i class="fa-solid fa-plus" style="color: teal"></i></button>
-                </div></li>
+                    <button class="btn custom-meals-buttons button2">Add to daily meals</button>
+                </div>
+                </li>
             </ul>
         </section>
     </div>
 </div>
-
-
-
-
-
-
 
 <script>
 
@@ -226,17 +225,19 @@
     let userAge = document.getElementById("user-age").innerText;
     let userGender = document.getElementById("user-gender").innerText;
     let userWeight = document.getElementById("user-weight").innerText;
-    // console.log("User age is: " + userAge);
-    // console.log("User height is: " + userHeight);
-    // console.log("User weight is: " + userWeight);
-    // console.log("User gender is: " + userGender);
 
 
     // On page load get the exercise query and meal query and store them in memory.
 
 
-
     async function onPageLoad() {
+
+        function updateDateFormat() {
+            let date = document.getElementById("date")
+            let dateCorrectType = Date();
+            date.innerText = dateCorrectType.substring(0, 15);
+        }
+
         let exerciseQuery = document.getElementById("exercise-query").value;
         let exerciseQueryElement = document.getElementById("exercise-query");
         let mealQuery = document.getElementById("meals-query").value;
@@ -370,6 +371,7 @@
         }
 
         await createEventListeners();
+        updateDateFormat();
 
     }
     onPageLoad();
