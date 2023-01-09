@@ -140,7 +140,7 @@
                     <br>
                     <p hidden th:text="${item.getId()}">ID: </p>
                     <p class="text-center font-weight-bold" th:text="${item.getQuery()}">Query </p>
-                    <p class="text-center font-weight-bold" th:text="${item.getCalories()} + ' calories burned'">Calories </p>
+                    <p class="text-center font-weight-bold" th:text="${item.getCalories()} + ' calories consumed'">Calories </p>
 
                     <div class="d-flex justify-content-between">
                         <a th:href="@{/update-custom-meal/{id}(id = ${item.getId()})}"><button class="edit-button btn" style="color: teal"><i class="fa-solid fa-pen-to-square"></i></i></button></a>

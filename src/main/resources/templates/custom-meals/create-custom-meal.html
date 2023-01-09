@@ -119,54 +119,65 @@
 <body>
 <div id="navbar" th:replace="partials/navbar :: navbar"></div>
 
+<section>
+    <form th:action="@{/create-custom-meal}" method="post" th:object="${custom_meal}">
+            <h3 class="text-center">Create Meal</h3>
+            <hr>
+            <br>
+    <!--    <label for="calories">Calories: </label>-->
+        <input id="calories" class="hidden" th:field="*{calories}" readonly>
 
-<form th:action="@{/create-custom-meal}" method="post" th:object="${custom_meal}">
-    <section>
-        <h3 class="text-center">Create Meal</h3>
-        <hr>
-        <br>
-<!--    <label for="calories">Calories: </label>-->
-    <input id="calories" class="hidden" th:field="*{calories}" readonly>
+    <!--    <label for="query">Query: </label>-->
+        <input id="query"  class="hidden" th:field="*{query}" readonly>
 
-<!--    <label for="query">Query: </label>-->
-    <input id="query"  class="hidden" th:field="*{query}" readonly>
+        <div hidden>
+        <label for="user-id">User's ID: </label>
+        <input id="user-id" th:field="*{user.id}" readonly>
+        </div>
 
-    <div hidden>
-    <label for="user-id">User's ID: </label>
-    <input id="user-id" th:field="*{user.id}" readonly>
-    </div>
-    <button type="submit" class="hidden button" style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);" id="submit-button">Confirm</button>
-</form>
+        <!--    This will be on the confirm page    -->
+        <div id="confirm-1" class="hidden">
+            <span>Exercise: </span><span id="confirm-meal-query"></span>
+        </div>
+        <div id="confirm-2" class="hidden">
+            <span>Calories Burned: </span><span id="confirm-meal-calories"></span>
+        </div>
 
-<form id="search-form" th:object="${user}">
-    <label for="query1">Enter a meal </label>
-    <input name="query1" id="query1" placeholder="ex. 3 cups of oatmeal">
+        <button type="submit" class="hidden button" style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);" id="submit-button">Confirm</button>
+    </form>
 
-    <label for="username" class="hidden">Username</label>
-    <input name="username" id="username" th:field="*{username}" readonly class="hidden">
+    <form id="search-form" th:object="${user}">
+        <input name="query1" id="query1" placeholder="ex. 3 cups of oatmeal">
 
-    <label for="user_id" class="hidden">User ID:</label>
-    <input name="user-id" id="user_id" th:field="*{id}" readonly class="hidden">
+        <label for="username" class="hidden">Username</label>
+        <input name="username" id="username" th:field="*{username}" readonly class="hidden">
 
-    <label for="user_gender" class="hidden">Gender: </label>
-    <input name="user_gender" id="user_gender" th:field="*{gender}" readonly class="hidden">
+        <label for="user_id" class="hidden">User ID:</label>
+        <input name="user-id" id="user_id" th:field="*{id}" readonly class="hidden">
 
-    <label for="user_height" class="hidden">Height: </label>
-    <input name="user_height" id="user_height" th:field="*{height}" readonly class="hidden">
+        <label for="user_gender" class="hidden">Gender: </label>
+        <input name="user_gender" id="user_gender" th:field="*{gender}" readonly class="hidden">
 
-    <label for="user_weight" class="hidden">Weight: </label>
-    <input name="user_weight" id="user_weight" th:field="*{starting_weight}" readonly class="hidden">
+        <label for="user_height" class="hidden">Height: </label>
+        <input name="user_height" id="user_height" th:field="*{height}" readonly class="hidden">
 
-    <label for="user_age" class="hidden">Age: </label>
-    <input name="user_age" id="user_age" th:field="*{age}" readonly class="hidden">
+        <label for="user_weight" class="hidden">Weight: </label>
+        <input name="user_weight" id="user_weight" th:field="*{starting_weight}" readonly class="hidden">
 
-    <button style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);" class="button" type="submit">Add Meal</button>
+        <label for="user_age" class="hidden">Age: </label>
+        <input name="user_age" id="user_age" th:field="*{age}" readonly class="hidden">
 
-</form>
+        <button style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);" class="button" type="submit">Add Meal</button>
+
+    </form>
+</section>
 
 
 <script>
-    // TEST CODE TO MAKE SURE THE API WILL WORK
+    let confirm1 = document.getElementById("confirm-1")
+    let confirm2 = document.getElementById("confirm-2")
+    let confirmMealQuery = document.getElementById("confirm-meal-query");
+    let confirmMealCalories = document.getElementById("confirm-meal-calories");
     let calories = document.getElementById("calories");
     let queryToSubmit = document.getElementById("query");
     let submitButton = document.getElementById("submit-button");
@@ -192,6 +203,13 @@
             console.log("The total calories burned are: " + Math.round(data.foods[0].nf_calories));
             calories.value = Math.round(data.foods[0].nf_calories);
             queryToSubmit.value = event.target.elements.query1.value;
+
+            confirmMealQuery.innerText = event.target.elements.query1.value;
+            confirmMealCalories.innerText = Math.round(data.foods[0].nf_calories);
+            confirm1.classList.remove("hidden");
+            confirm2.classList.remove("hidden");
+
+
             submitButton.classList.remove("hidden");
             form.classList.add("hidden")
             console.log(calories.value);

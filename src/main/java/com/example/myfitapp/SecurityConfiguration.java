@@ -58,7 +58,8 @@ public class SecurityConfiguration {
                         "/create-daily-log",
                         "/show-custom-exercise",
                         "/view-all-daily-logs",
-                        "/profile"
+                        "/profile",
+                        "/view-daily-log"
                 )
                 .authenticated();
         return http.build();

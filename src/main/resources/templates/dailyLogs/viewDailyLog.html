@@ -109,6 +109,10 @@
             display: none;
         }
 
+        .database-item {
+            border: 1px solid black;
+        }
+
     </style>
 </head>
 <body>
@@ -172,7 +176,7 @@
             </div>
             <br>
             <ul class="list-group list-group-flush">
-                <div th:each="item: ${customExercises}">
+                <div th:each="item: ${customExercises}" class="database-item">
                     <span>Calories for this exercise: </span>
                     <span th:text="${item.getCalories()}"></span>
                     <br>
@@ -194,7 +198,7 @@
             </div>
             <br>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><div th:each="item: ${customMeals}">
+                <li class="list-group-item"><div th:each="item: ${customMeals}" class="database-item">
                     <span>Calories for meal: </span>
                     <span th:text="${item.getCalories()}"></span>
                     <br>
