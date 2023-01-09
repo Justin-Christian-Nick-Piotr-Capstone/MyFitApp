@@ -118,6 +118,34 @@
             color: white;
         }
 
+        textarea {
+            padding: 50px ;
+            max-width: 200px;
+            margin: 30px auto;
+            background:white;
+            background:rgba(255,255,255,0.9);
+            backdrop-filter:blur(10px);
+            box-shadow:0px 2px 10px rgba(0,0,0,0.3);
+            border-radius:5px;
+            transition:transform 0.2s ease-in-out;
+        }
+
+        .database-item {
+            padding: 50px ;
+            max-width: 300px;
+            margin: 30px auto;
+            background:white;
+            background:rgba(255,255,255,0.9);
+            backdrop-filter:blur(10px);
+            box-shadow:0px 2px 10px rgba(0,0,0,0.3);
+            border-radius:5px;
+            transition:transform 0.2s ease-in-out;
+        }
+
+        /*.custom-exercise-buttons {*/
+        /*    width: 100px*/
+        /*}*/
+
     </style>
 </head>
 <body>
@@ -134,6 +162,8 @@
 
 <nav id="navbar" th:replace="/partials/navbar :: navbar"></nav>
 
+<br><br>
+
     <div th:object="${dailyLog}">
         <h3 id="date" th:text="*{date}">day</h3>
 
@@ -143,7 +173,7 @@
     <div class="row d-flex">
             <div class="col-md-6">
                 <section>
-                    <h3 class="text-center">Your Current Calories</h3>
+                    <h3 class="text-center">Your Calculated Calories</h3>
                     <hr>
                     <br>
                     <p  class="text-center" id="current-calories" th:text="*{current_calories}"></p>
@@ -181,12 +211,12 @@
             <br>
             <ul class="list-group list-group-flush">
                 <div th:each="item: ${customExercises}" class="database-item">
-                    <span>Calories for this exercise: </span>
+                    <h6>Calories for this exercise: </h6>
                     <span th:text="${item.getCalories()}"></span>
-                    <br>
-                    <span>Exercise </span>
+                    <hr>
+                    <h6>Exercise: </h6>
                     <span th:text="${item.getQuery()}"></span>
-                    <button class="btn custom-exercise-buttons button2">Add to daily exercises</button>
+                    <button class="btn custom-exercise-buttons button2"><i class="fa-solid fa-check"></i></button>
                 </div>
             </ul>
         </section>
@@ -203,12 +233,14 @@
             <br>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><div th:each="item: ${customMeals}" class="database-item">
-                    <span>Calories for meal: </span>
+                    <h6>Calories for meal: </h6>
                     <span th:text="${item.getCalories()}"></span>
-                    <br>
-                    <span>Meal: </span>
+                    <hr>
+                    <h6>Meal: </h6>
                     <span th:text="${item.getQuery()}"></span>
-                    <button class="btn custom-meals-buttons button2">Add to daily meals</button>
+
+                    <button class="btn custom-meals-buttons button2"><i class="fa-solid fa-check"></i></button>
+
                 </div>
                 </li>
             </ul>
