@@ -235,7 +235,7 @@
         function updateDateFormat() {
             let date = document.getElementById("date")
             let dateCorrectType = Date();
-            date.innerText = dateCorrectType.substring(0, 15);
+            date.innerText = dateCorrectType.substring(0, 10)+", "+dateCorrectType.substring(11,15);
         }
 
         let exerciseQuery = document.getElementById("exercise-query").value;
