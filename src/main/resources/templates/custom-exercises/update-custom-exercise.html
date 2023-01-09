@@ -115,6 +115,10 @@
             display: none;
         }
 
+        #query {
+            border: none;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -131,13 +135,13 @@
         <label class="hidden" for="calories">Calories: </label>
         <input class="hidden" id="calories" th:field="*{calories}" readonly>
 
-        <label class="hidden" for="query">Query: </label>
-        <input class="hidden" id="query" th:field="*{query}" readonly>
+        <label for="query">Current Exercise: </label>
+            <input id="query" th:field="*{query}" readonly>
 
-        <div>
-        <label class="hidden" for="user-id">User's ID: </label>
-        <input class="hidden" id="user-id" th:field="*{user.id}" readonly>
-        </div>
+            <div>
+                <label class="hidden" for="user-id">User's ID: </label>
+                <input class="hidden" id="user-id" th:field="*{user.id}" readonly>
+            </div>
         </div>
         <button style="background-image: linear-gradient(to bottom right, #734a9c, #5cb9c9);" type="submit" class="hidden button" id="submit-button">Confirm</button>
 
@@ -145,7 +149,7 @@
     </form>
 
     <form id="search-form" th:object="${user}">
-        <label for="query1">Query: </label>
+        <label for="query1">New Exercise: </label>
         <input name="query1" id="query1">
 
         <label for="username" class="hidden">Username</label>

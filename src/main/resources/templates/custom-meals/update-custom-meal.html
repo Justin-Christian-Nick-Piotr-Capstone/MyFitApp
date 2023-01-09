@@ -110,6 +110,11 @@
             display: none;
         }
 
+        #query {
+            border: none;
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
@@ -168,8 +173,8 @@
                 <label class="hidden" for="calories">Calories: </label>
                 <input class="hidden" id="calories" th:field="*{calories}" readonly>
 
-                <label class="hidden" for="query">Query: </label>
-                <input class="hidden" id="query" th:field="*{query}" readonly>
+                <label for="query">Current Meal: </label>
+                <input id="query" th:field="*{query}" readonly>
 
                 <label class="hidden" for="user-id">User's ID: </label>
                 <input class="hidden" id="user-id" th:field="*{user.id}" readonly>
